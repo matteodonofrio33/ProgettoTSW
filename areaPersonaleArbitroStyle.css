@@ -1,20 +1,44 @@
-.header {
-    font-size: 30px;
+body {
+    background-image: url('./immagini/stadio.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
+    
+}
+
+.title {
+    margin-top: 10%;
+    font-size: 20px;
     display: inline-flex;
     width: 100%;
     justify-content: center;
-    color: #565656;
+    color: #ACD7EC;
     font-family:Arial, Helvetica, sans-serif;
+    color: #D6EDFF;
+    
+}
+
+#introPhrase {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: -30px;
+    font-size: 20px;
+    color: #D6EDFF;
+   
 }
 
 .menu ul{
+    position: fixed;
     display: flex;
     flex-direction: row;
     list-style-type: none;
     margin: 0px;
-    padding: 0px;
+    padding: 20px;
     width: 100%;
     overflow: hidden;    
+    
     
 }
 
@@ -25,17 +49,18 @@
 }
 
 .menu li{
-    border-right: solid 1px lightblue;
+    border-right: solid 1px rgb(199, 243, 246);
     padding: 10px 10px 10px 10px;
     margin: 0px;
 }
 
+
+
 .menu a{
-    display: flex;
-    justify-content: center;
+    color: white;
     font-size: 17px;
     padding: 20px;
-    color: #2d7a1c;
+    
     text-decoration: none;
     text-transform: uppercase;
     
@@ -45,5 +70,19 @@
 
 .menu a:hover{
     padding: 20px;
-    color: #36e00f;
+    color: #6cade2;
+}
+
+
+.functionality{
+    color: white;
+    padding-top: 20%;
+    margin-left: 20px;
+    font-family: 'Georgia', serif;
+}
+
+.functionality ul {
+    list-style-type: square;
+    
+
 }
