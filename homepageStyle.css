@@ -15,6 +15,7 @@ body {
 
 .loginElements img { 
     width: 30px;
+    margin-right: 10px
 }
 
 .loginElements p {
@@ -24,9 +25,40 @@ body {
 
 .loginElements {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content:center;
+    padding: 10px 10px 10px 10px;
 }
 
-#description {
+.loginElements a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: yellow;
+}
+
+#mainContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 30px 30px 30px 30px ;
+    color: rgb(229, 184, 129);
+    
     
 }
+
+#referee h2 {
+    color:aquamarine;
+}
+
+
+#referee  {
+    padding: 30px 30px 30px 30px ;
+    color: rgb(229, 184, 129);
+}
+
+
+#referee a {
+    color: yellow;
+    text-transform: uppercase;
+}
+
