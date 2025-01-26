@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="homepageStyle.css">
 </head>
 <body>
-    <h1><b>BENVENUTI NEL SITO</b></h1>
-
-    <a href="#"> <img src="./immagini/user.png" alt="userImg"> <p>Accedi o registrati</p>
+    <h1 id="title"><b>BENVENUTI NEL SITO</b></h1>
     
-    <p>Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,
+    <div class="loginElements">
+        <p><a href="#"><img src="./immagini/user.png" alt="userImg"></a>Esegui il login</p>
+    </div>
+
+    <p id="description">
+        Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,
         colui che in campo mantiene il rispetto delle regole e la correttezza tra le due squadre. Essere arbitro significa concentrazione,
         sudore, tanti sacrifici e saper prendere decisioni difficili assumendosi la responsabilità delle proprie scelte. Essere arbitro significa
-        rendere unico ogni momento di gioco assicurando alle squadre coinvolte e al publico un'esperienza di gioco leale e correttezza.
-
+        rendere unico ogni momento di gioco assicurando alle squadre coinvolte e al publico un'esperienza di gioco leale e corretta.
     </p>
+
+    <img src="./immagini/images.jpg" alt="prova" id="immagine_prova">
+
+    <h2>COME SI DIVENTA ARBITRO?</h2>
+
+    <div id="referee">
+        <p>
+            Per diventare si deve fare richiesta tramite una delle sezioni presenti nel territorio italiano, successivamente si deve
+            seguire un corso che comprende l'insegnamento del regolamento e i criteri di interpretazione delle regole a seconda della
+            situazione. A questo punto basta superare un esame di ammissione e sarai un arbitro a tutti gli effetti.
+        </p>
+    </div>
+
+    <p id="submmit">Vuoi diventare un arbitro? <a href="./iscrizione.html">Unisciti a noi!</a></p>
+
 </body>
 </html>
