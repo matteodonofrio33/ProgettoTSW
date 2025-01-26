@@ -16,6 +16,9 @@
       <title>Menu a Tendina - Regioni Italiane</title>
     </head>
     <body>
+
+        <!-- Codice per il menù a tendina -->
+
       <label for="regioni"><b>Seleziona la tua regione:</b></label>
       <select id="regioni" name="regioni">
         <option value="" disabled selected> Seleziona una regione </option>
@@ -39,10 +42,38 @@
         <option value="umbria">Umbria</option>
         <option value="valle-d-aosta">Valle d'Aosta</option>
         <option value="veneto">Veneto</option>
+
       </select>
+
+
+      <!-- Codice per i textfield di nome, cognome, e codice fiscale -->
+      <form action="#" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <label for="cognome">Cognome:</label>
+        <input type="text" id="cognome" name="cognome" required><br>
+
+        <label for="codicefiscale">Codice Fiscale:</label>
+        <input type="text" id="codicefiscale" name="codice_fiscale"><br><br>
+
+
+        <form action="#" method="post">
+            <label for="maschio">Genere:</label>
+            
+            <input type="radio" id="maschio" name="genere" value="maschio" required>
+            <label for="maschio">Maschio</label>
+    
+            <input type="radio" id="femmina" name="genere" value="femmina" required>
+            <label for="femmina">Femmina</label>
+    
+            <br><br>
+
+        <button type="submit">Invia</button>
+    </form>
+
     </body>
     </html>
     
   </body>
-
 </html>
