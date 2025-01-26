@@ -1,0 +1,32 @@
+
+body {
+    background-color: #023e7d;
+}
+
+#title {
+    color: #e0e1dd;
+    font-size: 50px;
+    border: 10px solid black;
+    display: flex;
+    justify-content: center;
+    margin-left: 400px;
+    margin-right: 400px;    
+}
+
+.loginElements img { 
+    width: 30px;
+}
+
+.loginElements p {
+    color: #e0e1dd;
+    font-size: 20px;
+}
+
+.loginElements {
+    display: flex;
+    justify-content: center;
+}
+
+#description {
+    
+}
