@@ -18,7 +18,7 @@ error_reporting(E_ALL);
 			//se username esiste nel DB. Se esiste, restituisce la password (hash), altrimenti restituisce false.
 			require 'conn.php';
 			$hash = get_pwd($user,$db);
-			$hash = trim($hash); #rimuove spazi vuoti
+			$hash = trim($hash); //rimuove spazi vuoti
 			
 			if(!$hash){
 				echo "<p> L'utente $user non esiste. <a href=\"login.html\">Riprova</a></p>";
@@ -27,13 +27,16 @@ error_reporting(E_ALL);
 				
 
 				if(password_verify($pass, $hash)){
-					echo "<p>Login Eseguito con successo</p>";
-					//Se il login è corretto, inizializziamo la sessione
+					// Avvia la sessione
 					session_start();
-					$_SESSION['username']=$user;
-					echo "<p><a href=\"reserved.php\">Accedi</a> al contenuto riservato solo agli utenti registrati<p>";
-				}
+					$_SESSION['username'] = $user;
+				
+					// Reindirizza l'utente alla pagina areaPersonaleArbitro.html
+					header("Location: ../pages/areaPersonaleArbitro.html");
+					exit(); 
+				}				
 				else{
+					//Visualizza messaggio di errore
 					echo 'Username o password errati. <a href="../pages/login.html">Riprova</a>';
 					echo "<br>Debugging: Pass: $pass, Hash: $hash";
 				}
