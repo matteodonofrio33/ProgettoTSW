@@ -11,22 +11,19 @@ body {
     color: #fff;
 }
 
-/* Contenitore per il titolo */
+/* Stile per il titolo */
 .title-container {
     text-align: center;
     margin-bottom: 20px;
-}
-
-/* Stile per il titolo */
-h2 {
     font-size: 24px;
     font-weight: bold;
     margin: 20px;
 }
 
+
 /* Stile del form */
 .loginArea {
-    background: rgba(0, 0, 0, 0.7);
+    background-color: black;
     padding: 30px;
     border-radius: 10px;
     width: 350px;
@@ -34,18 +31,17 @@ h2 {
 }
 
 /* Campi input */
-input[type="text"], input[type="password"] {
+input {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
     border: none;
     border-radius: 5px;
-    outline: none;
     font-size: 14px;
 }
 
 /* Pulsante di login */
-input[type="submit"] {
+.login {
     background: #ff7f50;
     color: white;
     border: none;
@@ -58,6 +54,6 @@ input[type="submit"] {
 }
 
 /* Effetto hover sul pulsante */
-input[type="submit"]:hover {
+.login:hover {
     background: #ff5722;
 }
