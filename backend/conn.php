@@ -1,7 +1,14 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+
 $host = 'localhost';
 $port = '5432';
-$database = 'esercizio2';
+$database = 'gruppo34';
 $username = 'www';
 $password = 'tw2024';
 
