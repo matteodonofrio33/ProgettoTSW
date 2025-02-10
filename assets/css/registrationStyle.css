@@ -1,0 +1,59 @@
+/* Imposta il body con flexbox per centrare tutto */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #44ff00;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: #fff;
+}
+
+/* Stile per il titolo */
+.title-container {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+
+/* Stile del form */
+.registrationArea {
+    background-color: black;
+    padding: 30px;
+    border-radius: 10px;
+    width: 350px;
+    text-align: center;
+}
+
+/* Campi input */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Pulsante di login */
+.sendData {
+    background: #ff7f50;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Effetto hover sul pulsante */
+.sendData:hover {
+    background: #ff5722;
+}

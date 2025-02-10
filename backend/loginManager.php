@@ -62,13 +62,7 @@ function get_pwd($user, $db){
 		}
 		else{
 			if ($row = pg_fetch_assoc($ret)){
-				/*
-				echo "<br>";
 				
-				echo "row: ";
-				print_r($row);
-				echo "<br>";
-				*/
 				$pass = $row['password'];
 				return $pass; //questa è la password con hash
 			}
