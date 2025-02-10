@@ -16,12 +16,12 @@
         <h3> Inserire i dati di accesso </h3>
 		<p>
 		<label for="username">Username
-			<input type="text" name="username" id="username"/>
+			<input type="text" name="username" id="username" required onchange="validate(this)"/>
 		</label>
 		</p>
 		<p>
 		<label for="password">Password
-			<input type="password" name="password" id="password"/>
+			<input type="password" name="password" id="password" required onchange="validate(this)"/>
 		</label>
 		</p>
 		<p>
@@ -32,6 +32,18 @@
 	<p id="submmit">Vuoi diventare un arbitro? <a href="./richiesta.html">Unisciti a noi!</a></p>
 
 </div>
+
+
+<script type="text/javascript">
+
+	//verifico che lo username contenga minimo 4 caratteri e massimo 15
+	function validate(username) {	
+		if(username.value.length < 5 || username.value.length > 15)
+		alert("Username e password devono avere minimo 5 e massimo 15 caratteri");	
+	}
+
+
+</script>
 
 
 </body>
