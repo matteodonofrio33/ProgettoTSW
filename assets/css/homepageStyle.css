@@ -1,88 +1,74 @@
-/* Stile generale */
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../immagini/pallone.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../immagini/pallone.jpg');
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-attachment: fixed;
-    height: 100vh; 
-    margin: 0;
-    padding: 0;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 100vh;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #e0e1dd; 
 }
 
-/* Barra di navigazione */
-#list {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+.loginElements {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    list-style: none;
-    margin: 0;
-    padding: 15px 20px;
-    background: rgba(0, 0, 0, 0.7); /* Trasparenza per armonizzarsi con lo sfondo */
-    backdrop-filter: blur(5px);
-    border-bottom: 2px solid aquamarine;
-    z-index: 1000;
+    justify-content: center;
+    padding: 15px;
+    gap: 15px;
 }
 
-/* Icone nel menu */
-#list li img {
-    width: 30px;
-    margin-right: 10px;
+.loginElements img {
+    width: 35px;
+    transition: transform 0.3s ease;
 }
 
-/* Voci di menu */
-.menu li {
-    padding: 12px 15px;
-    border-right: solid 1px yellow;
+.loginElements img:hover {
+    transform: scale(1.1);
 }
 
-.menu li:last-child {
-    border-right: none;
-}
-
-/* Link nel menu */
-.menu a {
-    color: #e0e1dd;
+.loginElements p {
     font-size: 18px;
-    text-decoration: none;
+}
+
+.loginElements a {
     text-transform: uppercase;
-    transition: color 0.3s ease-in-out;
-}
-
-.menu a:hover {
-    color: aquamarine;
-}
-
-/* Testo nascosto (span) */
-span {
-    display: none;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    white-space: nowrap;
-}
-
-/* Exit button */
-#exit {
-    margin-left: 15px;
-    cursor: pointer;
-    font-size: 18px;
+    text-decoration: none;
     color: yellow;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    #list {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
+.loginElements a:hover {
+    color: orange;
+}
 
+#mainContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 40px;
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    margin-top: 80px;
+}
+
+#referee {
+    padding: 20px;
+    text-align: center;
+}
+
+#referee h2 {
+    color: aquamarine;
+    font-size: 26px;
+    text-transform: uppercase;
+}
+
+#referee a {
+    color: yellow;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#referee a:hover {
+    color: orange;
 }

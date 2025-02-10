@@ -12,8 +12,6 @@
     <?php
         include '../includes/header.html'
     ?>
-
-    <h1 id="title"><b>BENVENUTI NEL SITO</b></h1>
     
     <!--
     <div class="loginElements">
@@ -46,7 +44,13 @@
         <p id="submmit">Vuoi diventare un arbitro? <a href="./richiesta.html">Unisciti a noi!</a></p>
     </div>
 
-    
+    <div class="footer">
+
+    <?php
+        include '../includes/footer.html'
+    ?>
+
+    </div>
 
 </body>
 </html>

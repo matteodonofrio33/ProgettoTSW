@@ -1,47 +1,56 @@
-body{
-    background-color: black;
-    position: relative;
+header {
+    margin-top: 0;
 }
 
-#list{
-    position: fixed;
+body {
+    background-color: #000;
+    position: relative;
+    min-height: 100vh;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #e0e1dd;
+}
+
+#list {
+    position: relative;
     display: flex;
     flex-direction: row;
     list-style-type: none;
-    margin: 0px;
+    margin: 0;
     padding: 20px;
     width: 100%;
-    overflow: hidden;    
-    
-    
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.8);
 }
 
-#list li img{
-    width: 20px;
+#list li img {
+    width: 25px;
     padding-right: 20px;
-    
+    transition: transform 0.3s ease;
 }
 
-.menu li{
-    border-right: solid 1px rgb(199, 243, 246);
-    padding: 10px 10px 10px 10px;
-    margin: 0px;
-    height: 20px;
+#list li img:hover {
+    transform: scale(1.1);
 }
 
+.menu li {
+    border-right: solid 1px rgba(199, 243, 246, 0.6);
+    padding: 12px;
+    margin: 0;
+    height: 24px;
+}
 
-
-.menu a, span{
+.menu a, span {
     color: white;
-    font-size: 17px;
+    font-size: 18px;
     padding: 20px;
     text-decoration: none;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
-.menu a:hover{
-    padding: 20px;
+.menu a:hover {
     color: #6cade2;
+    text-shadow: 0 0 5px #6cade2;
 }
 
 span {
@@ -55,5 +64,16 @@ span {
     margin-left: 10px;
 }
 
-
-
+#title {
+    color: #ffffff;
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin: 60px auto;*/
+    margin-top: 100px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
+}
