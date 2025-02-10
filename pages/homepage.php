@@ -41,7 +41,7 @@
             situazione. A questo punto basta superare un esame di ammissione e sarai un arbitro a tutti gli effetti.
         </p>
 
-        <p id="submmit">Vuoi diventare un arbitro? <a href="./richiesta.html">Unisciti a noi!</a></p>
+        <p id="submmit">Vuoi diventare un arbitro? <a href="./request.html">Unisciti a noi!</a></p>
     </div>
 
     <div class="footer">
