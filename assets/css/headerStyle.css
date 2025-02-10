@@ -1,0 +1,55 @@
+body{
+    background-color: black;
+}
+
+#list{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0px;
+    padding: 20px;
+    width: 100%;
+    overflow: hidden;    
+    
+    
+}
+
+#list li img{
+    width: 20px;
+    padding-right: 20px;
+    
+}
+
+.menu li{
+    border-right: solid 1px rgb(199, 243, 246);
+    padding: 10px 10px 10px 10px;
+    margin: 0px;
+}
+
+
+
+.menu a, span{
+    color: white;
+    font-size: 17px;
+    padding: 20px;
+    
+    text-decoration: none;
+    text-transform: uppercase;
+    
+    
+
+}
+
+.menu a:hover{
+    padding: 20px;
+    color: #6cade2;
+}
+
+span {
+    display: none;
+    margin-left: -25px;
+}
+
+
+
