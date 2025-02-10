@@ -1,71 +1,88 @@
-
+/* Stile generale */
 body {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../immagini/pallone.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../immagini/pallone.jpg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
     height: 100vh; 
-    
-       
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-#title {
-    color: #e0e1dd;
-    font-size: 50px;
+/* Barra di navigazione */
+#list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    margin-left: 400px;
-    margin-right: 400px;    
-}
-
-.loginElements img { 
-    width: 30px;
-    margin-right: 10px
-}
-
-.loginElements p {
-    color: #e0e1dd;
-    font-size: 20px;
-}
-
-.loginElements {
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    padding: 10px 10px 10px 10px;
-}
-
-.loginElements a {
-    text-transform: uppercase;
-    text-decoration: none;
-    color: yellow;
-}
-
-#mainContent {
-    display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: space-around;
-    padding: 30px 30px 30px 30px ;
-    color: rgb(229, 184, 129);
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
-    
+    list-style: none;
+    margin: 0;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.7); /* Trasparenza per armonizzarsi con lo sfondo */
+    backdrop-filter: blur(5px);
+    border-bottom: 2px solid aquamarine;
+    z-index: 1000;
 }
 
-#referee h2 {
-    color:aquamarine;
+/* Icone nel menu */
+#list li img {
+    width: 30px;
+    margin-right: 10px;
 }
 
-
-#referee  {
-    padding: 30px 30px 30px 30px ;
-    color: rgb(229, 184, 129);
-    
+/* Voci di menu */
+.menu li {
+    padding: 12px 15px;
+    border-right: solid 1px yellow;
 }
 
+.menu li:last-child {
+    border-right: none;
+}
 
-#referee a {
-    color: yellow;
+/* Link nel menu */
+.menu a {
+    color: #e0e1dd;
+    font-size: 18px;
+    text-decoration: none;
     text-transform: uppercase;
+    transition: color 0.3s ease-in-out;
 }
 
+.menu a:hover {
+    color: aquamarine;
+}
+
+/* Testo nascosto (span) */
+span {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+/* Exit button */
+#exit {
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    color: yellow;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #list {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+}

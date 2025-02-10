@@ -9,11 +9,16 @@
 <body>
 
     
+    <?php
+        include '../includes/header.html'
+    ?>
+
     <h1 id="title"><b>BENVENUTI NEL SITO</b></h1>
     
+    <!--
     <div class="loginElements">
         <p><a href="./login.html"><img src="../assets/immagini/user.png" alt="userImg"></a>Esegui il login</p>
-    </div>
+    </div>  -->
 
     <div id="mainContent"> 
         <p >
