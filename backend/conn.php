@@ -9,10 +9,10 @@ error_reporting(E_ALL);
 $host = 'localhost';
 $port = '5432';
 $database = 'gruppo34';
-$username = 'www';
-$password = 'tw2024';
+$user = 'www';
+$pass = 'tw2024';
 
-$connection_string = "host=$host port=$port dbname=$database user=$username password=$password";
+$connection_string = "host=$host port=$port dbname=$database user=$user password=$pass";
 
 
 //CONNESSIONE AL DB
