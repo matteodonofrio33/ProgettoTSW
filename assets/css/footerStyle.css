@@ -1,12 +1,22 @@
+.footerElements{
+    
+    
+
+    
+}
+
+
+
 footer {
     background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
     color: #e0e1dd;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
     padding: 20px 10px;
     font-family: 'Arial', sans-serif;
     border-top: 2px solid #6cade2;
+    flex: 1;
+    
+    justify-content: center;
 }
 
 footer h3 {
@@ -61,3 +71,5 @@ footer img:hover {
         text-align: center;
     }
 }
+
+
