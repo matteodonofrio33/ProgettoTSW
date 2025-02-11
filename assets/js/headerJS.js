@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     let element=document.getElementById("list");
-    element.style.background=rgba(0, 0, 0, 0.3);
+    element.backgroundColor="black";
+    element.style.opacity="0.5";
+    element.style.color="black";
 });

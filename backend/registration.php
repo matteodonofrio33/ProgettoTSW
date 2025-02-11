@@ -58,7 +58,8 @@
             //verifico che la lunghezza di nome e cognome sia compresa tra 2 e 30
             //verifico che nome e cognome non abbiano caratteri speciali
             if(strlen($name) < 2 || strlen($name) > 30){
-                echo "<script type='text/javascript'> alert('Nome può avere minimo 2 e massimo 30 caratteri'); </script>";
+               // echo "<script type='text/javascript'> alert('Nome può avere minimo 2 e massimo 30 caratteri'); </script>";
+			   echo "<p>Nome può avere minimo 2 e massimo 30 caratteri</p>";
                 $name = "";
                 $email = "";
             }
@@ -67,24 +68,28 @@
                 $password = "";
                 $passwordConfirm = "";
                 $email = "";
-                echo "<script type='text/javascript'> alert('Password può avere minimo 2 e massimo 15 caratteri'); </script>";
+				echo "<p>Password può avere minimo 2 e massimo 15 caratteri</p>";
+                //echo "<script type='text/javascript'> alert('Password può avere minimo 2 e massimo 15 caratteri'); </script>";
             }
 
             if(strlen($surname) < 2 || strlen($surname) > 30){
-                echo "<script type='text/javascript'> alert('Cognome può avere minimo 2 e massimo 30 caratteri'); </script>";
+				echo "<p>Cognome può avere minimo 2 e massimo 30 caratteri</p>";
+                //echo "<script type='text/javascript'> alert('Cognome può avere minimo 2 e massimo 30 caratteri'); </script>";
                 $surname = "";
                 $email = "";
             }
 			    
             
             if(checkSpecial($name)!== false){
-                echo "<script type='text/javascript'> alert('Nome non può contenere caratteri speciali'); </script>";
+				echo "<p>Nome non può contenere caratteri speciali</p>";
+                //echo "<script type='text/javascript'> alert('Nome non può contenere caratteri speciali'); </script>";
                 $name = "";
                 $email = "";
             }
 
             if(checkSpecial($surname) !== false){
-                echo "<script type='text/javascript'> alert('Nome non può contenere caratteri speciali'); </script>";
+				echo "<p>Nome non può contenere caratteri speciali</p>";
+               // echo "<script type='text/javascript'> alert('Nome non può contenere caratteri speciali'); </script>";
                 $surname = "";
                 $email = "";
             }
@@ -93,14 +98,16 @@
             //verifico che la lunghezza del codice fiscale sia pari a 16
             //verifico che non ci siano caratteri speciali
             if(strlen($taxIdCode) != 16){
-                echo "<script type='text/javascript'> alert('Codice fiscale deve avere una lunghezza di 16 caratteri.'); </script>";  
+				echo "<p>Codice fiscale deve avere una lunghezza di 16 caratteri</p>";
+               // echo "<script type='text/javascript'> alert('Codice fiscale deve avere una lunghezza di 16 caratteri.'); </script>";  
                 $taxIdCode = "";
                 $email = "";
             }
               
             
             if(checkSpecial($taxIdCode) !== false){
-                echo "<script type='text/javascript'> alert('Il codice fiscale non deve avere caratteri speciali.'); </script>";  
+				echo "<p>Il codice fiscale non deve avere caratteri speciali</p>";
+                //echo "<script type='text/javascript'> alert('Il codice fiscale non deve avere caratteri speciali.'); </script>";  
                 $taxIdCode = "";
                 $email = "";
             }
@@ -109,14 +116,16 @@
             //verifica se nello username è contenuto il nome inserito dall'utente
             //verifico che la lunghezza dello username sia compresa tra 2 e 15
             if(str_contains($username, $name)) {// ritorna true o false in base a se $name è contenuto in $username o meno.
-                echo "<script type='text/javascript'> alert('Lo username non puo' contenere il nome'); </script>";
+				echo "<p>Lo username non puo' contenere il nome</p>";
+              //  echo "<script type='text/javascript'> alert('Lo username non puo' contenere il nome'); </script>";
                 $username = "";
                 $email = "";
             }
               
                  
-            if(strlen($username) < 2 || strlen($username) > 15){
-                echo "<script type='text/javascript'> alert('Lo username deve avere un minimo di 2 ed un massimo di 15 caratteri'); </script>";
+            if(strlen($username) < 2 || strlen($username) > 15) {
+				echo "<p>Lo username deve avere un minimo di 2 ed un massimo di 15 caratteri</p>";
+                //echo "<script type='text/javascript'> alert('Lo username deve avere un minimo di 2 ed un massimo di 15 caratteri'); </script>";
                 $username = "";
                 $email = "";
             }
@@ -128,7 +137,8 @@
 
 			//CONTROLLO SE L'UTENTE GIA' ESISTE
 			if(username_exist($username)){
-                echo "<script type='text/javascript'> alert('Username $username già esistente'); </script>";	
+				echo"<p> Username $username già esistente</p>";
+                //echo "<script type='text/javascript'> alert('Username $username già esistente'); </script>";	
 			}
 			else{
 				//ORA posso inserire il nuovo utente nel db
@@ -166,7 +176,7 @@
 
 <div class="registrationArea"> 
     
-	<form id="registrationForm" method="post" action="./registration.php">
+	<form id="registrationForm" method="post" action="./registration.php" onsubmit="return validateAll()">
         
         <p>
             <label for="name">Nome
@@ -325,51 +335,40 @@
         
     
 
-    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+    function validateAll() {
         let error = false;
 
         if(!validateName()){
-            error = true;
-          //  alert("Controlla l'inserimento del nome");
+			error = true;
+          alert("Controlla l'inserimento del nome");
         }
             
 
         if(!validateSurname()){
-            error = true;
-           // alert("Controlla l'inserimento del cognome");
+			error = true;
+           alert("Controlla l'inserimento del cognome");
         }
             
 
         if(!validateTaxId()){
             error = true;
-           // alert("Controlla l'inserimento del codice fiscale");
+           alert("Controlla l'inserimento del codice fiscale");
         }
             
 
         if(!validatePassword1()){
-            error = true;
-          //  alert("Controlla l'inserimento della password");
+			error = true;
+          alert("Controlla l'inserimento della password");
         }
            
 
         if(!validatePassword2()){
-            error = true;
-          //  alert("Controlla l'inserimento della password");
+			error = true;
+          alert("Controlla l'inserimento della password");
         }
 
-        if(error)
-        	event.preventDefault();
-            
-
-    });
-
-
-
-
-
-    //Manca il controllo sull'email perché è effettuato automaticamente dai browser
-    
-   
+		return !error;
+    }
 
 
    
@@ -397,15 +396,6 @@
 
            return true;
     }
-
-
-  
-
-	
-    
-
-  
-
 
 	
 
