@@ -1,56 +1,56 @@
+<?php
+    session_set_cookie_params(0);
+    session_start();
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/homepageStyle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <link rel="stylesheet" type="text/css" href="../assets/css/homepageStyle.css">
 </head>
 <body>
 
-    
-    <?php
-        include '../includes/header.html'
-    ?>
-    
-    <!--
-    <div class="loginElements">
-        <p><a href="./login.html"><img src="../assets/immagini/user.png" alt="userImg"></a>Esegui il login</p>
-    </div>  -->
+  <?php include '../includes/header.html'; ?>
+
+  <?php 
+  if(isset($_SESSION['username'])) { ?>
+    <!-- Contenuti per utente autenticato -->
+    <h1>Benvenuto, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+    <a href="../backend/logout.php">Logout</a>
+    <p>Sei autenticato con successo. Ora puoi accedere ai contenuti riservati.</p>
 
     <div id="mainContent"> 
-        <p >
-            Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,
-            colui che in campo mantiene il rispetto delle regole e la correttezza tra le due squadre. Essere arbitro significa concentrazione,
-            sudore, tanti sacrifici e saper prendere decisioni difficili assumendosi la responsabilità delle proprie scelte. Essere arbitro significa
-            rendere unico ogni momento di gioco assicurando alle squadre coinvolte e al pubblico un'esperienza di gioco leale e corretta.
-        </p>
-
-        
+      <p>
+        Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,
+        colui che in campo mantiene il rispetto delle regole e la correttezza tra le due squadre. Essere arbitro significa concentrazione,
+        sudore, tanti sacrifici e saper prendere decisioni difficili assumendosi la responsabilità delle proprie scelte. Essere arbitro significa
+        rendere unico ogni momento di gioco assicurando alle squadre coinvolte e al pubblico un'esperienza di gioco leale e corretta.
+      </p>
     </div>
-   
-
-    
-    <div id="referee">
-    <h2>COME SI DIVENTA ARBITRO?</h2>
-
-    
-        <p>
-            Per diventare arbitro si deve fare richiesta tramite una delle sezioni presenti nel territorio italiano, successivamente si deve
-            seguire un corso che comprende l'insegnamento del regolamento e i criteri di interpretazione delle regole a seconda della
-            situazione. A questo punto basta superare un esame di ammissione e sarai un arbitro a tutti gli effetti.
-        </p>
-
-        <p id="submmit">Vuoi diventare un arbitro? <a href="./request.html">Unisciti a noi!</a></p>
+  <?php 
+  } else { ?>
+    <!-- Contenuti per visitatori non autenticati -->
+    <h1>Benvenuto!</h1>
+    <div id="mainContent"> 
+      <p>
+        Questa è la homepage pubblica. Accedi per scoprire contenuti riservati e personalizzati.
+      </p>
+      <p>
+        Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,
+        colui che in campo mantiene il rispetto delle regole e la correttezza tra le due squadre. Essere arbitro significa concentrazione,
+        sudore, tanti sacrifici e saper prendere decisioni difficili assumendosi la responsabilità delle proprie scelte. Essere arbitro significa
+        rendere unico ogni momento di gioco assicurando alle squadre coinvolte e al pubblico un'esperienza di gioco leale e corretta.
+      </p>
+      <p>
+        <a href="./login.html">Esegui il login</a>
+      </p>
     </div>
+  <?php } ?>
 
-    <div class="footer">
-
-    <?php
-        include '../includes/footer.html'
-    ?>
-
-    </div>
+  <!-- Include il footer -->
+  <?php include '../includes/footer.html'; ?>
 
 </body>
 </html>

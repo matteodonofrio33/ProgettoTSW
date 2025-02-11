@@ -32,7 +32,7 @@ error_reporting(E_ALL);
 					$_SESSION['username'] = $user;
 				
 					// Reindirizza l'utente alla pagina areaPersonaleArbitro.html
-					header("Location: ../pages/areaPersonaleArbitro.html");
+					header("Location: ../pages/homepage.php");
 					exit(); 
 				}				
 				else{
