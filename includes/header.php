@@ -63,11 +63,9 @@ if (session_status() == PHP_SESSION_NONE) {
 
     </script>
 
-
-
-
-
-    
+    <?php if(isset($_SESSION['username'])) { ?>
+        <script src="../assets/js/headerJS.js"></script>
+    <?php } ?>
     
 </body>
 </html>
