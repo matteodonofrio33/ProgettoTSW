@@ -65,7 +65,21 @@ span {
     font-size: 5px;
 }
 
-#title {
+#title1 {
+    color: #ffffff;
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin: 60px auto;*/
+    margin-top: 100px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+#title2 {
     color: #ffffff;
     font-size: 55px;
     display: flex;
