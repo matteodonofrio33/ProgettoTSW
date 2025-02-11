@@ -11,25 +11,25 @@ error_reporting(E_ALL);
 
 
 		if($_POST['username'] || $_POST['password']){
-			$user =  $_POST['username'];
-			$pass =  $_POST['password'];
+			$username =  $_POST['username'];
+			$password =  $_POST['password'];
 			
 			//chiama la funzione get_pwd che controlla
 			//se username esiste nel DB. Se esiste, restituisce la password (hash), altrimenti restituisce false.
 			require 'conn.php';
-			$hash = get_pwd($user,$db);
+			$hash = get_pwd($username,$db);
 			$hash = trim($hash); //rimuove spazi vuoti
 			
 			if(!$hash){
-				echo "<p> L'utente $user non esiste. <a href=\"login.html\">Riprova</a></p>";
+				echo "<p> L'utente $username non esiste. <a href=\"login.html\">Riprova</a></p>";
 			}
 			else{
 				
 
-				if(password_verify($pass, $hash)){
+				if(password_verify($password, $hash)){
 					// Avvia la sessione
 					session_start();
-					$_SESSION['username'] = $user;
+					$_SESSION['username'] = $username;
 				
 					// Reindirizza l'utente alla pagina areaPersonaleArbitro.html
 					header("Location: ../pages/homepage.php");
@@ -38,7 +38,7 @@ error_reporting(E_ALL);
 				else{
 					//Visualizza messaggio di errore
 					echo 'Username o password errati. <a href="../pages/login.html">Riprova</a>';
-					echo "<br>Debugging: Pass: $pass, Hash: $hash";
+					echo "<br>Debugging: Pass: $password, Hash: $hash";
 				}
 			}
 		}
@@ -51,11 +51,11 @@ error_reporting(E_ALL);
 </html>
 
 <?php
-function get_pwd($user, $db){
+function get_pwd($username, $db){
 		require 'conn.php';
 		$sql = "SELECT password FROM arbitro WHERE username=$1;";
 		$prep = pg_prepare($db, "sqlPassword", $sql); #preparando la query così si evita sql injection
-		$ret = pg_execute($db, "sqlPassword", array($user)); #esecuzione della query pianificata
+		$ret = pg_execute($db, "sqlPassword", array($username)); #esecuzione della query pianificata
 		if(!$ret) {
 			echo "ERRORE QUERY: " . pg_last_error($db);
 			return false;
@@ -63,8 +63,8 @@ function get_pwd($user, $db){
 		else{
 			if ($row = pg_fetch_assoc($ret)){
 				
-				$pass = $row['password'];
-				return $pass; //questa è la password con hash
+				$password = $row['password'];
+				return $password; //questa è la password con hash
 			}
 			else{
 				
