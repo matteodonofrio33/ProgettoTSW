@@ -36,6 +36,13 @@
       <!-- <p>
         Questa è la homepage pubblica. Accedi per scoprire contenuti riservati e personalizzati.
       </p> -->
+
+    <video autoplay muted controls width="800">
+      <source src="arbitro.mp4" type="video/mp4">
+      Il tuo browser non supporta il tag video.
+    </video>
+
+
       <p>
         Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,
         colui che in campo mantiene il rispetto delle regole e la correttezza tra le due squadre. Essere arbitro significa concentrazione,

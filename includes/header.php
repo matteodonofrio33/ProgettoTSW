@@ -23,9 +23,9 @@ if (session_status() == PHP_SESSION_NONE) {
                    <span>
                         <?php 
                         if (isset($_SESSION['username'])) { 
-                            echo '<a href="../backend/logout.php">Logout</a>';
+                            echo '<a id="logout" href="../backend/logout.php">Logout</a>';
                         } else { 
-                            echo '<a href="../pages/login.html">Login</a>';
+                            echo '<a id="login" href="../pages/login.html">Login</a>';
                         } 
                         ?>
                     </span>
@@ -42,7 +42,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <h1 id="title1">Benvenuto, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
     <?php 
     } else { ?>
-        <h1 id="tilte2">Benvenuto!</h1>
+        <h1 id="title2">Benvenuto!</h1>
     <?php } ?>
     
 

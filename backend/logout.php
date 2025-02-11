@@ -19,8 +19,10 @@
 		setcookie($sname,'', time()-3600,'/');
 	}
 	
-	echo "<p> Logout effettuato. Ciao $uname </p>";
-	echo "<p>Torna alla <a href='../pages/homepage.php'>Home</a></p>";
+	//echo "<p> Logout effettuato. Ciao $uname </p>";
+	//echo "<p>Torna alla <a href='../pages/homepage.php'>Home</a></p>";
+
+	header("Location: ../pages/homepage.php");
 
 ?>
 </body>
