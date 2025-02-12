@@ -30,9 +30,15 @@ if (session_status() == PHP_SESSION_NONE) {
                         ?>
                     </span>
                 </li>
-                <li> <a href="#">Crea referto</a></li>
-                <li> <a href="#">Le mie partite</a></li>
-                <li> <a href="#">Prossima partita</a></li>
+                <?php if(isset($_SESSION['username'])) { ?>
+                    <li> <a href="../pages/referto.html">Crea referto</a></li>
+                    <li> <a href="#">Le mie partite</a></li>
+                    <li> <a href="#">Prossima partita</a></li>
+                <?php } else { ?>
+                    <li> <a href="../pages/login.html">Crea referto</a></li>
+                    <li> <a href="../pages/login.html">Le mie partite</a></li>
+                    <li> <a href="../pages/login.html">Prossima partita</a></li>
+                <?php } ?>
             </ul>
         </nav>
     </header>
