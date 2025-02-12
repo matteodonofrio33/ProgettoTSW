@@ -6,8 +6,7 @@
 
         if(!isRightLength(name, 2, 30))
             return false;
-            //alert("Nome può avere minimo 2 e massimo 30 caratteri");  
-        
+            //alert("Nome può avere minimo 2 e massimo 30 caratteri");          
             specialName = "|!£$%&/()=?'^+*§°#ç@.:-_,;<>\"{}[]~`\\";
         if(checkSpecial(name, specialName))
             return false;
@@ -157,7 +156,7 @@
             alert("Controlla l'inserimento della password");
         }
 
-		return !error;
+		return !error; //serve per bloccare l'invio dei dati nel form
     }
 
 
