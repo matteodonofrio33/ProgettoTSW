@@ -1,11 +1,13 @@
 /* Imposta il body con flexbox per centrare tutto */
 body {
     font-family: Arial, sans-serif;
-    background-color: #44ff00;
+    
+  
+    background-image: linear-gradient(to left, #8a2929, #003180);
     height: 100vh;
     display: flex;
     flex-direction: column;
-    /*justify-content: center;*/
+    
     align-items: center;
     margin: 0;
     color: #fff;
@@ -20,6 +22,10 @@ body {
     margin-top: 40px;
 }
 
+.titleContainer h2 {
+     color: #FFD700;
+}
+
 
 /* Stile del form */
 .registrationArea {
@@ -28,6 +34,7 @@ body {
     border-radius: 10px;
     width: 350px;
     text-align: center;
+    
 }
 
 /* Campi input */
@@ -57,3 +64,31 @@ input {
 .sendData:hover {
     background: #ff5722;
 }
+
+#submit a {
+    color: #FFD700;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.red{
+    display: none;
+    color: red;
+    margin-right: 100px;
+}
+
+.red img{
+    
+    width: 200px;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
+     
+}
+
+
+
+

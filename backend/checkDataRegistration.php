@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/registrationStyle.css">
+</head>
+<body>
+    
 <?php
 	if(isset($_POST['name']))
 		$name = $_POST['name'];
@@ -160,7 +170,7 @@
                 
 				//ORA posso inserire il nuovo utente nel db
 				if(insert_utente($username, $email, $name, $surname, $password, $error)){
-                    echo"<h1> Utente registrato con successo</h1>";
+                     header("Location: ../pages/login.html");
 				}
 				else{
 					echo "<h1> Errore durante la registrazione. Riprova</h1>";
@@ -181,3 +191,8 @@
 
 
 ?>
+
+
+
+</body>
+</html>
