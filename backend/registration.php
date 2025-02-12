@@ -14,7 +14,7 @@
 <!--FORM PER L'INVIO DEI DATI-->
 <div class="titleContainer">
         <h2>Inserisci i tuoi dati per registrarti</h2>
-    </div>
+</div>
 
 <div class="registrationArea"> 
     

@@ -75,6 +75,5 @@
         <script src="../assets/js/homepageJS.js"></script>
     <?php } ?>
 
-
 </body>
 </html>
