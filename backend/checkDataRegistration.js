@@ -7,7 +7,7 @@
         if(!isRightLength(name, 2, 30))
             return false;
             //alert("Nome può avere minimo 2 e massimo 30 caratteri");          
-            specialName = "|!£$%&/()=?'^+*§°#ç@.:-_,;<>\"{}[]~`\\";
+            specialName = "|!£$%&/()=?^+*§°#ç@.:-_,;<>\"{}[]~`\\";
         if(checkSpecial(name, specialName))
             return false;
            //alert("Nome non puo' contenere caratteri speciali");
@@ -22,7 +22,7 @@
             return false;
            // alert("Cognome può avere minimo 2 e massimo 30 caratteri");  
         
-		   specialSurname = "|!£$%&/()=?'^+*§°#ç@.:-_,;<>\"{}[]~`\\";
+		   specialSurname = "|!£$%&/()=?^+*§°#ç@.:-_,;<>\"{}[]~`\\";
         if(checkSpecial(surname, specialSurname))
             return false;
             //alert("Cognome non puo' contenere caratteri speciali");
@@ -116,47 +116,67 @@
     function validateAll() {
         //alert("Sono validateAll");
         let error = false;
+        let message = "";
 
         if(!validateName()){
 			error = true;
+            message = "Controlla l'inserimento del nome";
             alert("Controlla l'inserimento del nome");
         }
             
 
         if(!validateSurname()){
 			error = true;
+            message = "Controlla l'inserimento del cognome";
             alert("Controlla l'inserimento del cognome");
         }
 
         if(!validateUsername()){
             error = true;
+            message = "Controlla l'inserimento dello username";
             alert("Controlla l'inserimento dello username");
         }
             
 
         if(!validateTaxId()){
             error = true;
+            message = "Controlla l'inserimento del codice fiscale";
             alert("Controlla l'inserimento del codice fiscale");
         }
 
         if(!validateEmail()){
             error = true;
-            alert("Controlla l'inserimento dell'email");
+            message = "Controlla l'inserimento dell'email";
+           alert("Controlla l'inserimento dell'email");
         }
             
 
         if(!validatePassword1()){
 			error = true;
+            message = "Controlla l'inserimento della password";
             alert("Controlla l'inserimento della password");
         }
            
 
         if(!validatePassword2()){
 			error = true;
+            message = "Controlla l'inserimento della password";
             alert("Controlla l'inserimento della password");
         }
 
-		return !error; //serve per bloccare l'invio dei dati nel form
+        if(error){
+         
+            red = document.getElementsByClassName("red")[0];
+            red.style.display = "block";
+            /*
+            h1Element = document.querySelector('.red h1');
+            h1.h1Element.txtContent = message;
+                */
+
+            return false;
+        }
+
+        return false;
     }
 
 

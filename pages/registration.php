@@ -16,6 +16,13 @@
         <h2>Inserisci i tuoi dati per registrarti</h2>
 </div>
 
+<div class="container"> 
+
+<div class="red" >
+	<h2>Errore di registrazione</h2>
+	<img src="../assets/immagini/cartellinoRosso.png" alt="red">
+</div>
+
 <div class="registrationArea"> 
     
 	<form id="registrationForm" method="post" action="./registration.php" onsubmit="return validateAll()">
@@ -24,6 +31,7 @@
             <label for="name">Nome
                 <input id="name" type="text" name="name"  required  value="<?php echo $name?>" />
             </label>
+			
         </p>
 		
         <p>
@@ -68,11 +76,13 @@
 		</p>
 	</form>
 
-	<p id="submmit">Vuoi diventare un arbitro? <a href="./request.html">Unisciti a noi!</a></p>
+	<p id="submit">Vuoi diventare un arbitro? <a href="./request.html">Unisciti a noi!</a></p>
 
 </div>
 
 
+
+</div>
 
 
 
@@ -128,7 +138,6 @@ function insert_utente($username, $email, $name, $surname, $password, $error){
 		}
 	}else {
 		echo "<script type='text/javascript'> alert('Non è stato possibile effettuare la registrazione'); </script>";
-
 	}
    
         
