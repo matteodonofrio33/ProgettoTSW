@@ -120,47 +120,47 @@
 
         if(!validateName()){
 			error = true;
-            message = "Controlla l'inserimento del nome";
+            //message = "Controlla l'inserimento del nome";
             alert("Controlla l'inserimento del nome");
         }
             
 
         if(!validateSurname()){
 			error = true;
-            message = "Controlla l'inserimento del cognome";
+            //message = "Controlla l'inserimento del cognome";
             alert("Controlla l'inserimento del cognome");
         }
 
         if(!validateUsername()){
             error = true;
-            message = "Controlla l'inserimento dello username";
+           // message = "Controlla l'inserimento dello username";
             alert("Controlla l'inserimento dello username");
         }
             
 
         if(!validateTaxId()){
             error = true;
-            message = "Controlla l'inserimento del codice fiscale";
+            //message = "Controlla l'inserimento del codice fiscale";
             alert("Controlla l'inserimento del codice fiscale");
         }
 
         if(!validateEmail()){
             error = true;
-            message = "Controlla l'inserimento dell'email";
+            //message = "Controlla l'inserimento dell'email";
            alert("Controlla l'inserimento dell'email");
         }
             
 
         if(!validatePassword1()){
 			error = true;
-            message = "Controlla l'inserimento della password";
+            //message = "Controlla l'inserimento della password";
             alert("Controlla l'inserimento della password");
         }
            
 
         if(!validatePassword2()){
 			error = true;
-            message = "Controlla l'inserimento della password";
+            //message = "Controlla l'inserimento della password";
             alert("Controlla l'inserimento della password");
         }
 
@@ -176,7 +176,7 @@
             return false;
         }
 
-        return false;
+        return !error;
     }
 
 
