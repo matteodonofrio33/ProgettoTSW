@@ -5,20 +5,19 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
     margin: 0;
     color: #fff;
 }
 
 /* Stile per il titolo */
-.title-container {
+.titleContainer {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
-    margin: 20px;
-    position: fixed;
+    margin-top: 40px;
 }
 
 

@@ -83,7 +83,7 @@
 
 <?php
 function exist($valore, $campo){
-	require "./conn.php";
+	require "../backend/conn.php";
 	
 	
 	$sql = "SELECT $campo FROM arbitro WHERE $campo=$1";
@@ -108,7 +108,7 @@ function exist($valore, $campo){
 }
 
 function insert_utente($username, $email, $name, $surname, $password, $error){
-	require "./conn.php"; //connessione
+	require "../backend/conn.php"; //connessione
 	//echo "sto inserendo $username e $password";
 	$hash = password_hash($password, PASSWORD_DEFAULT);
     

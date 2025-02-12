@@ -39,7 +39,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
     <?php
         if(isset($_SESSION['username'])) { ?>
-            <h1 id="title1">Benvenuto, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+            <h1 id="title1">Benvenuto <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
     <?php 
     } else { ?>
         <h1 id="title2">Benvenuto!</h1>
