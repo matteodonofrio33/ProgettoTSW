@@ -21,6 +21,7 @@
     <a href="../backend/logout.php">Logout</a>
     <p>Sei autenticato con successo. Ora puoi accedere ai contenuti riservati.</p> -->
 
+    <!--
     <div id="mainContent"> 
       <p>
         Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,
@@ -28,20 +29,32 @@
         sudore, tanti sacrifici e saper prendere decisioni difficili assumendosi la responsabilità delle proprie scelte. Essere arbitro significa
         rendere unico ogni momento di gioco assicurando alle squadre coinvolte e al pubblico un'esperienza di gioco leale e corretta.
       </p>
+    </div> 
+    -->
+
+    <div class="videoAuto">
+    <video autoplay loop muted width="800">
+      <source src="../assets/immagini/arbitro.mp4" type="video/mp4">
+      Il tuo browser non supporta il tag video.
+    </video>
     </div>
+
     <?php 
     } else { ?>
     <!-- <h1>Benvenuto!</h1> -->
+
+    <div class="videoAuto">
+    <video autoplay loop muted width="800">
+      <source src="../assets/immagini/arbitro.mp4" type="video/mp4">
+      Il tuo browser non supporta il tag video.<
+    </video>
+    </div>
+
     <div id="mainContent"> 
       <!-- <p>
         Questa è la homepage pubblica. Accedi per scoprire contenuti riservati e personalizzati.
       </p> -->
-
-    <video autoplay muted controls width="800">
-      <source src="arbitro.mp4" type="video/mp4">
-      Il tuo browser non supporta il tag video.
-    </video>
-
+    
 
       <p>
         Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,
@@ -53,6 +66,7 @@
         <a href="./login.html">Esegui il login</a> -->
       </p>
     </div>
+
     <?php } ?>
 
     <?php include '../includes/footer.html'; ?>

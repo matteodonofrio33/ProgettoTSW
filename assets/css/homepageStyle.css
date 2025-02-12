@@ -44,7 +44,7 @@ body {
 #mainContent {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     padding: 40px;
     font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
     margin-top: 80px;
@@ -72,3 +72,13 @@ body {
 #referee a:hover {
     color: orange;
 }
+
+.videoAuto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+
