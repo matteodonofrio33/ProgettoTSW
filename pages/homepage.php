@@ -37,12 +37,14 @@ ini_set('display_errors', 1);
       </p>
     </div> 
     -->
+    
     <?php  
      require ('../backend/conn.php');
      include('../backend/refertQuery.php');  
     
      
      ?>
+     
 
     <div class="videoAuto">
     <video autoplay loop muted width="800">

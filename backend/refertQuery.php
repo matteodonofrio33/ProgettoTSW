@@ -5,9 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+   
+    <style>
+
+        #tableContainer{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            
+        }
+
+    #tableRefert {
+        background-color: rgba(0, 0, 0, 0.46);
+        color: white;
+        width: 70%;
+        margin: 0 auto;
+        border: 2px solid black;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+        border-radius: 8px; 
+        overflow: hidden;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    }
+
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid white;
+
+    }
+
+    th {
+        background-color: rgba(231, 204, 1, 0.48);
+    }
+
+  
+
+
+    </style>
 </head>
 <body>
-
+<div id="tableContainer" > 
 <?php
  
     //require ('../backend/conn.php');
@@ -45,9 +85,16 @@
 
         if(pg_num_rows($ret) > 0) {
             //creo una riga
+            /*
             echo "<table style='border: 3px solid red; border-collapse: collapse;'>
         <tr>
 ";
+*/
+
+            echo "<table id='tableRefert'>
+            <tr>
+            ";
+
 
             //nella prima riga stampo i nomi dei campi
             $fields = pg_num_fields($ret);
@@ -80,6 +127,6 @@
 ?>
 
 
-
+</div>
 </body>
 </html>
