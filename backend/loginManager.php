@@ -1,13 +1,44 @@
 <html>
 <head>
 	<title>Gestione Login</title>
+	<style>
+		body {
+			background-color: black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container {
+			width: 500px;
+			margin: 0 auto;
+			text-align: center;
+			
+		}
+
+		
+
+		img {
+			margin: 0 auto;
+			width: 300px;
+		}
+		h1 {
+			color: red;
+		}
+		
+	</style>
+	
 </head>
 <body>
+	<div class="container">
+
+	
 	<?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+		
 
 
 		if($_POST['username'] || $_POST['password']){
@@ -20,8 +51,12 @@ error_reporting(E_ALL);
 			$hash = get_pwd($username,$db);
 			$hash = trim($hash); //rimuove spazi vuoti
 			
-			if(!$hash){
-				echo "<p> L'utente $username non esiste. <a href=\"login.html\">Riprova</a></p>";
+			if(!$hash){			
+				echo "
+					<h1> L'utente $username non esiste. <a href=\"../pages/login.html\">Riprova</a></h1>
+					<img src='../assets/immagini/cartellinoRosso.png' alt='loginErrorImage'>;
+				";
+					
 			}
 			else{
 				
@@ -37,16 +72,25 @@ error_reporting(E_ALL);
 				}				
 				else{
 					//Visualizza messaggio di errore
-					echo 'Username o password errati. <a href="../pages/login.html">Riprova</a>';
-					echo "<br>Debugging: Pass: $password, Hash: $hash";
+					//echo 'Username o password errati. <a href="../pages/login.html">Riprova</a>';
+					echo "
+						<h1> Username o password errati. <a href=\"../pages/login.html\">Riprova</a></h1>
+						<img src='../assets/immagini/cartellinoRosso.png' alt='loginErrorImage'>;
+						
+					";
+					
+					
 				}
 			}
 		}
 		else{
-			echo "<p>ERRORE: username o password non inseriti <a href=\"login.html\">Riprova</a></p>";
+			
+			echo "<h1>ERRORE: username o password non inseriti <a href=\"../pages/login.html\">Riprova</a></h1>";
 			exit();
 		}
+
 	?>
+	</div>
 </body>
 </html>
 
