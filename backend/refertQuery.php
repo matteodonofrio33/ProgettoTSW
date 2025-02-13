@@ -59,17 +59,17 @@
     //$sql = "SELECT $campo FROM arbitro WHERE $campo=$1";
 
     $sql= "SELECT 
-    REFERTO.id_referto,
-    PARTITA.nome_stadio,
-    PARTITA.nome_squadra1,
-    PARTITA.nome_squadra2,
+    REFERTO.id_referto AS \"ID REFERTO\",
+    PARTITA.nome_stadio AS \"STADIO\",
+    PARTITA.nome_squadra1 AS \"SQUADRA1\",
+    PARTITA.nome_squadra2 AS \"SQUADRA2\",
                   
-                    REFERTO.stato_partita,
-                    REFERTO.numero_falli,
+                    REFERTO.stato_partita AS \"ESITO\",
+                    REFERTO.numero_falli AS \"N FALLI\",
                     
-                    PARTITA.id_partita,     
-                    PARTITA.n_giornata,     
-                    PARTITA.data_partita
+                    PARTITA.id_partita AS \"ID PARTITA\",     
+                    PARTITA.n_giornata AS \"N GIORNATA\",     
+                    PARTITA.data_partita AS \"DATA\"
                     
                     
                     
