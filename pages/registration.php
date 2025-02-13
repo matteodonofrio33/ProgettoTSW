@@ -2,7 +2,8 @@
 <head>
 	<title>Registrazione</title>
 	<link rel="stylesheet" type="text/css" href="../assets/css/registrationStyle.css">
-    <script src="../backend/checkDataRegistration.js"></script>
+    <script src="../assets/js/checkDataRegistration.js"></script>
+	
 </head>
 <body>
 
