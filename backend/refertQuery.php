@@ -9,8 +9,13 @@
 <body>
 
 <?php
-    require('./conn.php');
-    $arbitro = 'arbitro1';
+ 
+    //require ('../backend/conn.php');
+    //echo "Percorso attuale: " . getcwd();
+   
+    
+   
+    $arbitro = $_SESSION['username'];
     //$sql = "SELECT $campo FROM arbitro WHERE $campo=$1";
 
     $sql= "SELECT 
@@ -40,9 +45,10 @@
 
         if(pg_num_rows($ret) > 0) {
             //creo una riga
-            echo "<table border='1' 
-            <tr>
-            ";
+            echo "<table style='border: 3px solid red; border-collapse: collapse;'>
+        <tr>
+";
+
             //nella prima riga stampo i nomi dei campi
             $fields = pg_num_fields($ret);
             for($i = 0; $i < $fields; $i++){
