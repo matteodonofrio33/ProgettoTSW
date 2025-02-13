@@ -27,7 +27,7 @@
         font-size: 18px;
         text-align: left;
         border-radius: 8px; 
-        overflow: hidden;
+        overflow: hidden; /*serve a non sovrascrivere border radius*/
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
     }
 
@@ -59,16 +59,20 @@
     //$sql = "SELECT $campo FROM arbitro WHERE $campo=$1";
 
     $sql= "SELECT 
-                  REFERTO.id_referto,
+    REFERTO.id_referto,
+    PARTITA.nome_stadio,
+    PARTITA.nome_squadra1,
+    PARTITA.nome_squadra2,
+                  
                     REFERTO.stato_partita,
                     REFERTO.numero_falli,
-                    REFERTO.id_arbitro,
+                    
                     PARTITA.id_partita,     
                     PARTITA.n_giornata,     
-                    PARTITA.data_partita,
-                    PARTITA.nome_squadra1,
-                    PARTITA.nome_squadra2,
-                    PARTITA.nome_stadio
+                    PARTITA.data_partita
+                    
+                    
+                    
             FROM REFERTO
             JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
             WHERE REFERTO.id_arbitro = $1;  
