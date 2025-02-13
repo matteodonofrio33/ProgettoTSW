@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
     session_set_cookie_params(0);
     session_start();
 ?>
@@ -10,7 +14,7 @@
   <title>Homepage</title>
   <link rel="stylesheet" type="text/css" href="../assets/css/homepageStyle.css">
 </head>
-<body>
+<body> 
 
   <?php include '../includes/header.php'; ?>
 
@@ -18,6 +22,8 @@
   if(isset($_SESSION['username'])) { ?>
     <!-- Contenuti per utente autenticato
     <h1>Benvenuto, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+   
+   
     <a href="../backend/logout.php">Logout</a>
     <p>Sei autenticato con successo. Ora puoi accedere ai contenuti riservati.</p> -->
 
@@ -31,6 +37,14 @@
       </p>
     </div> 
     -->
+    
+    <?php  
+     require ('../backend/conn.php');
+     include('../backend/refertQuery.php');  
+    
+     
+     ?>
+     
 
     <div class="videoAuto">
     <video autoplay loop muted width="800">
@@ -118,6 +132,7 @@
     </div>
 
     <?php } ?>
+    
 
     <?php include '../includes/footer.html'; ?>
 

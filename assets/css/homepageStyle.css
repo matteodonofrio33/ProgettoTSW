@@ -114,4 +114,47 @@ body {
 .loginElements a:hover {
     color: orange;
 }
-*/
+
+#mainContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 40px;
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    margin-top: 80px;
+}
+
+#referee {
+    padding: 20px;
+    text-align: center;
+}
+
+#referee h2 {
+    color: aquamarine;
+    font-size: 26px;
+    text-transform: uppercase;
+}
+
+#referee a {
+    color: yellow;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#referee a:hover {
+    color: orange;
+}
+
+.videoAuto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+
+
