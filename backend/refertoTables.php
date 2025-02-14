@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+    <form id="formTeam1" method="post" action="../pages/referto.php" onsubmit="">
+
     <?php
 
 ini_set('display_errors', 1);
@@ -16,8 +18,7 @@ error_reporting(E_ALL);
     
     //echo "$giocatore1";
     echo " 
-        <table>
-        
+        <table id='tableTeams'>
 
         <tr>
             <th>Nome Giocatore</th>
@@ -26,52 +27,50 @@ error_reporting(E_ALL);
         </tr>
 
         <tr>
-            <td>$giocatore1</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
+            <td>$giocatore11</td>
+            <td>   <input id='statoGiocatore11' type='text' name='statoGiocatore11'  required  />  </td>
+            <td> <input id='minuto11' type='text' name='minuto11'  /> </td>
         </tr>
 
         <tr>
-            <td>$giocatore2</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
+            <td>$giocatore12</td>
+            <td>  <input id='statoGiocatore12' type='text' name='statoGiocatore12'  required  /> </td>
+             <td> <input id='minuto12' type='text' name='minuto12'  /> </td>
         </tr>
 
         <tr>
-            <td>$giocatore3</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
+            <td>$giocatore13</td>
+            <td> <input id='statoGiocatore13' type='text' name='statoGiocatore13'  required  /> </td>
+             <td> <input id='minuto13' type='text' name='minuto13'  /> </td>
         </tr>
 
         <tr>
-            <td>$giocatore4</td>
-            <td>Helen Bennett</td>
-            <td>UK</td>
+            <td>$giocatore14</td>
+            <td> <input id='statoGiocatore14' type='text' name='statoGiocatore14'  required  /> </td>
+             <td> <input id='minuto14' type='text' name='minuto14'  /> </td>
         </tr>
 
         <tr>
-            <td>$giocatore5</td>
-            <td>Yoshi Tannamuri</td>
-            <td>Canada</td>
+            <td>$giocatore15</td>
+            <td> <input id='statoGiocatore15' type='text' name='statoGiocatore15'  required  /> </td>
+             <td> <input id='minuto15' type='text' name='minuto15'  /> </td>
         </tr>
         <tr>
-            <td>$giocatore6</td>
-            <td>Giovanni Rovelli</td>
-            <td>Italy</td>
+            <td>$giocatore16</td>
+            <td> <input id='statoGiocatore16' type='text' name='statoGiocatore16'  required  /> </td>
+             <td> <input id='minuto16' type='text' name='minuto16'  /> </td>
         </tr>
 
 
 
     </table>
-    
-    
-    
-    
-    
-    
+
     ";
 
 
     ?>
+    <input type="submit" name="send" value="Invia" />
+    </form>
+
 </body>
 </html>
