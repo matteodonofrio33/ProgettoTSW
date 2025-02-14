@@ -124,6 +124,17 @@ error_reporting(E_ALL);
     </form>
 
 
+    <div id="results">
+        <h1><?php echo "$squadra1: "?> </h1>
+        <h2 id= "score0" > 0 </h2>
+
+        <h1><?php echo "$squadra2: "?> </h1>
+        <h2 id= "score1" > 0 </h2>
+
+
+    </div>
+
+
 
 
 
@@ -153,6 +164,7 @@ error_reporting(E_ALL);
             } else if(element.includes("marcatore")){
                 goals++;
                 stato.disabled = true;
+                
             } 
 
             if(element.includes("ammonito")){
@@ -171,8 +183,12 @@ error_reporting(E_ALL);
         });
         if(!boolean){
             marcatore0  =  marcatore0 + goals;
+            let score = document.getElementById("score0");
+            score.innerText = marcatore0;
         } else {
             marcatore1  =  marcatore1 + goals;
+            let score = document.getElementById("score1");
+            score.innerText = marcatore1;
         }
         
         ammonito    = ammonito + gialli;
