@@ -97,6 +97,7 @@ if (!$ret) {
     <h1>La tua prossima partita sarà:</h1>
     <div id="tableContainer">
         <?php
+          echo "<table>";
         if (pg_num_rows($ret) > 0) {
 
             $fields = pg_numfields($ret);
