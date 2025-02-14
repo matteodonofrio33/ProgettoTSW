@@ -58,3 +58,13 @@ VALUES
     (5, 'Pareggiata', 3, 5, 'arbitro1'),
     (6, 'Persa', 5, 6, 'arbitro1');
 
+
+
+
+
+
+
+
+problemi di visualizzazione: 
+brew install git-lfs
+git lfs install

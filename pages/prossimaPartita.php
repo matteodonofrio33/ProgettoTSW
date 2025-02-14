@@ -17,7 +17,8 @@ $sql = "SELECT
             PARTITA.data_partita AS \"DATA\"
         FROM REFERTO
         JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
-        WHERE REFERTO.id_arbitro = $1;";
+        WHERE REFERTO.id_arbitro = $1
+        AND REFERTO.stato_partita IS NULL";
 
 $ret = pg_query_params($db, $sql, array($arbitro));
 
@@ -97,15 +98,12 @@ if (!$ret) {
     <div id="tableContainer">
         <?php
         if (pg_num_rows($ret) > 0) {
-            echo "<table>
-                    <tr>
-                        <th>ID REFERTO</th>
-                        <th>STADIO</th>
-                        <th>SQUADRA1</th>
-                        <th>SQUADRA2</th>
-                        <th>N GIORNATA</th>
-                        <th>DATA</th>
-                    </tr>";
+
+            $fields = pg_numfields($ret);
+            for($i = 0; $i < $fields; $i++){
+                echo "<th>".pg_field_name($ret, $i)."</th>";
+            }
+            echo "</tr>";
 
             while ($row = pg_fetch_assoc($ret)) {
                 echo "<tr>";

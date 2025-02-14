@@ -53,6 +53,7 @@
                 PARTITA.nome_stadio AS \"STADIO\",
                 PARTITA.nome_squadra1 AS \"SQUADRA1\",
                 PARTITA.nome_squadra2 AS \"SQUADRA2\",
+                REFERTO.stato_partita AS \"ESITO\",
                 PARTITA.n_giornata AS \"N GIORNATA\",
                 PARTITA.data_partita AS \"DATA\"
             FROM REFERTO
@@ -66,24 +67,28 @@
         echo "ERRORE QUERY: " . pg_last_error($db);
     } else {
         if (pg_num_rows($ret) > 0) {
-            echo "<table id='tableRefert'>
-                    <tr>
-                        <th>ID REFERTO</th>
-                        <th>STADIO</th>
-                        <th>SQUADRA1</th>
-                        <th>SQUADRA2</th>
-                        <th>N GIORNATA</th>
-                        <th>DATA</th>
-                    </tr>";
-
-            while ($row = pg_fetch_assoc($ret)) {
-                echo "<tr>";
-                foreach ($row as $value) {
-                    echo "<td>" . htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8') . "</td>";
-                }
-                echo "</tr>";
-            }
-            echo "</table>";
+             //creo una riga
+             echo "<table id='tableRefert' style='border-collapse: collapse;'>
+             <tr>
+     ";
+     
+                 //nella prima riga stampo i nomi dei campi
+                 $fields = pg_num_fields($ret);
+                 for($i = 0; $i < $fields; $i++){
+                     echo "<th>".pg_field_name($ret, $i)."</th>";
+     
+                 }
+                 echo "</tr>";
+     
+                 //stampa dei valori dei campi
+                 while($row = pg_fetch_assoc($ret)){
+                     echo "<tr>";
+                     foreach($row as $value) {
+                         echo "<td>" .htmlspecialchars($value)."</td>";
+                     }
+                     echo "</tr>";
+                 }
+                 echo"</table>";
         } else {
             echo "<p style='color: white; font-size: 18px;'>Non sono stati trovati referti con esito compilato.</p>";
         }
