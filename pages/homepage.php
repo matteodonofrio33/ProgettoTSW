@@ -49,6 +49,7 @@ ini_set('display_errors', 1);
     <div class="videoAuto">
     <video autoplay loop muted width="800">
       <source src="../assets/immagini/arbitriVideo.mp4" type="video/mp4">
+      
       Il tuo browser non supporta il tag video.
     </video>
     </div>
