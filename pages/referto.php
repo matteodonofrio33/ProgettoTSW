@@ -168,6 +168,7 @@ else
 /*
    echo "$statoGiocatore11, $statoGiocatore12, $statoGiocatore13, $statoGiocatore14, $statoGiocatore15, $statoGiocatore16 ";
    echo "$minuto11, $minuto12, $minuto13, $minuto14, $minuto15, $minuto16 ";
+
 */
 
 //per tabella della squadra 2
