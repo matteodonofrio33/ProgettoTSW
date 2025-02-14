@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diventa anche tu un arbitro!</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/richiestaStyle.css">
+</head>
+<body>
+    
+    <h1>Inserisci i tuoi dati ed unisciti a noi!</h1>
+
+    <div>
+        <form action="richiestaConfermata.html">
+            <label for="nome">Nome:</label><br>
+            <input type="text" name="nome" required><br>
+            <label for="cognome">Cognome:</label><br>
+            <input type="text" name="cognome" required><br>
+            <label for="data">Data di nascita:</label><br>
+            <input type="date" name="data" required><br>
+            <label for="altezza">Altezza in cm:</label><br>
+            <input type="number" name="altezza" required><br>
+            <label for="peso">Peso in kg:</label><br>
+            <input type="number" name="peso" required><br>
+            <label for="taglia">Seleziona la tua taglia:</label><br>
+            <select id="scelta" name="scelta" required>
+                <option value="opzione1">S</option>
+                <option value="opzione2">M</option>
+                <option value="opzione3">L</option>
+                <option value="opzione3">XL</option>
+            </select>
+            <br>
+            <label for="mail">Inserisci il tuo indirizzo email:</label><br>
+            <input type="email" name="mail" required><br>
+
+            <input type="submit" value="Invia la tua richiesta" id="button">
+
+        </form>
+    </div>
+
+</body>
+</html>

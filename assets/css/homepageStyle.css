@@ -1,0 +1,160 @@
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('../immagini/pallone.jpg');
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #e0e1dd;
+    margin: 0;
+    padding: 0;
+}
+
+/* Layout principale */
+#mainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    max-width: 900px;
+    margin: 40px auto; 
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.7); 
+    border-radius: 10px;
+}
+
+/* Titoli */
+#mainContent h3 {
+    color: #91e4f9;
+    font-size: 24px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+/* Paragrafi */
+#mainContent p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #e0e1dd;
+    max-width: 800px; /* Limita la larghezza del testo per leggibilità */
+}
+
+/* Elenco puntato */
+#mainContent ul {
+    /*list-style-type: none;*/
+    padding: 0;
+    justify-items: left; /*posiziono il testo a sinistra piu vicino ai puntini*/
+    align-items: left;
+}
+
+#mainContent li {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+#mainContent a {
+    color: yellow;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#mainContent a:hover {
+    color: orange;
+}
+
+/* Video */
+.videoAuto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.videoAuto video {
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Pulsanti di login e registrazione 
+.loginElements {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+.loginElements img {
+    width: 35px;
+    transition: transform 0.3s ease;
+}
+
+.loginElements img:hover {
+    transform: scale(1.1);
+}
+
+.loginElements p {
+    font-size: 18px;
+}
+
+.loginElements a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: yellow;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.loginElements a:hover {
+    color: orange;
+}
+
+#mainContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 40px;
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    margin-top: 80px;
+}
+
+#referee {
+    padding: 20px;
+    text-align: center;
+}
+
+#referee h2 {
+    color: aquamarine;
+    font-size: 26px;
+    text-transform: uppercase;
+}
+
+#referee a {
+    color: yellow;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#referee a:hover {
+    color: orange;
+}
+
+.videoAuto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+
+
