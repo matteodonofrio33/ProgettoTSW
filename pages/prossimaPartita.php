@@ -17,7 +17,8 @@ $sql = "SELECT
             PARTITA.data_partita AS \"DATA\"
         FROM REFERTO
         JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
-        WHERE REFERTO.id_arbitro = $1;";
+        WHERE REFERTO.id_arbitro = $1
+        AND REFERTO.stato_partita IS NULL";
 
 $ret = pg_query_params($db, $sql, array($arbitro));
 
