@@ -30,16 +30,22 @@ if (session_status() == PHP_SESSION_NONE) {
                         ?>
                     </span>
                 </li>
-                <li> <a href="#">Crea referto</a></li>
-                <li> <a href="#">Le mie partite</a></li>
-                <li> <a href="#">Prossima partita</a></li>
+                <?php if(isset($_SESSION['username'])) { ?>
+                    <li> <a href="../pages/referto.html">Crea referto</a></li>
+                    <li> <a href="#">Le mie partite</a></li>
+                    <li> <a href="../pages/prossimaPartita.php">Prossima partita</a></li>
+                <?php } else { ?>
+                    <li> <a href="../pages/login.html">Crea referto</a></li>
+                    <li> <a href="../pages/login.html">Le mie partite</a></li>
+                    <li> <a href="../pages/login.html">Prossima partita</a></li>
+                <?php } ?>
             </ul>
         </nav>
     </header>
 
     <?php
         if(isset($_SESSION['username'])) { ?>
-            <h1 id="title1">Benvenuto <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+            <h1 id="title1">Benvenuto <?php echo htmlspecialchars($_SESSION['username']); ?>, pronto per arbitrare?</h1>
     <?php 
     } else { ?>
         <h1 id="title2">Benvenuto!</h1>
