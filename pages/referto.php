@@ -88,8 +88,8 @@ while ($row = pg_fetch_assoc($ret)) {
     $i++;
 }
 
-echo " Giocatori squadra 1: $giocatore1, $giocatore2, $giocatore3, $giocatore4, $giocatore5, $giocatore6 ";
-
+//echo " Giocatori squadra 1: $giocatore1, $giocatore2, $giocatore3, $giocatore4, $giocatore5, $giocatore6 ";
+/*
 echo" <table id='table1'> ";
 
 
@@ -98,7 +98,7 @@ echo" <table id='table1'> ";
 
 echo "</table>";
 
-    
+   */ 
 
 
 
@@ -114,14 +114,3 @@ echo "</table>";
 </html>
 
 
-
-<?php
-
-//definisco le funzioni che utilizzerò:
-
-function getPlayers($teamName){
-
-}
-
-
-?>
