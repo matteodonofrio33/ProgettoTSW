@@ -1,0 +1,87 @@
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('../immagini/pallone.jpg');
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #e0e1dd; 
+}
+
+.loginElements {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+.loginElements img {
+    width: 35px;
+    transition: transform 0.3s ease;
+}
+
+.loginElements img:hover {
+    transform: scale(1.1);
+}
+
+.loginElements p {
+    font-size: 18px;
+}
+
+.loginElements a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: yellow;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.loginElements a:hover {
+    color: orange;
+}
+
+#mainContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 40px;
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    margin-top: 80px;
+}
+
+#referee {
+    padding: 20px;
+    text-align: center;
+}
+
+#referee h2 {
+    color: aquamarine;
+    font-size: 26px;
+    text-transform: uppercase;
+}
+
+#referee a {
+    color: yellow;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#referee a:hover {
+    color: orange;
+}
+
+.videoAuto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+
+
