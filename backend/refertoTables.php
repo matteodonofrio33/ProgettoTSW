@@ -67,6 +67,57 @@ error_reporting(E_ALL);
 
     ";
 
+    //tabella squadra 2 DA MODIFICARE**********
+    echo " 
+        <table id='tableTeams'>
+
+        <tr>
+            <th>Nome Giocatore</th>
+            <th>Stato Giocatore</th>
+            <th>Minuto</th>
+        </tr>
+
+        <tr>
+            <td>$giocatore21</td>
+            <td>   <input id='statoGiocatore21' type='text' name='statoGiocatore21'  required  />  </td>
+            <td> <input id='minuto21' type='text' name='minuto21'  /> </td>
+        </tr>
+
+        <tr>
+            <td>$giocatore22</td>
+            <td>  <input id='statoGiocatore22' type='text' name='statoGiocatore22'  required  /> </td>
+             <td> <input id='minuto22' type='text' name='minuto22'  /> </td>
+        </tr>
+
+        <tr>
+            <td>$giocatore23</td>
+            <td> <input id='statoGiocatore23' type='text' name='statoGiocatore23'  required  /> </td>
+             <td> <input id='minuto23' type='text' name='minuto23'  /> </td>
+        </tr>
+
+        <tr>
+            <td>$giocatore24</td>
+            <td> <input id='statoGiocatore24' type='text' name='statoGiocatore24'  required  /> </td>
+             <td> <input id='minuto24' type='text' name='minuto24'  /> </td>
+        </tr>
+
+        <tr>
+            <td>$giocatore25</td>
+            <td> <input id='statoGiocatore25' type='text' name='statoGiocatore25'  required  /> </td>
+             <td> <input id='minuto25' type='text' name='minuto25'  /> </td>
+        </tr>
+        <tr>
+            <td>$giocatore26</td>
+            <td> <input id='statoGiocatore26' type='text' name='statoGiocatore26'  required  /> </td>
+             <td> <input id='minuto26' type='text' name='minuto26'  /> </td>
+        </tr>
+
+
+
+    </table>
+
+    ";
+
 
     ?>
     <input type="submit" name="send" value="Invia" />

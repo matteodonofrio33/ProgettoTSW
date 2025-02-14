@@ -165,9 +165,125 @@ else
 
 
 
-
+/*
    echo "$statoGiocatore11, $statoGiocatore12, $statoGiocatore13, $statoGiocatore14, $statoGiocatore15, $statoGiocatore16 ";
    echo "$minuto11, $minuto12, $minuto13, $minuto14, $minuto15, $minuto16 ";
+*/
+
+//per tabella della squadra 2
+$sql2 = "SELECT 
+            GIOCATORE.nome_giocatore AS \"Nome Giocatore\"
+            FROM GIOCATORE
+            JOIN PARTECIPAZIONE ON GIOCATORE.id_giocatore = PARTECIPAZIONE.id_giocatore
+            WHERE GIOCATORE.nome_squadra = $1 ";
+
+$ret2 = pg_query_params($db, $sql2, array($squadra2));
+
+if (!$ret2) {
+    echo "ERRORE QUERY: " . pg_last_error($db);
+    return false;
+}
+
+
+$giocatore21 = $giocatore22 = $giocatore23 = $giocatore24 = $giocatore25 = $giocatore26 = null;
+$i = 1;
+
+// Recupera i risultati riga per riga e assegna i nomi ai giocatori
+while ($row2 = pg_fetch_assoc($ret2)) {
+    if ($i == 1) {
+        $giocatore21 = $row2['Nome Giocatore'];
+    } elseif ($i == 2) {
+        $giocatore22 = $row2['Nome Giocatore'];
+    } elseif ($i == 3) {
+        $giocatore23 = $row2['Nome Giocatore'];
+    } elseif ($i == 4) {
+        $giocatore24 = $row2['Nome Giocatore'];
+    } elseif ($i == 5) {
+        $giocatore25 = $row2['Nome Giocatore'];
+    } elseif ($i == 6) {
+        $giocatore26 = $row2['Nome Giocatore'];
+    }
+    $i++;
+}
+
+//echo " Giocatori squadra 1: $giocatore1, $giocatore2, $giocatore3, $giocatore4, $giocatore5, $giocatore6 ";
+/*
+echo" <table id='table1'> ";
+
+
+
+
+
+echo "</table>";
+
+   */ 
+//prendo gli stati giocatore:
+if(isset($_POST['statoGiocatore21']))
+   $statoGiocatore21 = $_POST['statoGiocatore21'];
+else
+   $statoGiocatore21 = "";
+
+if(isset($_POST['statoGiocatore22']))
+   $statoGiocatore22 = $_POST['statoGiocatore22'];
+else
+   $statoGiocatore22 = "";
+
+if(isset($_POST['statoGiocatore23']))
+   $statoGiocatore23 = $_POST['statoGiocatore23'];
+else
+   $statoGiocatore23 = "";
+
+if(isset($_POST['statoGiocatore24']))
+   $statoGiocatore24 = $_POST['statoGiocatore24'];
+else
+   $statoGiocatore24 = "";
+   
+if(isset($_POST['statoGiocatore25']))
+   $statoGiocatore25 = $_POST['statoGiocatore25'];
+else
+   $statoGiocatore25 = "";
+
+   if(isset($_POST['statoGiocatore26']))
+   $statoGiocatore26 = $_POST['statoGiocatore26'];
+else
+   $statoGiocatore26 = "";
+
+
+   //prendo i minuti giocatore:
+if(isset($_POST['minuto21']))
+   $minuto21 = $_POST['minuto21'];
+else
+   $minuto21 = "";
+   
+if(isset($_POST['minuto22']))
+   $minuto22 = $_POST['minuto22'];
+else
+   $minuto22 = "";
+
+   if(isset($_POST['minuto23']))
+   $minuto23 = $_POST['minuto23'];
+else
+   $minuto23 = "";
+
+   if(isset($_POST['minuto24']))
+   $minuto24 = $_POST['minuto24'];
+else
+   $minuto24 = "";
+   
+if(isset($_POST['minuto25']))
+   $minuto25 = $_POST['minuto25'];
+else
+   $minuto25 = "";
+
+   if(isset($_POST['minuto26']))
+   $minuto26 = $_POST['minuto26'];
+else
+   $minuto26 = "";
+
+/*
+   echo "$statoGiocatore21, $statoGiocatore22, $statoGiocatore23, $statoGiocatore24, $statoGiocatore25, $statoGiocatore26 ";
+   echo "$minuto21, $minuto22, $minuto23, $minuto24, $minuto25, $minuto26 ";
+*/
 
 
 
