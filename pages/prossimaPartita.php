@@ -172,7 +172,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             
         });
     /*} else {
-        console.log("⚠ Nome stadio non disponibile!"); // Debug in caso di errore
+        console.log(" Nome stadio non disponibile!"); // Debug in caso di errore
     }*/
 });
 
