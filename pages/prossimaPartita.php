@@ -119,7 +119,21 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         ?>
     </div>
 
-    <div id="meteoStadio"></div>
+    <div id="meteoStadio" ></div>
+
+    <style>
+        #meteoStadio {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 10px;
+        width: 350px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        margin-left: 270px;
+    }
+
+    </style>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -134,7 +148,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     else if (stadio === "Gewiss Stadium") citta = "Bergamo,IT";
     else if (stadio === "Allianz Stadium") citta = "Torino,IT";
     else {
-        console.log("⚠ Stadio non riconosciuto:", stadio);
+        console.log("Stadio non riconosciuto:", stadio);
     }
 
     console.log("Prossima partita in:", stadio); //debug
@@ -160,11 +174,11 @@ $ret = pg_query_params($db, $sql, array($arbitro));
                 "<p><strong>Vento:</strong> " + response.dati.wind.speed + " m/s</p>"
             );
         } else {
-            console.log("⚠ Errore: response.dati.cod non è 200, ma", response.dati.cod);
+            console.log("Errore: response.dati.cod non è 200, ma", response.dati.cod);
             $("#meteoStadio").html("<p class='noPart'>Errore nel recupero delle informazioni meteo.</p>");
         }
     } else {
-        console.log("⚠ Errore: Struttura della risposta API non valida.", response);
+        console.log("Errore: Struttura della risposta API non valida.", response);
         $("#meteoStadio").html("<p class='noPart'>Errore nel recupero delle informazioni meteo.</p>");
     }
     }
@@ -172,7 +186,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             
         });
     /*} else {
-        console.log(" Nome stadio non disponibile!"); // Debug in caso di errore
+        console.log("Nome stadio non disponibile!"); // Debug in caso di errore
     }*/
 });
 
