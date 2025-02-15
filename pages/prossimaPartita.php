@@ -97,16 +97,14 @@ if (!$ret) {
     <h1>La tua prossima partita sarà:</h1>
     <div id="tableContainer">
         <?php
+          echo "<table>";
         if (pg_num_rows($ret) > 0) {
-            echo "<table>
-                    <tr>
-                        <th>ID REFERTO</th>
-                        <th>STADIO</th>
-                        <th>SQUADRA1</th>
-                        <th>SQUADRA2</th>
-                        <th>N GIORNATA</th>
-                        <th>DATA</th>
-                    </tr>";
+
+            $fields = pg_numfields($ret);
+            for($i = 0; $i < $fields; $i++){
+                echo "<th>".pg_field_name($ret, $i)."</th>";
+            }
+            echo "</tr>";
 
             while ($row = pg_fetch_assoc($ret)) {
                 echo "<tr>";
