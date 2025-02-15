@@ -51,7 +51,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             font-size: 28px;
             color: #f1c40f;
         }
-        #tableContainer {
+        #tableContainer{
             display: flex;
             justify-content: center;
             margin-top: 20px;
@@ -86,6 +86,26 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             font-size: 18px;
             color: #e74c3c;
         }
+
+        #meteoStadio, #distanceStadium, #payment{
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
+        }
+
+        #info_match {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px ;
+            width: 100%;
+        }
+
+
+
     </style>
 </head>
 <body>
@@ -116,9 +136,14 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         pg_close($db);
         ?>
     </div>
-    <div id="meteoStadio"></div>
-    <div><p id="distanceStadium"></p></div>
-    <div><p id="payment"></p></div>
+    <div id= "info_match">
+        <img src="../assets/immagini/meteo.png" alt="Meteo Stadio">
+        <div id="meteoStadio"></div>
+        <img src="../assets/immagini/posizione.png" alt="Meteo Stadio">
+        <div><p id="distanceStadium"></p></div>
+        <img src="../assets/immagini/compenso.png" alt="Meteo Stadio">
+        <div><p id="payment"></p></div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -220,7 +245,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
                 //calcola la distanza solo dopo aver ottenuto la posizione
                 let distance=calculateDistance(latStadio, longStadio, lat, long);
                 //alert("Distanza dallo stadio: " + distance.toFixed(2) + " km"); //debug
-                $("#distanceStadium").html(`<strong>Distanza dallo stadio:</strong> ${distance.toFixed(2)} km`);
+                $("#distanceStadium").html(`<strong>Distanza:</strong> ${distance.toFixed(2)} km`);
                 calculatePay(distance);
             },
             function () {
@@ -238,7 +263,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         else if(distance>600)
             pay=5000;
 
-        $("#payment").html(`<strong>Il tuo compenso sarà di:</strong> ${pay} €`);
+        $("#payment").html(`<strong>Compenso:</strong> ${pay} €`);
     }
 
     myPos(); 
