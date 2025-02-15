@@ -24,6 +24,9 @@ if (!isset($_SESSION['username'])) {
 
 $arbitro = $_SESSION['username'];
 
+$squadra1 = null;
+$squadra2 = null;
+
 $sql = "SELECT 
             PARTITA.nome_squadra1 AS \"SQUADRA1\",
             PARTITA.nome_squadra2 AS \"SQUADRA2\"
@@ -39,18 +42,15 @@ if (!$ret) {
     return false;
 }
 
-
-
-   
     while($row = pg_fetch_assoc($ret)){
         $squadra1 = $row['SQUADRA1'];
         $squadra2 = $row['SQUADRA2'];
     }
 
-/*
+
     echo "$squadra1";
     echo "<br> $squadra2";
-*/
+
 
 //ottengo i nomi dei giocatori della squadra1:
 
