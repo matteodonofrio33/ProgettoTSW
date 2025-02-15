@@ -61,6 +61,44 @@ VALUES
 
 
 
+-- Inserimento della partita
+INSERT INTO PARTITA (id_partita, data_partita, n_giornata, nome_stadio, nome_squadra1, nome_squadra2)
+VALUES (1, '2025-02-15', 1, 'Stadio San Siro', 'Inter', 'Milan');
+
+-- Inserimento del referto con stato_partita NULL e associato all'arbitro 'arbitro1'
+INSERT INTO REFERT0 (id_referto, stato_partita, numero_falli, id_partita, id_arbitro)
+VALUES (1, NULL, 0, 1, 'arbitro1');
+
+
+SELECT 
+    GIOCATORE.nome_giocatore AS "Nome Giocatore",
+    PARTECIPAZIONE.stato_giocatore AS "Stato Giocatore",
+    PARTECIPAZIONE.minuto AS "Minuto"
+FROM GIOCATORE
+JOIN PARTECIPAZIONE ON GIOCATORE.id_giocatore = PARTECIPAZIONE.id_giocatore
+WHERE GIOCATORE.nome_squadra = 'Inter';
+
+
+
+INSERT INTO GIOCATORE (id_giocatore, nome_giocatore, n_maglia, nome_squadra) VALUES
+(13, 'Bastoni', 95, 'Inter'),
+(14, 'Lautaro', 10, 'Inter'),
+(15, 'Barella', 23, 'Inter'),
+(16, 'De Vrij', 6, 'Inter')
+
+
+
+INSERT INTO PARTECIPAZIONE (id_partecipazione, id_giocatore, id_partita, stato_giocatore, minuto) VALUES
+(7, 13, 1, 'Attivo', '0'),
+(8, 14, 1, 'Attivo', '0'),
+(9, 15, 1, 'Attivo', '0'),
+(10, 16, 1, 'Attivo', '0')
+
+
+
+
+
+
 
 
 
