@@ -20,16 +20,13 @@ if (!$ret) {
     echo "ERRORE QUERY: " . pg_last_error($db);
     return false;
 }
-
 // Inizializza una variabile per salvare il nome dello stadio
 $stadio = null;
-
 // Se ci sono partite, prendi il nome dello stadio della prima
 if (pg_num_rows($ret) > 0) {
     $row = pg_fetch_assoc($ret);
     $stadio = htmlspecialchars($row["STADIO"] ?? '', ENT_QUOTES, 'UTF-8');
 }
-
 // Riavvia la query per ottenere tutte le partite (la prima riga è già stata estratta)
 $ret = pg_query_params($db, $sql, array($arbitro));
 ?>
@@ -65,6 +62,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             border-collapse: collapse;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
+            /*overflow: hidden;*/
             box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
         }
         th, td {
@@ -94,7 +92,6 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     <h1>La tua prossima partita sarà:</h1>
     <div id="tableContainer">
         <?php
-          echo "<table>";
         if (pg_num_rows($ret) > 0) {
             echo "<table>
                     <tr>
@@ -119,41 +116,24 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         pg_close($db);
         ?>
     </div>
-
-    <div id="meteoStadio" ></div>
-
-    <style>
-        #meteoStadio {
-        background-color: rgba(255, 255, 255, 0.1);
-        padding: 15px;
-        border-radius: 10px;
-        width: 350px;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        margin-left: 270px;
-    }
-
-    </style>
+    <div id="meteoStadio"></div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
 
+    <script src="../assets/js/distanzaStadio.js"></script>
+
+    <script>
     $(document).ready(function() {
     var stadio = "<?php echo $stadio; ?>"; // Recupera il nome dello stadio
-
     var citta = "";
-
     if (stadio === "Stadio Olimpico") citta = "Roma,IT";
     else if (stadio === "Giuseppe Meazza") citta = "Milano,IT";
     else if (stadio === "Gewiss Stadium") citta = "Bergamo,IT";
     else if (stadio === "Allianz Stadium") citta = "Torino,IT";
     else {
-        console.log("Stadio non riconosciuto:", stadio);
+        console.log("⚠ Stadio non riconosciuto:", stadio);
     }
-
     console.log("Prossima partita in:", stadio); //debug
-
     //if (stadio) {
         $.ajax({
             url: "../backend/meteo.php",
@@ -162,11 +142,9 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             data: { citta: citta }, //passo il nome della citta
             success: function(response) {
             console.log("Risposta API completa:", response); //debug
-
         if (response.dati && response.dati.cod) { 
             console.log("Codice risposta API:", response.dati.cod);
             console.log("Tipo di response.dati.cod:", typeof response.dati.cod); //commenti per il debug  
-
         if (parseInt(response.dati.cod) === 200) {
             $("#meteoStadio").html(
                 "<p><strong>Temperatura:</strong> " + response.dati.main.temp + "°C</p>" +
@@ -175,21 +153,19 @@ $ret = pg_query_params($db, $sql, array($arbitro));
                 "<p><strong>Vento:</strong> " + response.dati.wind.speed + " m/s</p>"
             );
         } else {
-            console.log("Errore: response.dati.cod non è 200, ma", response.dati.cod);
+            console.log("⚠ Errore: response.dati.cod non è 200, ma", response.dati.cod);
             $("#meteoStadio").html("<p class='noPart'>Errore nel recupero delle informazioni meteo.</p>");
         }
     } else {
-        console.log("Errore: Struttura della risposta API non valida.", response);
+        console.log("⚠ Errore: Struttura della risposta API non valida.", response);
         $("#meteoStadio").html("<p class='noPart'>Errore nel recupero delle informazioni meteo.</p>");
     }
     }
-
             
         });
-    /*} else {
-        console.log("Nome stadio non disponibile!"); // Debug in caso di errore
-    }*/
-});
+    });
+
+    myPos(); //prova per vedere se prende la latitudine
 
     </script>
 </body>
