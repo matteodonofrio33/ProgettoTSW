@@ -117,23 +117,47 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         ?>
     </div>
     <div id="meteoStadio"></div>
+    <div><p id="distanceStadium"></p></div>
+    <div><p id="payment"></p></div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src="../assets/js/distanzaStadio.js"></script>
+    <!--<script src="../assets/js/distanzaStadio.js"></script>-->
 
     <script>
+    var latStadio=0;
+    var longStadio=0;
+    var pay=0;
     $(document).ready(function() {
-    var stadio = "<?php echo $stadio; ?>"; // Recupera il nome dello stadio
-    var citta = "";
-    if (stadio === "Stadio Olimpico") citta = "Roma,IT";
-    else if (stadio === "Giuseppe Meazza") citta = "Milano,IT";
-    else if (stadio === "Gewiss Stadium") citta = "Bergamo,IT";
-    else if (stadio === "Allianz Stadium") citta = "Torino,IT";
+    var stadio="<?php echo $stadio; ?>"; // Recupera il nome dello stadio
+    var citta="";
+
+    if (stadio==="Stadio Olimpico")  {
+        citta="Roma,IT";
+        latStadio=41.9336612653;
+        longStadio=12.4528698552;
+    }
+    else if (stadio==="Giuseppe Meazza") {
+        citta="Milano,IT";
+        latStadio=45.4734797727;
+        longStadio=9.12118951524;
+    }
+    else if (stadio==="Gewiss Stadium") {
+        citta="Bergamo,IT";
+        latStadio=45.705330512;
+        longStadio=9.675163966;
+    }
+    else if (stadio==="Allianz Stadium") {
+        citta="Torino,IT";
+        latStadio=45.105666244;
+        longStadio=7.637997448;
+    }
     else {
         console.log("⚠ Stadio non riconosciuto:", stadio);
     }
     console.log("Prossima partita in:", stadio); //debug
+    console.log("Coordinate stadio:", latStadio, longStadio);
+
     //if (stadio) {
         $.ajax({
             url: "../backend/meteo.php",
@@ -165,7 +189,64 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         });
     });
 
-    myPos(); //prova per vedere se prende la latitudine
+    function calculateDistance(lat1, long1, lat2, long2) {
+        const R=6371; //raggio della terra
+
+        const dLat=(lat2-lat1) * Math.PI/180;
+        const dLon=(long2-long1) * Math.PI/180;
+
+        const a=Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+
+        const c=2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R*c; //per avere la distanza in km
+    }
+
+    function myPos() {
+        if (!navigator.geolocation) {
+            alert("Il tuo browser non supporta la geolocalizzazione");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                let lat=position.coords.latitude;
+                let long=position.coords.longitude;
+
+                //alert("Latitudine ottenuta: " + lat); //debug
+                //alert("Longitudine ottenuta: " + long); //debug
+
+                //calcola la distanza solo dopo aver ottenuto la posizione
+                let distance=calculateDistance(latStadio, longStadio, lat, long);
+                //alert("Distanza dallo stadio: " + distance.toFixed(2) + " km"); //debug
+                $("#distanceStadium").html(`<strong>Distanza dallo stadio:</strong> ${distance.toFixed(2)} km`);
+                calculatePay(distance);
+            },
+            function () {
+                alert("Errore nella geolocalizzazione");
+            },
+            { timeout: 10000 }
+        );
+    }
+
+    function calculatePay(distance) {
+        if((distance>0 && distance<=200))    
+            pay=1000;
+        else if(distance>200 && distance<=600)
+            pay=3000;
+        else if(distance>600)
+            pay=5000;
+
+        $("#payment").html(`<strong>Il tuo compenso sarà di:</strong> ${pay} €`);
+    }
+
+    myPos(); 
+
+    //distance=calculateDistance(latStadio, longStadio, lat, long);
+    //alert(distance); //prova stampa distanza
+
+    
 
     </script>
 </body>
