@@ -11,9 +11,35 @@
     
 
 <?php
+session_start();
+
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+$giocatore11 = $_SESSION['giocatore11'] ?? null;
+$giocatore12 = $_SESSION['giocatore12'] ?? null;
+$giocatore13 = $_SESSION['giocatore13'] ?? null;
+$giocatore14 = $_SESSION['giocatore14'] ?? null;
+$giocatore15 = $_SESSION['giocatore15'] ?? null;
+$giocatore16 = $_SESSION['giocatore16'] ?? null;
+
+$giocatore21 = $_SESSION['giocatore21'] ?? null;
+$giocatore22 = $_SESSION['giocatore22'] ?? null;
+$giocatore23 = $_SESSION['giocatore23'] ?? null;
+$giocatore24 = $_SESSION['giocatore24'] ?? null;
+$giocatore25 = $_SESSION['giocatore25'] ?? null;
+$giocatore26 = $_SESSION['giocatore26'] ?? null;
+
+$id_arbitro = $_SESSION['id_arbitro'];
+/*
+echo "Sono in refert.php:
+$giocatore11 $giocatore12 $giocatore13 $giocatore14 $giocatore15 $giocatore16
+<br>
+$giocatore21 $giocatore22 $giocatore23 $giocatore24 $giocatore25 $giocatore26
+";
+*/
 
 
 
@@ -186,9 +212,6 @@ else {
 */
 
 
-
-
-
 //prendo gli stati giocatore:
 if(isset($_POST['statoGiocatore21'])) {
    $statoGiocatore21 = $_POST['statoGiocatore21'];
@@ -322,6 +345,13 @@ if($err){
 } else {
    echo "Nessun errore";
    //prelevo l'id_partita
+   //prelevo id_giocatore dato il suo nome
+   //popolo la tabella PARTECIPAZIONE
+   //popolo la tabella REFERTO
+
+
+
+
 /*
 $q = "SELECT id_partita
 FROM nome_tabella
@@ -381,7 +411,6 @@ function isValidState($str) {
    }
 
    return $flag;
-
 }
 
 

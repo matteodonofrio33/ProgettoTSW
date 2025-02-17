@@ -8,7 +8,7 @@
 <body>
 
 <div class="tables"> 
-    
+
 <?php
 session_start();
 
@@ -89,6 +89,9 @@ while ($row = pg_fetch_assoc($ret)) {
     $i++;
 }
 
+
+
+
 //echo " Giocatori squadra 1: $giocatore1, $giocatore2, $giocatore3, $giocatore4, $giocatore5, $giocatore6 ";
 
 //SQUADRA 2
@@ -126,6 +129,26 @@ while ($row2 = pg_fetch_assoc($ret2)) {
     }
     $i++;
 }
+
+//uso le variabili session per passare queste info a refert.php
+$_SESSION['giocatore11'] = $giocatore11;
+$_SESSION['giocatore12'] = $giocatore12;
+$_SESSION['giocatore13'] = $giocatore13;
+$_SESSION['giocatore14'] = $giocatore14;
+$_SESSION['giocatore15'] = $giocatore15;
+$_SESSION['giocatore16'] = $giocatore16;
+
+$_SESSION['giocatore21'] = $giocatore21;
+$_SESSION['giocatore12'] = $giocatore22;
+$_SESSION['giocatore23'] = $giocatore23;
+$_SESSION['giocatore24'] = $giocatore24;
+$_SESSION['giocatore25'] = $giocatore25;
+$_SESSION['giocatore26'] = $giocatore26;
+
+$_SESSION['id_arbitro'] = $arbitro;
+
+
+
 
 
 ?>
