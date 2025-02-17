@@ -40,7 +40,6 @@ if (!$ret) {
         echo "<h2>Dettagli Partita</h2>";
         echo "<table border='1' style='border-collapse: collapse;'>
                 <tr>
-                    <th>ID PARTITA</th>
                     <th>DATA</th>
                     <th>N GIORNATA</th>
                     <th>SQUADRA 1</th>
@@ -49,7 +48,6 @@ if (!$ret) {
                     <th>NUMERO FALLI</th>
                 </tr>
                 <tr>
-                    <td>{$first_row['ID PARTITA']}</td>
                     <td>{$first_row['DATA']}</td>
                     <td>{$first_row['N GIORNATA']}</td>
                     <td>{$first_row['SQUADRA1']}</td>
@@ -61,18 +59,15 @@ if (!$ret) {
 
         echo "<h2>Partecipanti</h2>";
 
-        // Inizializziamo gli array per separare i giocatori per squadra
         $giocatori_squadra1 = [];
         $giocatori_squadra2 = [];
 
-        // Salviamo il primo giocatore nella squadra corrispondente
         if ($first_row['SQUADRA GIOCATORE'] == $squadra1) {
             $giocatori_squadra1[] = $first_row;
         } else {
             $giocatori_squadra2[] = $first_row;
         }
 
-        // Recuperiamo gli altri giocatori e li separiamo
         while ($row = pg_fetch_assoc($ret)) {
             if ($row['SQUADRA GIOCATORE'] == $squadra1) {
                 $giocatori_squadra1[] = $row;
@@ -81,7 +76,7 @@ if (!$ret) {
             }
         }
 
-        // **Tabella per Squadra 1**
+        //squadra1
         if(pg_num_rows($ret)>0) {
             echo "<table id='table1' style='border-collapse: collapse';
             <tr>";
@@ -92,7 +87,6 @@ if (!$ret) {
         echo "<h3>$squadra1</h3>";
         echo "<table border='1' style='border-collapse: collapse;'>
                 <tr>
-                    <th>ID GIOCATORE</th>
                     <th>NOME</th>
                     <th>STATO GIOCATORE</th>
                     <th>MINUTO</th>
@@ -100,7 +94,6 @@ if (!$ret) {
 
         foreach ($giocatori_squadra1 as $giocatore) {
             echo "<tr>
-                    <td>{$giocatore['ID GIOCATORE']}</td>
                     <td>{$giocatore['NOME']}</td>
                     <td>{$giocatore['STATO GIOCATORE']}</td>
                     <td>{$giocatore['MINUTO']}</td>
@@ -108,11 +101,10 @@ if (!$ret) {
         }
         echo "</table>";
 
-        // **Tabella per Squadra 2**
+        //squadra2
         echo "<h3>$squadra2</h3>";
         echo "<table border='1' style='border-collapse: collapse;'>
                 <tr>
-                    <th>ID GIOCATORE</th>
                     <th>NOME</th>
                     <th>STATO GIOCATORE</th>
                     <th>MINUTO</th>
@@ -120,7 +112,6 @@ if (!$ret) {
 
         foreach ($giocatori_squadra2 as $giocatore) {
             echo "<tr>
-                    <td>{$giocatore['ID GIOCATORE']}</td>
                     <td>{$giocatore['NOME']}</td>
                     <td>{$giocatore['STATO GIOCATORE']}</td>
                     <td>{$giocatore['MINUTO']}</td>
