@@ -1,51 +1,56 @@
+<?php
+    require('../backend/conn.php');
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/miePartiteStyle.css">
+    <title>Le mie partite</title>
 </head>
 <body>
 
+    <form method="POST" action="">
+        <label for="idReferto">Inserisci l'id del referto che vuoi visualizzare</label><br>
+        <input type="number" name="idRef" id="idField">
+        <input type="submit" value="Invia" id="button">
+    </form>
+
     <?php
-    require('../backend/conn.php'); // Connessione al database
+    if (isset($_POST['idRef']) && !empty($_POST['idRef'])) {  
+        $id_referto = $_POST['idRef'];
 
-    if (!isset($_POST['idRef'])) {
-        die("Errore: ID referto non ricevuto.");
-    }
+        $sql = "SELECT 
+                    PARTITA.id_partita AS \"ID PARTITA\",
+                    PARTITA.data_partita AS \"DATA\",
+                    PARTITA.n_giornata AS \"N GIORNATA\",
+                    PARTITA.nome_squadra1 AS \"SQUADRA1\",
+                    PARTITA.nome_squadra2 AS \"SQUADRA2\",
+                    REFERTO.stato_partita AS \"ESITO\",
+                    REFERTO.numero_falli AS \"NUMERO FALLI\",
+                    GIOCATORE.id_giocatore AS \"ID GIOCATORE\",
+                    GIOCATORE.nome_giocatore AS \"NOME\",
+                    GIOCATORE.nome_squadra AS \"SQUADRA GIOCATORE\",
+                    PARTECIPAZIONE.stato_giocatore AS \"STATO GIOCATORE\",
+                    PARTECIPAZIONE.minuto AS \"MINUTO\"
+                FROM REFERTO
+                JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
+                JOIN PARTECIPAZIONE ON PARTITA.id_partita = PARTECIPAZIONE.id_partita
+                JOIN GIOCATORE ON PARTECIPAZIONE.id_giocatore = GIOCATORE.id_giocatore
+                WHERE REFERTO.id_referto = $1";
 
-    $id_referto = $_POST['idRef'];
+        $ret = pg_query_params($db, $sql, array($id_referto));
 
-    $sql = "SELECT 
-                PARTITA.id_partita AS \"ID PARTITA\",
-                PARTITA.data_partita AS \"DATA\",
-                PARTITA.n_giornata AS \"N GIORNATA\",
-                PARTITA.nome_squadra1 AS \"SQUADRA1\",
-                PARTITA.nome_squadra2 AS \"SQUADRA2\",
-                REFERTO.stato_partita AS \"ESITO\",
-                REFERTO.numero_falli AS \"NUMERO FALLI\",
-                GIOCATORE.id_giocatore AS \"ID GIOCATORE\",
-                GIOCATORE.nome_giocatore AS \"NOME\",
-                GIOCATORE.nome_squadra AS \"SQUADRA GIOCATORE\",
-                PARTECIPAZIONE.stato_giocatore AS \"STATO GIOCATORE\",
-                PARTECIPAZIONE.minuto AS \"MINUTO\"
-            FROM REFERTO
-            JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
-            JOIN PARTECIPAZIONE ON PARTITA.id_partita = PARTECIPAZIONE.id_partita
-            JOIN GIOCATORE ON PARTECIPAZIONE.id_giocatore = GIOCATORE.id_giocatore
-            WHERE REFERTO.id_referto = $1";
-
-    $ret = pg_query_params($db, $sql, array($id_referto));
-
-    if (!$ret) {
-        echo "Errore query: " . pg_last_error($db);
-    } else {
-        if (pg_num_rows($ret) > 0) {
-            $first_row = pg_fetch_assoc($ret); // Prendo la prima riga per i dati della partita
+        if (!$ret) {
+            echo "Errore query: " . pg_last_error($db);
+        } elseif (pg_num_rows($ret) > 0) {
+            $first_row = pg_fetch_assoc($ret);
             $squadra1 = $first_row['SQUADRA1'];
             $squadra2 = $first_row['SQUADRA2'];
 
-            // **Tabella con informazioni della partita**
+            //tabella informazioni partita
             echo "<h2>Dettagli Partita</h2>";
             echo "<table border='1' style='border-collapse: collapse;'>
                     <tr>
@@ -85,14 +90,7 @@
                 }
             }
 
-            //squadra1
-            if(pg_num_rows($ret)>0) {
-                echo "<table id='table1' style='border-collapse: collapse';
-                <tr>";
-
-                $fields=pg_num_fields($ret);
-                
-            }
+            //tabella squadra1
             echo "<h3>$squadra1</h3>";
             echo "<table border='1' style='border-collapse: collapse;'>
                     <tr>
@@ -100,7 +98,6 @@
                         <th>STATO GIOCATORE</th>
                         <th>MINUTO</th>
                     </tr>";
-
             foreach ($giocatori_squadra1 as $giocatore) {
                 echo "<tr>
                         <td>{$giocatore['NOME']}</td>
@@ -110,7 +107,7 @@
             }
             echo "</table>";
 
-            //squadra2
+            //tabella squadra2
             echo "<h3>$squadra2</h3>";
             echo "<table border='1' style='border-collapse: collapse;'>
                     <tr>
@@ -118,7 +115,6 @@
                         <th>STATO GIOCATORE</th>
                         <th>MINUTO</th>
                     </tr>";
-
             foreach ($giocatori_squadra2 as $giocatore) {
                 echo "<tr>
                         <td>{$giocatore['NOME']}</td>
