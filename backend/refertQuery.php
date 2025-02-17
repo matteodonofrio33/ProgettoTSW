@@ -68,9 +68,7 @@
     } else {
         if (pg_num_rows($ret) > 0) {
              //creo una riga
-             echo "<table id='tableRefert' style='border-collapse: collapse;'>
-             <tr>
-     ";
+             echo "<table id='tableRefert' style='border-collapse: collapse;'><tr>";
      
                  //nella prima riga stampo i nomi dei campi
                  $fields = pg_num_fields($ret);

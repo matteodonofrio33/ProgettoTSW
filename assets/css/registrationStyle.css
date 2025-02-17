@@ -1,43 +1,58 @@
-/* Imposta il body con flexbox per centrare tutto */
+
 body {
     font-family: Arial, sans-serif;
-    
-  
     background-image: linear-gradient(to left, #8a2929, #003180);
     height: 100vh;
     display: flex;
     flex-direction: column;
-    
     align-items: center;
+    justify-content: center;
     margin: 0;
     color: #fff;
 }
 
-/* Stile per il titolo */
 .titleContainer {
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 100px;
     font-size: 24px;
     font-weight: bold;
-    margin-top: 40px;
+    display: block;
+    position: relative;
+    z-index: 2;
 }
 
 .titleContainer h2 {
-     color: #FFD700;
+    color: #FFD700;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 15px;
+}
 
-/* Stile del form */
+.red {
+    display: none;
+    color: red;
+    text-align: center;
+}
+
+.red img {
+    width: 150px;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
 .registrationArea {
     background-color: black;
     padding: 30px;
     border-radius: 10px;
     width: 350px;
     text-align: center;
-    
 }
 
-/* Campi input */
 input {
     width: 100%;
     padding: 10px;
@@ -47,7 +62,6 @@ input {
     font-size: 14px;
 }
 
-/* Pulsante di login */
 .sendData {
     background: #ff7f50;
     color: white;
@@ -60,7 +74,6 @@ input {
     transition: 0.3s;
 }
 
-/* Effetto hover sul pulsante */
 .sendData:hover {
     background: #ff5722;
 }
@@ -68,27 +81,3 @@ input {
 #submit a {
     color: #FFD700;
 }
-
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-}
-
-.red{
-    display: none;
-    color: red;
-    margin-right: 100px;
-}
-
-.red img{
-    
-    width: 200px;
-    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.2);
-     
-}
-
-
-
-

@@ -18,16 +18,6 @@
 
 		}
 
-		body {
-			font-family: Arial, sans-serif;
-			background-color: #1e1e2f;
-			color: white;
-			text-align: center;
-			margin: 0;
-			padding: 0;
-		}
-
-
 		img {
 			margin: 0 auto;
 			width: 300px;
@@ -43,8 +33,8 @@
 <body>
 	<div class="container">
 
-
-		<?php
+	
+	<?php
 		ini_set('display_errors', 1);
 		ini_set('display_startup_errors', 1);
 		error_reporting(E_ALL);
