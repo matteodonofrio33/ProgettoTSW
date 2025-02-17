@@ -24,8 +24,8 @@ if (!isset($_SESSION['username'])) {
 
 $arbitro = $_SESSION['username'];
 
-//$squadra1 = null;
-//$squadra2 = null;
+$squadra1 = null;
+$squadra2 = null;
 
 $sql = "SELECT 
             PARTITA.nome_squadra1 AS \"SQUADRA1\",
