@@ -25,12 +25,16 @@ $giocatore14 = $_SESSION['giocatore14'] ?? null;
 $giocatore15 = $_SESSION['giocatore15'] ?? null;
 $giocatore16 = $_SESSION['giocatore16'] ?? null;
 
+$team1 = array($giocatore11, $giocatore12, $giocatore13, $giocatore14, $giocatore15, $giocatore16);
+
 $giocatore21 = $_SESSION['giocatore21'] ?? null;
 $giocatore22 = $_SESSION['giocatore22'] ?? null;
 $giocatore23 = $_SESSION['giocatore23'] ?? null;
 $giocatore24 = $_SESSION['giocatore24'] ?? null;
 $giocatore25 = $_SESSION['giocatore25'] ?? null;
 $giocatore26 = $_SESSION['giocatore26'] ?? null;
+
+$team2 = array($giocatore21, $giocatore22, $giocatore23, $giocatore24, $giocatore25, $giocatore26);
 
 $id_arbitro = $_SESSION['id_arbitro'];
 /*
@@ -343,42 +347,93 @@ if($err){
 ";
    
 } else {
-   echo "Nessun errore";
-   //prelevo l'id_partita
+  // echo "Nessun errore";
+
+  require('../backend/conn.php');
+
+
+   //prelevo l'id_partita tra le partite che si devono refertare:
+   $q = "SELECT PARTITA.id_partita
+            FROM PARTITA
+            JOIN REFERTO ON PARTITA.id_partita = REFERTO.id_partita
+         WHERE REFERTO.id_arbitro = $1;
+        ";       
+
+   $qr = pg_query_params($db, $q, array($arbitro));
+
+   if (!$qr) {
+   echo "ERRORE QUERY: " . pg_last_error($db);
+   return false;
+   }
+
+   $id_partita = pg_fetch_result($qr, 0, 'id_partita');
+
+   if(!$id_partita) {
+      echo "<h1> Non ci sono partite da refertare </h1>";
+   }
+
+   //prelevo id_giocatore dato il suo nome
+   $id_giocatori = []; //array che conterrà gli id trovati
+
+   foreach($team1 as $member){
+
+      $q = "SELECT id_giocatore
+            FROM GIOCATORE
+            WHERE nome_giocatore = $1;
+            "; 
+
+
+   $qr = pg_query_params($db, $q, array($member));
+
+   if (!$qr) {
+      echo "ERRORE QUERY: " . pg_last_error($db);
+      return false;
+   }
+
+   $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore');
+
+   if(!$id_giocatore) {
+      echo "<h1> Non è stato trovato l'id del giocatore </h1>";
+   } else {
+      $id_giocatori[] = $id_giocatore;
+   }
+
+
+   }
+
+   //popolo la tabella PARTECIPAZIONE
+
+
+
+
+
+
+
+
+
+
+
+
    //prelevo id_giocatore dato il suo nome
    //popolo la tabella PARTECIPAZIONE
+
    //popolo la tabella REFERTO
 
 
 
 
-/*
-$q = "SELECT id_partita
-FROM nome_tabella
-WHERE id_arbitro = $1;
-";
-
-$qr = pg_query_params($db, $q, array($arbitro));
-
-if (!$qr) {
-echo "ERRORE QUERY: " . pg_last_error($db);
-return false;
-}
-
-$id_partita = null;
-while($r = pg_fetch_assoc($qr)){
-   $id_partita = $r['id_partita'];
-}
-
-//invio dati SQUADRA 1
-if($id_partita !== null){
-
-}
 
 
-   //invio dati SQUADRA 2
 
-*/
+
+
+
+
+
+
+   
+
+
 }
 
 
