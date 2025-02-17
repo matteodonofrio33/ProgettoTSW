@@ -335,10 +335,10 @@ else
 
 
    $minuti2 = array($minuto21, $minuto22, $minuto23, $minuto24, $minuto25, $minuto26);
-
+/*
    echo "$statoGiocatore21, $statoGiocatore22, $statoGiocatore23, $statoGiocatore24, $statoGiocatore25, $statoGiocatore26 ";
    echo "$minuto21, $minuto22, $minuto23, $minuto24, $minuto25, $minuto26 ";
-
+*/
 
 $m0 = isset($_POST['m0']) ? (int) $_POST['m0'] : 0;
 $m1 = isset($_POST['m1']) ? (int) $_POST['m1'] : 0;
@@ -387,20 +387,29 @@ if($err){
    if(!$id_partita) {
       echo "<h1> Non ci sono partite da refertare </h1>";
    }
-
+/*
+print_r($team1);
+print_r($team2);
+*/
    inserisciPartecipazione($db, $id_partita, $team1, $stati1, $minuti1);
    inserisciPartecipazione($db, $id_partita, $team2, $stati2, $minuti2);
 
    //popolo la tabella REFERTO
 
    $esito = $m0."-".$m1;
-   
-   //prelevo l'id_partita tra le partite che si devono refertare:
+
+   /*
    $q = "INSERT INTO REFERTO(stato_partita, numero_falli, id_partita, id_arbitro)
          VALUES($1, $2, $3, $4)
-        ";       
+        ";      
+        */
+        
+    $q ="UPDATE REFERTO
+         SET stato_partita = $1, numero_falli = $2, id_arbitro = $3
+         WHERE id_partita = $4;
+"    ;
 
-   $qr = pg_query_params($db, $q, array($esito, $numFalli, $id_partita, $id_arbitro));
+   $qr = pg_query_params($db, $q, array($esito, $numFalli, $id_arbitro, $id_partita));
 
    if (!$qr) {
    echo "ERRORE QUERY: " . pg_last_error($db);
@@ -427,36 +436,6 @@ if($err){
 
 
 
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
- 
-
-   
-
-
-
-
-
-
-
 ?>
  </div>
 
@@ -472,8 +451,11 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
    //TEAM1:
    //prelevo id_giocatore dato il suo nome
    $id_giocatori = []; //array che conterrà gli id trovati
+   //print_r($team);
+  // echo "<br>Giocatori: ";
+   foreach($team as $nome_giocatore){
 
-   foreach($team as $member){
+     // echo "<br> $nome_giocatore";
 
       $q = "SELECT id_giocatore
             FROM GIOCATORE
@@ -481,17 +463,17 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
             "; 
 
 
-   $qr = pg_query_params($db, $q, array($member));
+   $qr = pg_query_params($db, $q, array($nome_giocatore));
 
    if (!$qr) {
       echo "ERRORE QUERY: " . pg_last_error($db);
       return false;
    }
 
-   $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore');
+   $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore'); //riga 491
    
    if(!$id_giocatore) {
-      echo "<h1> Non è stato trovato l'id del giocatore </h1>";
+      echo "<h1> Non è stato trovato l'id del giocatore </h1>".$nome_giocatore;
    } else {
       $id_giocatori[] = $id_giocatore;
    }

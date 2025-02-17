@@ -42,7 +42,8 @@ if (!$ret) {
 
 
 
-   
+   $squadra1 = "";
+   $squadra2 = "";
     while($row = pg_fetch_assoc($ret)){
         $squadra1 = $row['SQUADRA1'];
         $squadra2 = $row['SQUADRA2'];
