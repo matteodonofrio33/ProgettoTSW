@@ -121,6 +121,8 @@ else {
    
    $statoGiocatore16 = "";
 }
+
+$stati1 = array($statoGiocatore11, $statoGiocatore12, $statoGiocatore13, $statoGiocatore14, $statoGiocatore15, $statoGiocatore16);
    
 
 
@@ -205,7 +207,7 @@ else {
    $minuto16 = "";
 }
    
-
+$minuti1 = array($minuto11, $minuto12, $minuto13, $minuto14, $minuto15, $minuto16);
 
 
 
@@ -264,6 +266,9 @@ else
 }
 else
    $statoGiocatore26 = "";
+
+
+   $stati2 = array($statoGiocatore21, $statoGiocatore22, $statoGiocatore23, $statoGiocatore24, $statoGiocatore25, $statoGiocatore26);
 
 
    //prendo i minuti giocatore:
@@ -329,12 +334,23 @@ else
    $minuto26 = "";
 
 
+   $minuti2 = array($minuto21, $minuto22, $minuto23, $minuto24, $minuto25, $minuto26);
+
    echo "$statoGiocatore21, $statoGiocatore22, $statoGiocatore23, $statoGiocatore24, $statoGiocatore25, $statoGiocatore26 ";
    echo "$minuto21, $minuto22, $minuto23, $minuto24, $minuto25, $minuto26 ";
 
 
 $m0 = isset($_POST['m0']) ? (int) $_POST['m0'] : 0;
 $m1 = isset($_POST['m1']) ? (int) $_POST['m1'] : 0;
+
+if(isset($_POST['numFalli'])) {
+   $numFalli = $_POST['numFalli'];
+} else {
+   $numFalli = 0;
+}
+
+
+
 
 
 
@@ -359,7 +375,7 @@ if($err){
          WHERE REFERTO.id_arbitro = $1;
         ";       
 
-   $qr = pg_query_params($db, $q, array($arbitro));
+   $qr = pg_query_params($db, $q, array($id_arbitro));
 
    if (!$qr) {
    echo "ERRORE QUERY: " . pg_last_error($db);
@@ -372,52 +388,40 @@ if($err){
       echo "<h1> Non ci sono partite da refertare </h1>";
    }
 
-   //prelevo id_giocatore dato il suo nome
-   $id_giocatori = []; //array che conterrà gli id trovati
-
-   foreach($team1 as $member){
-
-      $q = "SELECT id_giocatore
-            FROM GIOCATORE
-            WHERE nome_giocatore = $1;
-            "; 
-
-
-   $qr = pg_query_params($db, $q, array($member));
-
-   if (!$qr) {
-      echo "ERRORE QUERY: " . pg_last_error($db);
-      return false;
-   }
-
-   $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore');
-
-   if(!$id_giocatore) {
-      echo "<h1> Non è stato trovato l'id del giocatore </h1>";
-   } else {
-      $id_giocatori[] = $id_giocatore;
-   }
-
-
-   }
-
-   //popolo la tabella PARTECIPAZIONE
-
-
-
-
-
-
-
-
-
-
-
-
-   //prelevo id_giocatore dato il suo nome
-   //popolo la tabella PARTECIPAZIONE
+   inserisciPartecipazione($db, $id_partita, $team1, $stati1, $minuti1);
+   inserisciPartecipazione($db, $id_partita, $team2, $stati2, $minuti2);
 
    //popolo la tabella REFERTO
+
+   $esito = $m0."-".$m1;
+   
+   //prelevo l'id_partita tra le partite che si devono refertare:
+   $q = "INSERT INTO REFERTO(stato_partita, numero_falli, id_partita, id_arbitro)
+         VALUES($1, $2, $3, $4)
+        ";       
+
+   $qr = pg_query_params($db, $q, array($esito, $numFalli, $id_partita, $id_arbitro));
+
+   if (!$qr) {
+   echo "ERRORE QUERY: " . pg_last_error($db);
+   return false;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+   }
+
+
+   
 
 
 
@@ -434,7 +438,21 @@ if($err){
    
 
 
-}
+
+
+
+
+
+
+
+
+
+ 
+
+   
+
+
+
 
 
 
@@ -446,7 +464,59 @@ if($err){
  </html>
 
 
+<?php
 
+function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
+   
+
+   //TEAM1:
+   //prelevo id_giocatore dato il suo nome
+   $id_giocatori = []; //array che conterrà gli id trovati
+
+   foreach($team as $member){
+
+      $q = "SELECT id_giocatore
+            FROM GIOCATORE
+            WHERE nome_giocatore = $1;
+            "; 
+
+
+   $qr = pg_query_params($db, $q, array($member));
+
+   if (!$qr) {
+      echo "ERRORE QUERY: " . pg_last_error($db);
+      return false;
+   }
+
+   $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore');
+   
+   if(!$id_giocatore) {
+      echo "<h1> Non è stato trovato l'id del giocatore </h1>";
+   } else {
+      $id_giocatori[] = $id_giocatore;
+   }
+
+   }
+
+   //popolo la tabella PARTECIPAZIONE team1
+     foreach ($id_giocatori as $index => $id) {
+      $stato = $stati[$index];
+      $minuto = $minuti[$index];
+      $q = "INSERT INTO PARTECIPAZIONE (id_giocatore, id_partita, stato_giocatore, minuto) VALUES ($1, $2, $3, $4);";
+      $qr = pg_query_params($db, $q, array($id, $id_partita, $stato, $minuto));
+
+      if (!$qr) {
+         echo "ERRORE QUERY: " . pg_last_error($db);
+         return false;
+      }
+   }
+
+   
+}
+
+
+
+?>
 
 
 

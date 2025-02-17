@@ -124,7 +124,13 @@ error_reporting(E_ALL);
 
     <input type = 'hidden' name = 'm0' id='m0' value='0' />
     <input type = 'hidden' name = 'm1' id='m1' value='0' />
+
+     <label for='numFalli'> Numero falli
+        <input id='numFalli' type='number' min='0' step='1' name='numFalli' value = '0' required/>
+    </label>
+
     ";
+    
 
 
     ?>
@@ -214,6 +220,8 @@ error_reporting(E_ALL);
         espulso     = espulso + rossi;
         let rosso = document.getElementById("espulsioni");
         rosso.innerText=espulso;
+
+        
         
 /*
 
