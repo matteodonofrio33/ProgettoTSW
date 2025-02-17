@@ -98,7 +98,7 @@ else {
 if(isset($_POST['minuto11'])) {
    $minuto11 = $_POST['minuto11'];
 
-   if (!ctype_digit($minuto11)) {
+   if (!isValidateMin($minuto11)) {
     echo "No valid min";
     $err = true;
 }
@@ -112,7 +112,7 @@ else {
 if(isset($_POST['minuto12'])){
    $minuto12 = $_POST['minuto12'];
 
-   if (!ctype_digit($minuto12)) {
+   if (!isValidateMin($minuto12)) {
     echo "No valid min";
     $err = true;
 }
@@ -125,7 +125,7 @@ else {
 
    if(isset($_POST['minuto13'])){
    $minuto13 = $_POST['minuto13'];
-   if (!ctype_digit($minuto13)) {
+   if (!isValidateMin($minuto13)) {
     echo "No valid min";
     $err = true;
 }
@@ -138,7 +138,7 @@ else {
 
    if(isset($_POST['minuto14'])) {
    $minuto14 = $_POST['minuto14'];
-   if (!ctype_digit($minuto14)) {
+   if (!isValidateMin($minuto14)) {
     echo "No valid min";
     $err = true;
 }
@@ -151,7 +151,7 @@ else {
    
 if(isset($_POST['minuto15'])) {
    $minuto15 = $_POST['minuto15'];
-   if (!ctype_digit($minuto15)) {
+   if (!isValidateMin($minuto15)) {
     echo "No valid min";
     $err = true;
 }
@@ -164,7 +164,7 @@ else {
 
 if (isset($_POST['minuto16'])) {
     $minuto16 = $_POST['minuto16'];
-    if (!ctype_digit($minuto16)) {
+    if (!isValidateMin($minuto16)) {
         echo "No valid min";
         $err = true;
     }
@@ -242,7 +242,7 @@ else
    //prendo i minuti giocatore:
 if(isset($_POST['minuto21'])){
    $minuto21 = $_POST['minuto21'];
-   if (!ctype_digit($minuto21)) {
+   if (!isValidateMin($minuto21)) {
     echo "No valid min";
     $err = true;
 }
@@ -252,7 +252,7 @@ else
    
 if(isset($_POST['minuto22'])) {
    $minuto22 = $_POST['minuto22'];
-   if (!ctype_digit($minuto22)) {
+   if (!isValidateMin($minuto22)) {
     echo "No valid min";
     $err = true;
 }
@@ -263,7 +263,7 @@ else
 
 if(isset($_POST['minuto23'])){
    $minuto23 = $_POST['minuto23'];
-   if (!ctype_digit($minuto23)) {
+   if (!isValidateMin($minuto23)) {
     echo "No valid min";
     $err = true;
 }
@@ -273,7 +273,7 @@ else
 
 if(isset($_POST['minuto24'])){
    $minuto24 = $_POST['minuto24'];
-   if (!ctype_digit($minuto24)) {
+   if (!isValidateMin($minuto24)) {
     echo "No valid min";
     $err = true;
 }
@@ -283,7 +283,7 @@ else
    
 if(isset($_POST['minuto25'])){
    $minuto25 = $_POST['minuto25'];
-   if (!ctype_digit($minuto25)) {
+   if (!isValidateMin($minuto25)) {
     echo "No valid min";
     $err = true;
 }
@@ -293,7 +293,7 @@ else
 
 if(isset($_POST['minuto26'])){
    $minuto26 = $_POST['minuto26'];
-   if (!ctype_digit($minuto26)) {
+   if (!isValidateMin($minuto26)) {
     echo "No valid min";
     $err = true;
 }
@@ -385,7 +385,32 @@ function isValidState($str) {
 }
 
 
-function isValidateMin() {
+function isValidateMin($str) {//prende la stringa di minuti
+
+   $minutes = explode(", ", $str); //divide la stringa ove presenti ", "
+   $notNum = false;  
+   $notInterval = false;
+
+   foreach($minutes as $min){ //scorre ogni sottostringa(minuto)
+      if(is_numeric($min)){
+         $min = (int) $min;
+         if(!is_int($min)) {
+            $notNum = true;   //setta notNum a true se non è un intero
+         }else if($min < 1 || $min > 90){ 
+            $notInterval = true; //setta notInterval a true se non è compreso nell'intervallo
+   
+         }
+
+      }
+      
+   }
+
+   if($notNum || $notInterval){
+      //echo"<h1> Si è verificato un errore. </h1>" ;
+      return false;  //ritorna false se non è un numero o non è nell'intervallo
+   } 
+
+   return true;   //ritorna true se ha superato i controlli
     
 }
 

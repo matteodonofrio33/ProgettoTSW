@@ -122,8 +122,8 @@ error_reporting(E_ALL);
 
     </table>
 
-    <input type = 'text' name = 'm0' id='m0' value='0' />
-    <input type = 'text' name = 'm1' id='m1' value='0' />
+    <input type = 'hidden' name = 'm0' id='m0' value='0' />
+    <input type = 'hidden' name = 'm1' id='m1' value='0' />
     ";
 
 
@@ -236,9 +236,7 @@ error_reporting(E_ALL);
         minutes.forEach(min => {
             if(isNaN(min)){
                 notNum = true;
-            }
-
-            if(min < 1 || min > 90){
+            }else if(min < 1 || min > 90){
                 notInterval = true;
             }
 
