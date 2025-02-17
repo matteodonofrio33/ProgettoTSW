@@ -16,8 +16,6 @@
 			
 		}
 
-		
-
 		img {
 			margin: 0 auto;
 			width: 300px;
