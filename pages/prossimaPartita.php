@@ -145,9 +145,6 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         <div><p id="payment"></p></div>
     </div>
 
-    
-    <!--<script src="../assets/js/distanzaStadio.js"></script>-->
-
     <script>
     var latStadio=0;
     var longStadio=0;
@@ -179,8 +176,8 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     else {
         console.log("⚠ Stadio non riconosciuto:", stadio);
     }
-    console.log("Prossima partita in:", stadio); //debug
-    console.log("Coordinate stadio:", latStadio, longStadio);
+    //console.log("Prossima partita in:", stadio); //debug
+    //console.log("Coordinate stadio:", latStadio, longStadio);
 
     //meteo
         var xhttp = new XMLHttpRequest();

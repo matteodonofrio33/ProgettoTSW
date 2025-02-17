@@ -24,8 +24,8 @@ if (!isset($_SESSION['username'])) {
 
 $arbitro = $_SESSION['username'];
 
-$squadra1 = null;
-$squadra2 = null;
+//$squadra1 = null;
+//$squadra2 = null;
 
 $sql = "SELECT 
             PARTITA.nome_squadra1 AS \"SQUADRA1\",
@@ -48,8 +48,8 @@ if (!$ret) {
     }
 
 
-    echo "$squadra1";
-    echo "<br> $squadra2";
+    //echo "$squadra1";
+    //echo "<br> $squadra2";
 
 
 //ottengo i nomi dei giocatori della squadra1:

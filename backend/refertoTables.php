@@ -129,10 +129,10 @@ error_reporting(E_ALL);
 
     <div id="results">
     <h2>
-        <span id="team1Name"><?php echo '$squadra1'; ?></span> 
+        <span id="team1Name"><?php echo "$squadra1"; ?></span> 
         <span id="score0">0</span> - 
         <span id="score1">0</span> 
-        <span id="team2Name"><?php echo '$squadra2'; ?></span>
+        <span id="team2Name"><?php echo "$squadra2"; ?></span>
     </h2>
     <h2>
         <span class="num_ammoniti">Ammoniti: <span id="ammoniti"> 0</span></span>
