@@ -6,15 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <form id="formTeam1" method="post" action="../pages/referto.php" onsubmit="">
+    <form id="formTeam1" method="post" action="../pages/refert.php" >
 
-    <?php
+<?php
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-    require('../pages/referto.php');
+
+    require('../pages/players.php');
     
     //echo "$giocatore1";
     echo " 
@@ -116,6 +117,8 @@ error_reporting(E_ALL);
 
     </table>
 
+    <input type = 'text' name = 'm0' id='m0' value='0' />
+    <input type = 'text' name = 'm1' id='m1' value='0' />
     ";
 
 
@@ -133,15 +136,6 @@ error_reporting(E_ALL);
 
 
     </div>
-
-
-
-
-
-
-
-
-
 
 
 <script type="text/javascript">
@@ -163,81 +157,87 @@ error_reporting(E_ALL);
                 
             } else if(element.includes("marcatore")){
                 goals++;
-                stato.disabled = true;
+                stato.readOnly = true;
                 
             } 
 
             if(element.includes("ammonito")){
                 gialli++;
-                stato.disabled = true;
+                stato.readOnly = true;
               
             } 
 
             if(element.includes("espulso")){
                 rossi++;
-                stato.disabled = true;
+                stato.readOnly = true;
             } 
 
            
                 
         });
+
         if(!boolean){
             marcatore0  =  marcatore0 + goals;
             let score = document.getElementById("score0");
             score.innerText = marcatore0;
+
+            //aggiornamento del campo nascosto marcatore0 per poter passare il risultato al php
+            document.getElementById("m0").value = marcatore0;
+            
+
+            
         } else {
             marcatore1  =  marcatore1 + goals;
             let score = document.getElementById("score1");
             score.innerText = marcatore1;
+
+            //aggiornamento del campo nascosto marcatore1 per poter passare il risultato al php
+            document.getElementById("m1").value = marcatore1;
         }
         
         ammonito    = ammonito + gialli;
         espulso     = espulso + rossi;
         
-
+/*
 
     console.log("marcatore0: " + marcatore0);
     console.log("marcatore: " + marcatore1);
     console.log("ammonito: " + ammonito);
     console.log("espulso: " + espulso); 
-         
+         */
         
     }
 
 
     function bloccaMinuto(stato){
-        minute = stato.value;
+        str = stato.value;
+        minutes = str.split(", ");
 
-        if(isNaN(minute)){
-            alert("Devi inserire un numero");
+        notNum = false; 
+        notInterval = false;
+
+        minutes.forEach(min => {
+            if(isNaN(min)){
+                notNum = true;
+            }
+
+            if(min < 1 || min > 90){
+                notInterval = true;
+            }
+
+        });
+
+        if(notNum){
+            alert("Minuto può contenere solo numeri separati da virgola e spazio");
+        } else if(notInterval){
+            alert("Minuto dev'essere compreso tra 1 e 90");
         } else {
-            stato.disabled = true;
+            stato.readOnly = true;
         }
-
-        
-        
     }
 
 
     
-
-
-    
-
-
-    
-        
-        
-        
-
-       
-
-        
-    
-
-
-
-
 </script>
 
 </body>

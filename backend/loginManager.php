@@ -104,6 +104,7 @@ function get_pwd($username, $db){
 			echo "ERRORE QUERY: " . pg_last_error($db);
 			return false;
 		}
+		
 		else{
 			if ($row = pg_fetch_assoc($ret)){
 				

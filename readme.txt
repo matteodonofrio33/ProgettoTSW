@@ -97,6 +97,21 @@ INSERT INTO PARTECIPAZIONE (id_partecipazione, id_giocatore, id_partita, stato_g
 
 
 
+INSERT INTO partecipazione (campo1, campo2, campo3) 
+VALUES ('valore1', 'valore2', 'valore3');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
