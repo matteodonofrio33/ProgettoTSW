@@ -145,15 +145,14 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         <div><p id="payment"></p></div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    
     <!--<script src="../assets/js/distanzaStadio.js"></script>-->
 
     <script>
     var latStadio=0;
     var longStadio=0;
     var pay=0;
-    $(document).ready(function() {
+    document.addEventListener("DOMContentLoaded",function() {
     var stadio="<?php echo $stadio; ?>"; // Recupera il nome dello stadio
     var citta="";
 
@@ -183,36 +182,29 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     console.log("Prossima partita in:", stadio); //debug
     console.log("Coordinate stadio:", latStadio, longStadio);
 
-    //if (stadio) {
-        $.ajax({
-            url: "../backend/meteo.php",
-            type: "GET",
-            dataType: "json",
-            data: { citta: citta }, //passo il nome della citta
-            success: function(response) {
-            console.log("Risposta API completa:", response); //debug
-        if (response.dati && response.dati.cod) { 
-            console.log("Codice risposta API:", response.dati.cod);
-            console.log("Tipo di response.dati.cod:", typeof response.dati.cod); //commenti per il debug  
-        if (parseInt(response.dati.cod) === 200) {
-            $("#meteoStadio").html(
-                "<p><strong>Temperatura:</strong> " + response.dati.main.temp + "°C</p>" +
-                "<p><strong>Condizione:</strong> " + response.dati.weather[0].description + "</p>" +
-                "<p><strong>Umidità:</strong> " + response.dati.main.humidity + "%</p>" +
-                "<p><strong>Vento:</strong> " + response.dati.wind.speed + " m/s</p>"
-            );
-        } else {
-            console.log("⚠ Errore: response.dati.cod non è 200, ma", response.dati.cod);
-            $("#meteoStadio").html("<p class='noPart'>Errore nel recupero delle informazioni meteo.</p>");
-        }
+    //meteo
+        var xhttp = new XMLHttpRequest();
+        var apiKey = "09515bcce37bc93c4496846db36038b7";
+        var url = "https://api.openweathermap.org/data/2.5/weather?q=" + citta + "&appid=" + apiKey + "&units=metric&lang=it";
+        xhttp.open("GET",url,true);
+        xhttp.send();
+        xhttp.responseType = "json";
+        xhttp.onload = function () {
+        if (xhttp.status == 200) {
+            var response = xhttp.response;
+        document.getElementById("meteoStadio").innerHTML=
+            "<p><strong>Temperatura:</strong> " + response.main.temp + "°C</p>" +
+            "<p><strong>Condizione:</strong> " + response.weather[0].description + "</p>" +
+            "<p><strong>Umidità:</strong> " + response.main.humidity + "%</p>" +
+            "<p><strong>Vento:</strong> " + response.wind.speed + " m/s</p>"
+        
     } else {
-        console.log("⚠ Errore: Struttura della risposta API non valida.", response);
         $("#meteoStadio").html("<p class='noPart'>Errore nel recupero delle informazioni meteo.</p>");
+        console.error("Errore API:", xhttp.status, xhttp.statusText);
     }
-    }
-            
-        });
+};
     });
+    //fine_meteosss
 
     function calculateDistance(lat1, long1, lat2, long2) {
         const R=6371; //raggio della terra
@@ -245,7 +237,8 @@ $ret = pg_query_params($db, $sql, array($arbitro));
                 //calcola la distanza solo dopo aver ottenuto la posizione
                 let distance=calculateDistance(latStadio, longStadio, lat, long);
                 //alert("Distanza dallo stadio: " + distance.toFixed(2) + " km"); //debug
-                $("#distanceStadium").html(`<strong>Distanza:</strong> ${distance.toFixed(2)} km`);
+                document.getElementById("distanceStadium").innerHTML = `<strong>Distanza:</strong> ${distance.toFixed(2)} km`;
+
                 calculatePay(distance);
             },
             function () {
@@ -263,7 +256,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         else if(distance>600)
             pay=5000;
 
-        $("#payment").html(`<strong>Compenso:</strong> ${pay} €`);
+        document.getElementById("payment").innerHTML = `<strong>Compenso:</strong> ${pay} €`;
     }
 
     myPos(); 
