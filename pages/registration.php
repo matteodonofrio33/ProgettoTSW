@@ -43,13 +43,13 @@
 
                 <p>
                     <label for="taxIdCode">Codice fiscale
-                        <input id="taxIdCode" type="text" name="taxIdCode"  required  value="<?php echo $taxIdCode?>" />
+                        <input id="taxIdCode" type="text" name="taxIdCode"  required  value="<?php echo $taxIdCode?>" placeholder="composto da 16 caratteri" />
                     </label>
                  </p>
 
         <p>
             <label for="email">Email
-                <input id="email" type="email" name="email"  required  value="<?php echo $email?>" />
+                <input id="email" type="email" name="email"  required  value="<?php echo $email?>" placeholder="example@gmail.com" />
             </label>
         </p>
 

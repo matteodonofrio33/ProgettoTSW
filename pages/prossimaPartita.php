@@ -20,16 +20,13 @@ if (!$ret) {
     echo "ERRORE QUERY: " . pg_last_error($db);
     return false;
 }
-
 // Inizializza una variabile per salvare il nome dello stadio
 $stadio = null;
-
 // Se ci sono partite, prendi il nome dello stadio della prima
 if (pg_num_rows($ret) > 0) {
     $row = pg_fetch_assoc($ret);
     $stadio = htmlspecialchars($row["STADIO"] ?? '', ENT_QUOTES, 'UTF-8');
 }
-
 // Riavvia la query per ottenere tutte le partite (la prima riga è già stata estratta)
 $ret = pg_query_params($db, $sql, array($arbitro));
 ?>
@@ -54,7 +51,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             font-size: 28px;
             color: #f1c40f;
         }
-        #tableContainer {
+        #tableContainer{
             display: flex;
             justify-content: center;
             margin-top: 20px;
@@ -65,6 +62,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             border-collapse: collapse;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
+            /*overflow: hidden;*/
             box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
         }
         th, td {
@@ -88,13 +86,32 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             font-size: 18px;
             color: #e74c3c;
         }
+
+        #meteoStadio, #distanceStadium, #payment{
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
+        }
+
+        #info_match {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 20px ;
+            width: 100%;
+        }
+
+
+
     </style>
 </head>
 <body>
     <h1>La tua prossima partita sarà:</h1>
     <div id="tableContainer">
         <?php
-          echo "<table>";
         if (pg_num_rows($ret) > 0) {
             echo "<table>
                     <tr>
@@ -119,77 +136,132 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         pg_close($db);
         ?>
     </div>
+    <div id= "info_match">
+        <img src="../assets/immagini/meteo.png" alt="Meteo Stadio">
+        <div id="meteoStadio"></div>
+        <img src="../assets/immagini/posizione.png" alt="Meteo Stadio">
+        <div><p id="distanceStadium"></p></div>
+        <img src="../assets/immagini/compenso.png" alt="Meteo Stadio">
+        <div><p id="payment"></p></div>
+    </div>
 
-    <div id="meteoStadio" ></div>
-
-    <style>
-        #meteoStadio {
-        background-color: rgba(255, 255, 255, 0.1);
-        padding: 15px;
-        border-radius: 10px;
-        width: 350px;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        margin-left: 270px;
-    }
-
-    </style>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+    var latStadio=0;
+    var longStadio=0;
+    var pay=0;
+    document.addEventListener("DOMContentLoaded",function() {
+    var stadio="<?php echo $stadio; ?>"; // Recupera il nome dello stadio
+    var citta="";
 
-    $(document).ready(function() {
-    var stadio = "<?php echo $stadio; ?>"; // Recupera il nome dello stadio
-
-    var citta = "";
-
-    if (stadio === "Stadio Olimpico") citta = "Roma,IT";
-    else if (stadio === "Giuseppe Meazza") citta = "Milano,IT";
-    else if (stadio === "Gewiss Stadium") citta = "Bergamo,IT";
-    else if (stadio === "Allianz Stadium") citta = "Torino,IT";
+    if (stadio==="Stadio Olimpico")  {
+        citta="Roma,IT";
+        latStadio=41.9336612653;
+        longStadio=12.4528698552;
+    }
+    else if (stadio==="Giuseppe Meazza") {
+        citta="Milano,IT";
+        latStadio=45.4734797727;
+        longStadio=9.12118951524;
+    }
+    else if (stadio==="Gewiss Stadium") {
+        citta="Bergamo,IT";
+        latStadio=45.705330512;
+        longStadio=9.675163966;
+    }
+    else if (stadio==="Allianz Stadium") {
+        citta="Torino,IT";
+        latStadio=45.105666244;
+        longStadio=7.637997448;
+    }
     else {
-        console.log("Stadio non riconosciuto:", stadio);
+        console.log("⚠ Stadio non riconosciuto:", stadio);
     }
+    //console.log("Prossima partita in:", stadio); //debug
+    //console.log("Coordinate stadio:", latStadio, longStadio);
 
-    console.log("Prossima partita in:", stadio); //debug
-
-    //if (stadio) {
-        $.ajax({
-            url: "../backend/meteo.php",
-            type: "GET",
-            dataType: "json",
-            data: { citta: citta }, //passo il nome della citta
-            success: function(response) {
-            console.log("Risposta API completa:", response); //debug
-
-        if (response.dati && response.dati.cod) { 
-            console.log("Codice risposta API:", response.dati.cod);
-            console.log("Tipo di response.dati.cod:", typeof response.dati.cod); //commenti per il debug  
-
-        if (parseInt(response.dati.cod) === 200) {
-            $("#meteoStadio").html(
-                "<p><strong>Temperatura:</strong> " + response.dati.main.temp + "°C</p>" +
-                "<p><strong>Condizione:</strong> " + response.dati.weather[0].description + "</p>" +
-                "<p><strong>Umidità:</strong> " + response.dati.main.humidity + "%</p>" +
-                "<p><strong>Vento:</strong> " + response.dati.wind.speed + " m/s</p>"
-            );
-        } else {
-            console.log("Errore: response.dati.cod non è 200, ma", response.dati.cod);
-            $("#meteoStadio").html("<p class='noPart'>Errore nel recupero delle informazioni meteo.</p>");
-        }
+    //meteo
+        var xhttp = new XMLHttpRequest();
+        var apiKey = "09515bcce37bc93c4496846db36038b7";
+        var url = "https://api.openweathermap.org/data/2.5/weather?q=" + citta + "&appid=" + apiKey + "&units=metric&lang=it";
+        xhttp.open("GET",url,true);
+        xhttp.send();
+        xhttp.responseType = "json";
+        xhttp.onload = function () {
+        if (xhttp.status == 200) {
+            var response = xhttp.response;
+        document.getElementById("meteoStadio").innerHTML=
+            "<p><strong>Temperatura:</strong> " + response.main.temp + "°C</p>" +
+            "<p><strong>Condizione:</strong> " + response.weather[0].description + "</p>" +
+            "<p><strong>Umidità:</strong> " + response.main.humidity + "%</p>" +
+            "<p><strong>Vento:</strong> " + response.wind.speed + " m/s</p>"
+        
     } else {
-        console.log("Errore: Struttura della risposta API non valida.", response);
         $("#meteoStadio").html("<p class='noPart'>Errore nel recupero delle informazioni meteo.</p>");
+        console.error("Errore API:", xhttp.status, xhttp.statusText);
     }
+};
+    });
+    //fine_meteosss
+
+    function calculateDistance(lat1, long1, lat2, long2) {
+        const R=6371; //raggio della terra
+
+        const dLat=(lat2-lat1) * Math.PI/180;
+        const dLon=(long2-long1) * Math.PI/180;
+
+        const a=Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+
+        const c=2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R*c; //per avere la distanza in km
     }
 
-            
-        });
-    /*} else {
-        console.log("Nome stadio non disponibile!"); // Debug in caso di errore
-    }*/
-});
+    function myPos() {
+        if (!navigator.geolocation) {
+            alert("Il tuo browser non supporta la geolocalizzazione");
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                let lat=position.coords.latitude;
+                let long=position.coords.longitude;
+
+                //alert("Latitudine ottenuta: " + lat); //debug
+                //alert("Longitudine ottenuta: " + long); //debug
+
+                //calcola la distanza solo dopo aver ottenuto la posizione
+                let distance=calculateDistance(latStadio, longStadio, lat, long);
+                //alert("Distanza dallo stadio: " + distance.toFixed(2) + " km"); //debug
+                document.getElementById("distanceStadium").innerHTML = `<strong>Distanza:</strong> ${distance.toFixed(2)} km`;
+
+                calculatePay(distance);
+            },
+            function () {
+                alert("Errore nella geolocalizzazione");
+            },
+            { timeout: 10000 }
+        );
+    }
+
+    function calculatePay(distance) {
+        if((distance>0 && distance<=200))    
+            pay=1000;
+        else if(distance>200 && distance<=600)
+            pay=3000;
+        else if(distance>600)
+            pay=5000;
+
+        document.getElementById("payment").innerHTML = `<strong>Compenso:</strong> ${pay} €`;
+    }
+
+    myPos(); 
+
+    //distance=calculateDistance(latStadio, longStadio, lat, long);
+    //alert(distance); //prova stampa distanza
+
+    
 
     </script>
 </body>

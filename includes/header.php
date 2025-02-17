@@ -31,7 +31,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     </span>
                 </li>
                 <?php if(isset($_SESSION['username'])) { ?>
-                    <li> <a href="../pages/referto.html">Crea referto</a></li>
+                    <li> <a href="../backend/refertoTables.php">Crea referto</a></li>
                     <li> <a href="#">Le mie partite</a></li>
                     <li> <a href="../pages/prossimaPartita.php">Prossima partita</a></li>
                 <?php } else { ?>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../assets/css/refertoTablesStyle.css">
     <title>Document</title>
 </head>
 <body>
@@ -18,8 +19,10 @@ error_reporting(E_ALL);
     require('../pages/players.php');
     
     //echo "$giocatore1";
+    echo "<div class='tables'>";
     echo " 
-        <table id='tableTeams'>
+    <div class='table1'>
+        <table id='tableTeam1'>
 
         <tr>
             <th>Nome Giocatore</th>
@@ -64,13 +67,14 @@ error_reporting(E_ALL);
 
 
 
-    </table>
-
+        </table>
+    </div>
     ";
 
     //tabella squadra 2 DA MODIFICARE**********
     echo " 
-        <table id='tableTeams'>
+    <div class='table1'>
+        <table id='tableTeam2'>
 
         <tr>
             <th>Nome Giocatore</th>
@@ -115,6 +119,7 @@ error_reporting(E_ALL);
 
 
 
+
     </table>
 
     <input type = 'text' name = 'm0' id='m0' value='0' />
@@ -126,16 +131,23 @@ error_reporting(E_ALL);
     <input type="submit" name="send" value="Invia" />
     </form>
 
-
     <div id="results">
-        <h1><?php echo "$squadra1: "?> </h1>
-        <h2 id= "score0" > 0 </h2>
+    <h2>
+        <span id="team1Name"><?php echo "$squadra1"; ?></span> 
+        <span id="score0">0</span> - 
+        <span id="score1">0</span> 
+        <span id="team2Name"><?php echo "$squadra2"; ?></span>
+    </h2>
+    <h2>
+        <span class="num_ammoniti">Ammoniti: <span id="ammoniti"> 0</span></span>
+        <span class="num_espulsi">Espulsi: <span id="espulsioni">0</span></span>
+    </h2>
 
-        <h1><?php echo "$squadra2: "?> </h1>
-        <h2 id= "score1" > 0 </h2>
 
+    <div id= "bottone"> <input type="submit" name="send" value="Invia" /> </div>
 
-    </div>
+</div>
+
 
 
 <script type="text/javascript">
@@ -196,7 +208,12 @@ error_reporting(E_ALL);
         }
         
         ammonito    = ammonito + gialli;
+        let giallo = document.getElementById("ammoniti");
+        giallo.innerText=ammonito
+
         espulso     = espulso + rossi;
+        let rosso = document.getElementById("espulsioni");
+        rosso.innerText=espulso;
         
 /*
 
