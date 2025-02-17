@@ -32,7 +32,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 </li>
                 <?php if(isset($_SESSION['username'])) { ?>
                     <li> <a href="../backend/refertoTables.php">Crea referto</a></li>
-                    <li> <a href="#">Le mie partite</a></li>
+                    <li> <a href="../pages/miePartite.html">Le mie partite</a></li>
                     <li> <a href="../pages/prossimaPartita.php">Prossima partita</a></li>
                 <?php } else { ?>
                     <li> <a href="../pages/login.html">Crea referto</a></li>
