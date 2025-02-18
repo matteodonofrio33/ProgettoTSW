@@ -2,7 +2,7 @@
 // Controllo se la sessione non è stata avviata
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
-    session_set_cookie_params(0);
+    //session_set_cookie_params(0);
 }
 ?>
 
