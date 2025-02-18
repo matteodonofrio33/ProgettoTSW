@@ -459,8 +459,7 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
 
       $q = "SELECT id_giocatore
             FROM GIOCATORE
-            WHERE nome_giocatore = $1;
-            "; 
+            WHERE nome_giocatore = $1;"; 
 
 
    $qr = pg_query_params($db, $q, array($nome_giocatore));
