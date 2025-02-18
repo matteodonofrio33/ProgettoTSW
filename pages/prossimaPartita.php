@@ -1,9 +1,13 @@
 
 <?php
 session_start();
+<<<<<<< HEAD
 
 include('../includes/header.php');
 
+=======
+session_set_cookie_params(0);
+>>>>>>> origin/Matteo3
 require('../backend/conn.php'); // Connessione al database
 if (!isset($_SESSION['username'])) {
     die("Errore: utente non autenticato.");
@@ -18,7 +22,9 @@ $sql = "SELECT
             PARTITA.data_partita AS \"DATA\"
         FROM REFERTO
         JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
-        WHERE REFERTO.id_arbitro = $1;";
+        WHERE REFERTO.id_arbitro = $1
+        AND (REFERTO.stato_partita IS NULL OR REFERTO.stato_partita = '');";
+
 $ret = pg_query_params($db, $sql, array($arbitro));
 if (!$ret) {
     echo "ERRORE QUERY: " . pg_last_error($db);

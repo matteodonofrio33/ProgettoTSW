@@ -2,11 +2,12 @@
 // Controllo se la sessione non è stata avviata
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+    session_set_cookie_params(0);
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     </span>
                 </li>
                 <?php if(isset($_SESSION['username'])) { ?>
-                    <li> <a href="../backend/refertoTables.php">Crea referto</a></li>
+                    <li> <a href="../pages/refertoTables.php">Crea referto</a></li>
                     <li> <a href="../pages/miePartite.php">Le mie partite</a></li>
                     <li> <a href="../pages/prossimaPartita.php">Prossima partita</a></li>
                 <?php } else { ?>
@@ -44,12 +45,12 @@ if (session_status() == PHP_SESSION_NONE) {
     </header>
 
     <?php
-        if(isset($_SESSION['username'])) { ?>
+        /*if(isset($_SESSION['username'])) { ?>
             <h1 id="title1">Benvenuto <?php echo htmlspecialchars($_SESSION['username']); ?>, pronto per arbitrare?</h1>
     <?php 
     } else { ?>
         <h1 id="title2">Benvenuto!</h1>
-    <?php } ?>
+    <?php } */?>
     
 
 

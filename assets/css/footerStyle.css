@@ -1,9 +1,11 @@
 html, body {
     height: 100%;
     margin: 0;
+    /*
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    */
 }
 
 #mainContent {
@@ -11,7 +13,7 @@ html, body {
 }
 
 footer {
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
     left: 0;
     width: 100%;
@@ -20,21 +22,25 @@ footer {
     padding: 20px 10px;
     font-family: 'Arial', sans-serif;
     border-top: 2px solid #6cade2;
-    display: flex;
+   /* display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    z-index: 1000; 
+    z-index: 800; 
+    */
 }
 
 
 .footerElements {
-    display: flex;
+    /*
+    display: block;
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+    */
+    flex: 1;
 }
 
 .footerElements div {

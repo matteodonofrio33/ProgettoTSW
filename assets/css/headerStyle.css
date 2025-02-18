@@ -1,9 +1,10 @@
 header {
     margin-top: 0;
+    background-color: #000;
 }
 
 body {
-    background-color: #000;
+    /*background-color: #000;*/
     position: relative;
     min-height: 100vh;
     font-family: 'Poppins', Arial, sans-serif;
