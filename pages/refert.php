@@ -12,6 +12,7 @@
 
 <?php
 session_start();
+include('../includes/header.php');
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -568,3 +569,5 @@ function isValidateMin($str) {//prende la stringa di minuti
 }
 
 ?>
+
+<?php include('../includes/footer.html'); ?>

@@ -1,5 +1,9 @@
+
 <?php
 session_start();
+
+include('../includes/header.php');
+
 require('../backend/conn.php'); // Connessione al database
 if (!isset($_SESSION['username'])) {
     die("Errore: utente non autenticato.");
