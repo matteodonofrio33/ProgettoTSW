@@ -1,4 +1,4 @@
-<html>
+<html lang="it">
 <head>
 	<title>Registrazione</title>
 	<link rel="stylesheet" type="text/css" href="../assets/css/registrationStyle.css">

@@ -6,7 +6,8 @@
 <?php
  	/* attiva la sessione */
 	session_start();
-
+	session_set_cookie_params(0);
+	
 	/* sessione attiva, la distrugge */
 	$sname = session_name();
 	$uname = $_SESSION["username"];

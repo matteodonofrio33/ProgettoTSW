@@ -13,7 +13,7 @@
     <title>Le mie partite</title>
 </head>
 <body>
-
+    <?php include '../includes/header.php'; ?>
     <form method="POST" action="">
         <label for="idReferto">Inserisci l'id del referto che vuoi visualizzare</label><br>
         <input type="number" name="idRef" id="idField">
@@ -133,7 +133,7 @@
         }
     }
     ?>
-
+    <?php include '../includes/footer.html'; ?>
 </body>
 <?php include('../includes/footer.html'); ?>
 

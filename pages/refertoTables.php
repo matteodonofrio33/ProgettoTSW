@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +7,19 @@
     <title>Document</title>
 </head>
 <body>
+
     <?php include('../includes/header.php'); ?>
     <form id="formTeam1" method="post" action="../pages/refert.php" >
 
+
+    <?php include '../includes/header.php'; ?>
+
+    <form id="formTeam1" method="post" action="../backend/refert.php" >
+
+
 <?php
 //session_start();
-require('../pages/players.php');
+require('../backend/players.php');
 
 
 ini_set('display_errors', 1);
@@ -21,7 +28,24 @@ error_reporting(E_ALL);
 
 
 
+
    
+
+$squadra1 = isset($_SESSION['squadra1']) ? $_SESSION['squadra1'] : '';
+$squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
+
+
+
+/*
+echo " Giocatori squadra 1: $giocatore11, $giocatore12, $giocatore13, $giocatore14, $giocatore15, $giocatore16 ";
+echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore24, $giocatore25, $giocatore26";
+*/
+
+
+   // require('../backend/players.php');
+    
+    //echo "$giocatore1";
+
     echo "<div class='tables'>";
     echo " 
     <div class='table1'>
@@ -267,6 +291,11 @@ error_reporting(E_ALL);
     
 </script>
 
+    
+
 </body>
+
     <?php include('../includes/footer.html'); ?>
+
+
 </html>

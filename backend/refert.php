@@ -1,7 +1,7 @@
 
 <!-- PAGINA CHE PRENDE I DATI PASSATI DALLA FORM IN refertoTables.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,11 @@
 
 <?php
 session_start();
+
 include('../includes/header.php');
+
+session_set_cookie_params(0);
+
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
