@@ -11,6 +11,10 @@ html, body {
 }
 
 footer {
+    /*position: fixed;*/
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
     color: #e0e1dd;
     padding: 20px 10px;
@@ -19,8 +23,9 @@ footer {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
+    z-index: 800; 
 }
+
 
 .footerElements {
     display: flex;

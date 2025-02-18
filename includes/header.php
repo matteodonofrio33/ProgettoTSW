@@ -44,12 +44,12 @@ if (session_status() == PHP_SESSION_NONE) {
     </header>
 
     <?php
-        if(isset($_SESSION['username'])) { ?>
+        /*if(isset($_SESSION['username'])) { ?>
             <h1 id="title1">Benvenuto <?php echo htmlspecialchars($_SESSION['username']); ?>, pronto per arbitrare?</h1>
     <?php 
     } else { ?>
         <h1 id="title2">Benvenuto!</h1>
-    <?php } ?>
+    <?php } */?>
     
 
 

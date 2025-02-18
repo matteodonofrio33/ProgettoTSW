@@ -287,4 +287,6 @@ $ret = pg_query_params($db, $sql, array($arbitro));
 
     </script>
 </body>
+<?php include('../includes/footer.html'); ?>
+
 </html>
