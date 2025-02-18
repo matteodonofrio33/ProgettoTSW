@@ -1,6 +1,6 @@
 <?php
     require('../backend/conn.php');
-    include('../includes/header.php');
+    
 
 ?>
 
@@ -133,7 +133,7 @@
         }
     }
     ?>
-    <?php include '../includes/footer.html'; ?>
+    
 </body>
 <?php include('../includes/footer.html'); ?>
 
