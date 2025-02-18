@@ -1,3 +1,13 @@
+<?php
+
+
+$message = isset($_GET['message']) ? $_GET['message'] : 'Si è verificato un errore';
+$redirect = isset($_GET['redirect']) ? $_GET['redirect'] : '#';
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,8 +54,11 @@
 
 
     <div id="errorDiv" >
-        <h1><?php  ?> questo è l'errore</h1>
+
+        <h1> <?php echo $message ?> </h1>
         <img src="../assets/immagini/cartellinoRosso.png" alt="cartRosso">
+            <a href="<?php echo $redirect ?>">Riprova</a>
+
 
     </div>
 

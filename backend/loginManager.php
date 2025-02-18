@@ -49,12 +49,16 @@
 			$hash = get_pwd($username,$db);
 			$hash = trim($hash); //rimuove spazi vuoti
 			
-			if(!$hash){			
+			if(!$hash){		
+				/*	
 				echo "
 					<h1> L'utente $username non esiste. <a href=\"../pages/login.html\">Riprova</a></h1>
 					<img src='../assets/immagini/cartellinoRosso.png' alt='loginErrorImage'>;
 				";
-					
+					*/
+					$message = "L'utente ".$username." non esiste";
+					header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
+					exit(); //in modo tale da esser sicuri di non eseguire altro codice
 			}
 			else{
 				
@@ -71,20 +75,30 @@
 				else{
 					//Visualizza messaggio di errore
 					//echo 'Username o password errati. <a href="../pages/login.html">Riprova</a>';
+					/*
 					echo "
 						<h1> Username o password errati. <a href=\"../pages/login.html\">Riprova</a></h1>
 						<img src='../assets/immagini/cartellinoRosso.png' alt='loginErrorImage'>;
 						
 					";
+					*/
+
+					$message = "Password errata";
+					header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
+					exit();
 					
 					
 				}
 			}
 		}
 		else{
-			
+			/*
 			echo "<h1>ERRORE: username o password non inseriti <a href=\"../pages/login.html\">Riprova</a></h1>";
 			exit();
+			*/
+			$message = "Username o password non inseriti";
+					header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
+					exit();
 		}
 
 	?>
@@ -93,11 +107,13 @@
 </html>
 
 <?php
+
 function get_pwd($username, $db){
 		require 'conn.php';
 		$sql = "SELECT password FROM arbitro WHERE username=$1;";
 		$prep = pg_prepare($db, "sqlPassword", $sql); #preparando la query così si evita sql injection
 		$ret = pg_execute($db, "sqlPassword", array($username)); #esecuzione della query pianificata
+		
 		if(!$ret) {
 			echo "ERRORE QUERY: " . pg_last_error($db);
 			return false;

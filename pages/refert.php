@@ -355,12 +355,18 @@ if(isset($_POST['numFalli'])) {
 
 
 if($err){
+   /*
    echo "
    <h1>Errore nell'invio del referto <a href=\"../pages/referto.php\">Riprova</a></h1>
   
    <img src='../assets/immagini/cartellinoRosso.png' alt='sendingError'>;
    
 ";
+*/
+
+$message = "Oops si è verificato un errore";
+				header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+				exit();
    
 } else {
   // echo "Nessun errore";
@@ -377,8 +383,11 @@ if($err){
    $qr = pg_query_params($db, $q, array($id_arbitro));
 
    if (!$qr) {
-   echo "ERRORE QUERY: " . pg_last_error($db);
-   return false;
+   //echo "ERRORE QUERY: " . pg_last_error($db);
+   $message = "Oops si è verificato un errore";
+				header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+				exit();
+   //return false;
    }
 
    $id_partita = pg_fetch_result($qr, 0, 'id_partita');
