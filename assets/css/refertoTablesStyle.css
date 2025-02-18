@@ -7,13 +7,33 @@ body {
     margin: 0;
     padding: 0;
 }
-
-.tables{
-   /* position: absolute;*/
-    top: 80px;
+.table1{
+    
+    height: 700px;
+   
+}
+#tables {
+    top: 200px;
     left: 100px;
+    margin-top: 40px; 
+    margin-bottom: 40px; 
+    margin-left: 10%;
+    width: 100%;
+    display: block;
+    text-align: center;
+    
+    height: 700px;
     
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -35,7 +55,6 @@ th {
     background-color: rgba(241, 196, 15, 0.8);
     color: black;
     font-weight: bold;
-    
 }
 
 td {
@@ -70,6 +89,7 @@ tr:hover {
 #results {
     width: 200px;
     position:absolute;
+    margin-left: 10%;
     top: 300px; 
     right: 10px; 
     left:1000px;

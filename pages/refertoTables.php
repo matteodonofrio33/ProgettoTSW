@@ -45,9 +45,9 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
     
     //echo "$giocatore1";
 
-    echo "<div class='tables'>";
+    
     echo " 
-    <div class='table1'>
+    <div id='tables'>
         <table id='tableTeam1'>
 
         <tr>
@@ -94,12 +94,12 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
 
 
         </table>
-    </div>
+    
     ";
 
     //tabella squadra 2 DA MODIFICARE**********
     echo " 
-    <div class='table1'>
+    
         <table id='tableTeam2'>
 
         <tr>
@@ -147,10 +147,13 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
 
 
     </table>
+    </div>
 
     <input type = 'hidden' name = 'm0' id='m0' value='0' />
     <input type = 'hidden' name = 'm1' id='m1' value='0' />
-
+    
+    
+    
     ";
     
     ?>
