@@ -1,20 +1,9 @@
 html, body {
     height: 100%;
     margin: 0;
-    /*
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    */
-}
-
-#mainContent {
-    flex: 1;
 }
 
 footer {
-    
-    
     bottom: 0;
     left: 0;
     width: 100%;
@@ -23,25 +12,16 @@ footer {
     padding: 20px 10px;
     font-family: 'Arial', sans-serif;
     border-top: 2px solid #6cade2;
-   /* display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    z-index: 800; 
-    */
 }
 
-
 .footerElements {
-    /*
-    display: block;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    */
-    flex: 1;
+    
 }
 
 .footerElements div {
@@ -50,7 +30,7 @@ footer {
     align-items: center;
     text-align: center;
     flex: 1;
-    min-width: 200px;
+   
 }
 
 footer h3 {
@@ -86,19 +66,12 @@ footer img {
     transition: transform 0.3s ease-in-out;
 }
 
-footer img:hover {
-    transform: scale(1.1);
-}
 
-/* Layout mobile */
+
+
 @media (max-width: 768px) {
     .footerElements {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
+        flex-direction: column; 
+        align-items: center; 
     }
-}
-
-#contacts {
-    margin-top: 50px;
 }
