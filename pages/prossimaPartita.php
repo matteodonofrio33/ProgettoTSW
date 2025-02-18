@@ -1,5 +1,6 @@
 <?php
 session_start();
+session_set_cookie_params(0);
 require('../backend/conn.php'); // Connessione al database
 if (!isset($_SESSION['username'])) {
     die("Errore: utente non autenticato.");
