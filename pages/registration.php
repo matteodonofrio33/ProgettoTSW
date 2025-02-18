@@ -9,6 +9,8 @@
 
 <?php
     require('../backend/checkDataRegistration.php');
+	include('../includes/header.php');
+
 ?>
 
  
@@ -145,3 +147,6 @@ function insert_utente($username, $email, $name, $surname, $password, $error){
 	pg_close($db);
 }
 ?>
+
+<?php include('../includes/footer.html'); ?>
+

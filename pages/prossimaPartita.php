@@ -1,5 +1,9 @@
+
 <?php
 session_start();
+
+include('../includes/header.php');
+
 require('../backend/conn.php'); // Connessione al database
 if (!isset($_SESSION['username'])) {
     die("Errore: utente non autenticato.");
@@ -285,4 +289,6 @@ $ret = pg_query_params($db, $sql, array($arbitro));
 
     </script>
 </body>
+<?php include('../includes/footer.html'); ?>
+
 </html>

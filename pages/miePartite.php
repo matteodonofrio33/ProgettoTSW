@@ -1,5 +1,7 @@
 <?php
     require('../backend/conn.php');
+    include('../includes/header.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +21,7 @@
     </form>
 
     <?php
+
     if (isset($_POST['idRef']) && !empty($_POST['idRef'])) {  
         $id_referto = $_POST['idRef'];
 
@@ -130,4 +133,6 @@
     ?>
 
 </body>
+<?php include('../includes/footer.html'); ?>
+
 </html>
