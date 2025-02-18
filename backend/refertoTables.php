@@ -10,12 +10,13 @@
     <form id="formTeam1" method="post" action="../pages/refert.php" >
 
 <?php
-session_start();
+//session_start();
+require('../pages/players.php');
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+/*
 $giocatore11 = isset($_SESSION['giocatore11']) ? $_SESSION['giocatore11'] : '';
 $giocatore12 = isset($_SESSION['giocatore12']) ? $_SESSION['giocatore12'] : '';
 $giocatore13 = isset($_SESSION['giocatore13']) ? $_SESSION['giocatore13'] : '';
@@ -33,7 +34,7 @@ $giocatore26 = isset($_SESSION['giocatore26']) ? $_SESSION['giocatore26'] : '';
 
 $squadra1 = isset($_SESSION['squadra1']) ? $_SESSION['squadra1'] : '';
 $squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
-
+*/
 
 
 /*
