@@ -153,16 +153,9 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
     <input type = 'hidden' name = 'm0' id='m0' value='0' />
     <input type = 'hidden' name = 'm1' id='m1' value='0' />
 
-     <label for='numFalli'> Numero falli
-        <input id='numFalli' type='number' min='0' step='1' name='numFalli' value = '0' required/>
-    </label>
-
     ";
     
-
-
     ?>
-   <div id= "bottone"> <input type="submit" name="send" value="Invia" /> </div>
     </form>
 
     <div id="results">
@@ -178,7 +171,17 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
     </h2>
 
 
-   
+   <!-- Aggiungi il contenitore qui sotto -->
+<div id="formControls">
+    <label for='numFalli'> 
+        Numero falli
+        <input id='numFalli' type='number' min='0' step='1' name='numFalli' value='0' required/>
+    </label>
+
+    <div id="bottone"> 
+        <input type="submit" name="send" value="Invia" /> 
+    </div>
+</div>
 
 </div>
 
