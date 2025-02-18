@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+
+    <?php include '../includes/header.php'; ?>
+
     <form id="formTeam1" method="post" action="../pages/refert.php" >
 
 <?php
@@ -293,5 +296,8 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
     
 </script>
 
+    
+
 </body>
+<?php include '../includes/footer.html'; ?>
 </html>
