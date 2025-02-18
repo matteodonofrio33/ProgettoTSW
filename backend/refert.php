@@ -495,7 +495,7 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
          exit();
         // return false;
       } else {
-         header("Location: ./homepage.php");
+         header("Location: ../pages/homepage.php");
       }
    }
 

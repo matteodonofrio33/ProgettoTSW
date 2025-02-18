@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/css/refertoTablesStyle.css">
-    <title>Document</title>
+    <title>refertoTables</title>
 </head>
 <body>
 
-    <?php include('../includes/header.php'); ?>
-    <form id="formTeam1" method="post" action="../pages/refert.php" >
+  
 
 
     <?php include '../includes/header.php'; ?>
