@@ -3,17 +3,25 @@ session_start();
 require('../backend/conn.php'); // Connessione al database
 
 if (!$db) {
+    $message = "Ooops si è verificato un problema";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
     die("Errore di connessione al database: " . pg_last_error());
 }
 
 if (!isset($_SESSION['username'])) {
+    $message = "L'utente non è autenticato";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
     die("Errore: utente non autenticato.");
 }
 
 $arbitro = $_SESSION['username'];
 
 if (empty($arbitro)) {
+    $message = "Il nome dell'arbitro non è valido.";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
     die("Errore: il nome dell'arbitro non è valido.");
+
+    
 }
 
 $sql = "SELECT 
@@ -30,11 +38,15 @@ $sql = "SELECT
 $ret = pg_query_params($db, $sql, array($arbitro));
 
 if (!$ret) {
+    $message = "Ooops si è verificato un problema";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
     die("Errore nella query: " . pg_last_error($db));
 }
 
 $num_rows = pg_num_rows($ret);
 if ($num_rows === false) {
+    $message = "Ooops si è verificato un problema";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
     die("Errore con pg_num_rows: " . pg_last_error($db));
 }
 ?>

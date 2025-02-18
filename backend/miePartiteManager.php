@@ -38,6 +38,8 @@
     $ret = pg_query_params($db, $sql, array($id_referto));
 
     if (!$ret) {
+        $message = "Ooops si è verificato un problema";
+        header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
         echo "Errore query: " . pg_last_error($db);
     } else {
         if (pg_num_rows($ret) > 0) {

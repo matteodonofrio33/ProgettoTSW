@@ -47,6 +47,8 @@
         $ret = pg_query_params($db, $sql, array($id_referto));
 
         if (!$ret) {
+            $message = "Password errata";
+			header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
             echo "Errore query: " . pg_last_error($db);
         } elseif (pg_num_rows($ret) > 0) {
             $first_row = pg_fetch_assoc($ret);

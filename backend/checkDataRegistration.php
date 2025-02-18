@@ -174,6 +174,8 @@
 				}
 				else{
 					echo "<h1> Errore durante la registrazione. Riprova</h1>";
+
+                   
 				}
 			}       
 		}

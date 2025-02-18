@@ -64,6 +64,8 @@
     $ret = pg_query_params($db, $sql, array($arbitro));
 
     if (!$ret) {
+        $message = "Password errata";
+		header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
         echo "ERRORE QUERY: " . pg_last_error($db);
     } else {
         if (pg_num_rows($ret) > 0) {

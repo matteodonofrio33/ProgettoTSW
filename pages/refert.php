@@ -41,13 +41,7 @@ $giocatore26 = isset($_SESSION['giocatore26']) ? $_SESSION['giocatore26'] : '';
 $team2 = array($giocatore21, $giocatore22, $giocatore23, $giocatore24, $giocatore25, $giocatore26);
 
 $id_arbitro = $_SESSION['id_arbitro'];
-/*
-echo "Sono in refert.php:
-$giocatore11 $giocatore12 $giocatore13 $giocatore14 $giocatore15 $giocatore16
-<br>
-$giocatore21 $giocatore22 $giocatore23 $giocatore24 $giocatore25 $giocatore26
-";
-*/
+
 
 
 
@@ -359,24 +353,14 @@ if(isset($_POST['numFalli'])) {
 
 
 if($err){
-   /*
-   echo "
-   <h1>Errore nell'invio del referto <a href=\"../pages/referto.php\">Riprova</a></h1>
-  
-   <img src='../assets/immagini/cartellinoRosso.png' alt='sendingError'>;
-   
-";
-*/
 
-$message = "Oops si è verificato un errore";
-				header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
-				exit();
+   $message = "Oops si è verificato un errore";
+	header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+	exit();
    
 } else {
-  // echo "Nessun errore";
 
   require('../backend/conn.php');
-
 
    //prelevo l'id_partita tra le partite che si devono refertare:
    $q = "SELECT id_partita
@@ -388,9 +372,9 @@ $message = "Oops si è verificato un errore";
 
    if (!$qr) {
    //echo "ERRORE QUERY: " . pg_last_error($db);
-   $message = "Oops si è verificato un errore";
-				header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
-				exit();
+      $message = "Oops si è verificato un errore";
+		header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+		exit();
    //return false;
    }
 

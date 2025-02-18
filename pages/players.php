@@ -13,7 +13,7 @@
 <?php
 session_start();
 
-include('../includes/header.php');
+
 
 
 ini_set('display_errors', 1);
@@ -24,6 +24,8 @@ require('../backend/conn.php');
 
 
 if (!isset($_SESSION['username'])) {
+    $message = "Utente non autenticato";
+		header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
     die("Errore: utente non autenticato.");
 }
 
@@ -176,6 +178,6 @@ $_SESSION['squadra2'] = $squadra2;
 ?>
     
 </body>
-<?php include('../includes/footer.html'); ?>
+
 
 </html>

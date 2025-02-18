@@ -105,8 +105,10 @@ function exist($valore, $campo){
 	// $ret sarà uguale a false in caso di fallimento nell'esecuzione del prepared statement
 
 	if(!$ret) {
-		echo "ERRORE QUERY: " . pg_last_error($db);
-		return false;
+		$message = "Oops si è verificato un errore";
+		header("Location: ./error.php?message=".$message."&redirect=./homepage.php");
+		exit();
+		
 	}
 	else{
 		
@@ -125,7 +127,7 @@ function insert_utente($username, $email, $name, $surname, $password, $error){
 	//echo "sto inserendo $username e $password";
 	$hash = password_hash($password, PASSWORD_DEFAULT);
     
-	//echo "HASH: $hash";
+	
     //Query parametrizzata per evitare l'sql injection
 	if(!$error){
 		$sql = "INSERT INTO arbitro(username, email, nome, cognome, password) VALUES($1, $2, $3, $4, $5)";

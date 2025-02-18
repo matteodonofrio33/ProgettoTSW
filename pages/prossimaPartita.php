@@ -6,8 +6,11 @@ include('../includes/header.php');
 
 require('../backend/conn.php'); // Connessione al database
 if (!isset($_SESSION['username'])) {
+    $message = "Errore: utente non autenticato";
+	header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
     die("Errore: utente non autenticato.");
 }
+
 $arbitro = $_SESSION['username'];
 $sql = "SELECT 
             REFERTO.id_referto AS \"ID REFERTO\",
@@ -21,8 +24,10 @@ $sql = "SELECT
         WHERE REFERTO.id_arbitro = $1;";
 $ret = pg_query_params($db, $sql, array($arbitro));
 if (!$ret) {
-    echo "ERRORE QUERY: " . pg_last_error($db);
-    return false;
+    $message = "Errore: utente non autenticato";
+	header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
+    exit();
+   
 }
 // Inizializza una variabile per salvare il nome dello stadio
 $stadio = null;
@@ -185,8 +190,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     else {
         console.log("Stadio non riconosciuto:", stadio);
     }
-    //console.log("Prossima partita in:", stadio); //debug
-    //console.log("Coordinate stadio:", latStadio, longStadio);
+   
 
     document.addEventListener("DOMContentLoaded", function () {
         // meteo
