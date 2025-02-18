@@ -17,21 +17,25 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$giocatore11 = $_SESSION['giocatore11'] ?? null;
-$giocatore12 = $_SESSION['giocatore12'] ?? null;
-$giocatore13 = $_SESSION['giocatore13'] ?? null;
-$giocatore14 = $_SESSION['giocatore14'] ?? null;
-$giocatore15 = $_SESSION['giocatore15'] ?? null;
-$giocatore16 = $_SESSION['giocatore16'] ?? null;
+$giocatore11 = isset($_SESSION['giocatore11']) ? $_SESSION['giocatore11'] : '';
+$giocatore12 = isset($_SESSION['giocatore12']) ? $_SESSION['giocatore12'] : '';
+$giocatore13 = isset($_SESSION['giocatore13']) ? $_SESSION['giocatore13'] : '';
+$giocatore14 = isset($_SESSION['giocatore14']) ? $_SESSION['giocatore14'] : '';
+$giocatore15 = isset($_SESSION['giocatore15']) ? $_SESSION['giocatore15'] : '';
+$giocatore16 = isset($_SESSION['giocatore16']) ? $_SESSION['giocatore16'] : '';
+
+
 
 $team1 = array($giocatore11, $giocatore12, $giocatore13, $giocatore14, $giocatore15, $giocatore16);
 
-$giocatore21 = $_SESSION['giocatore21'] ?? null;
-$giocatore22 = $_SESSION['giocatore22'] ?? null;
-$giocatore23 = $_SESSION['giocatore23'] ?? null;
-$giocatore24 = $_SESSION['giocatore24'] ?? null;
-$giocatore25 = $_SESSION['giocatore25'] ?? null;
-$giocatore26 = $_SESSION['giocatore26'] ?? null;
+$giocatore21 = isset($_SESSION['giocatore21']) ? $_SESSION['giocatore21'] : '';
+$giocatore22 = isset($_SESSION['giocatore22']) ? $_SESSION['giocatore22'] : '';
+$giocatore23 = isset($_SESSION['giocatore23']) ? $_SESSION['giocatore23'] : '';
+$giocatore24 = isset($_SESSION['giocatore24']) ? $_SESSION['giocatore24'] : '';
+$giocatore25 = isset($_SESSION['giocatore25']) ? $_SESSION['giocatore25'] : '';
+$giocatore26 = isset($_SESSION['giocatore26']) ? $_SESSION['giocatore26'] : '';
+
+
 
 $team2 = array($giocatore21, $giocatore22, $giocatore23, $giocatore24, $giocatore25, $giocatore26);
 
@@ -422,28 +426,15 @@ print_r($team2);
    $qr = pg_query_params($db, $q, array($esito, $numFalli, $id_arbitro, $id_partita));
 
    if (!$qr) {
-   echo "ERRORE QUERY: " . pg_last_error($db);
-   return false;
+     // echo "ERRORE QUERY: " . pg_last_error($db);
+      $message = "Oops si è verificato un errore";
+      header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+      exit();
+   //return false;
    }
 
 
-
-
-
-
-
-
-
-
-
-
    }
-
-
-   
-
-
-
 
 
 ?>
@@ -479,15 +470,21 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
    $qr = pg_query_params($db, $q, array($nome_giocatore));
 
    if (!$qr) {
-      echo "ERRORE QUERY: " . pg_last_error($db);
-      return false;
+      //echo "ERRORE QUERY: " . pg_last_error($db);
+      $message = "Oops si è verificato un errore";
+      header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+      exit();
+      //return false;
    }
 
    $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore'); //riga 491
    //echo "<br>NOME GIOCATOREEE $nome_giocatore   ID $id_giocatore";
    
    if(!$id_giocatore) {
-      echo "<h1> Non è stato trovato l'id del giocatore </h1>".$nome_giocatore;
+     // echo "<h1> Non è stato trovato l'id del giocatore </h1>".$nome_giocatore;
+      $message = "Oops si è verificato un errore";
+      header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+      exit();
    } else {
       $id_giocatori[] = $id_giocatore;
    }
@@ -503,8 +500,11 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
       $qr = pg_query_params($db, $q, array($id, $id_partita, $stato, $minuto));
 
       if (!$qr) {
-         echo "ERRORE QUERY: " . pg_last_error($db);
-         return false;
+        // echo "ERRORE QUERY: " . pg_last_error($db);
+         $message = "Oops si è verificato un errore";
+         header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+         exit();
+        // return false;
       } else {
          header("Location: ./homepage.php");
       }
@@ -530,7 +530,7 @@ function isValidState($str) {
    $flag = true;
 
    foreach($str2 as $s){
-      if($s !== "marcatore" && $s !== "ammonito" && $s !== "espulso" && $s !== "assente")
+      if($s !== "marcatore" && $s !== "ammonito" && $s !== "espulso" && $s !== "assente" && $s !== "presente")
          $flag = false;
    }
 

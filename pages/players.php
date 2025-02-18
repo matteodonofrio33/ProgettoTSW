@@ -38,8 +38,11 @@ $ret = pg_query_params($db, $sql, array($arbitro));
 //echo "ID ARBITRO: $arbitro";
 
 if (!$ret) {
-    echo "ERRORE QUERY: " . pg_last_error($db);
-    return false;
+   // echo "ERRORE QUERY: " . pg_last_error($db);
+    $message = "Oops si è verificato un errore";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+    exit();
+   // return false;
 }
 
 
@@ -67,8 +70,11 @@ $sql = "SELECT
 $ret = pg_query_params($db, $sql, array($squadra1));
 
 if (!$ret) {
-    echo "ERRORE QUERY: " . pg_last_error($db);
-    return false;
+    //echo "ERRORE QUERY: " . pg_last_error($db);
+    //return false;
+    $message = "Oops si è verificato un errore";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+    exit();
 }
 
 $giocatore11 = $giocatore12 = $giocatore13 = $giocatore14 = $giocatore15 = $giocatore16 = null;
@@ -107,8 +113,11 @@ $sql2 = "SELECT
 $ret2 = pg_query_params($db, $sql2, array($squadra2));
 
 if (!$ret2) {
-    echo "ERRORE QUERY: " . pg_last_error($db);
-    return false;
+    //echo "ERRORE QUERY: " . pg_last_error($db);
+    //return false;
+    $message = "Oops si è verificato un errore";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+    exit();
 }
 
 

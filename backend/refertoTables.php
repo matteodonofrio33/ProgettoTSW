@@ -16,6 +16,7 @@ require('../pages/players.php');
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 /*
 $giocatore11 = isset($_SESSION['giocatore11']) ? $_SESSION['giocatore11'] : '';
 $giocatore12 = isset($_SESSION['giocatore12']) ? $_SESSION['giocatore12'] : '';
@@ -196,9 +197,9 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
         let arrayElements = str.split(", ");
 
         arrayElements.forEach(element => {
-            if(element != "marcatore" && element != "ammonito" && element != "espulso" && element != "assente"){
+            if(element != "marcatore" && element != "ammonito" && element != "espulso" && element != "assente"  && element != "presente"){
                 
-                alert("Assicurati di inserire le stringhe corrette nel campo stato giocatore");
+                alert("Assicurati di insericlearre le stringhe corrette nel campo stato giocatore");
                 
             } else if(element.includes("marcatore")){
                 goals++;
@@ -214,6 +215,10 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
 
             if(element.includes("espulso")){
                 rossi++;
+                stato.readOnly = true;
+            } 
+            if(element.includes("assente") || element.includes("presente")){
+                
                 stato.readOnly = true;
             } 
 
