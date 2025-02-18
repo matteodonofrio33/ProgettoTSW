@@ -61,7 +61,7 @@ echo "SQUADRE: ";
 $sql = "SELECT 
             GIOCATORE.nome_giocatore AS \"Nome Giocatore\"
             FROM GIOCATORE
-            JOIN PARTECIPAZIONE ON GIOCATORE.id_giocatore = PARTECIPAZIONE.id_giocatore
+            /*JOIN PARTECIPAZIONE ON GIOCATORE.id_giocatore = PARTECIPAZIONE.id_giocatore*/
             WHERE GIOCATORE.nome_squadra = $1 ";
 
 $ret = pg_query_params($db, $sql, array($squadra1));
@@ -101,7 +101,7 @@ while ($row = pg_fetch_assoc($ret)) {
 $sql2 = "SELECT 
             GIOCATORE.nome_giocatore AS \"Nome Giocatore\"
             FROM GIOCATORE
-            JOIN PARTECIPAZIONE ON GIOCATORE.id_giocatore = PARTECIPAZIONE.id_giocatore
+           /* JOIN PARTECIPAZIONE ON GIOCATORE.id_giocatore = PARTECIPAZIONE.id_giocatore*/
             WHERE GIOCATORE.nome_squadra = $1 ";
 
 $ret2 = pg_query_params($db, $sql2, array($squadra2));

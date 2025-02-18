@@ -483,7 +483,7 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
    }
 
    $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore'); //riga 491
-   echo "<br>NOME GIOCATOREEE $nome_giocatore   ID $id_giocatore";
+   //echo "<br>NOME GIOCATOREEE $nome_giocatore   ID $id_giocatore";
    
    if(!$id_giocatore) {
       echo "<h1> Non è stato trovato l'id del giocatore </h1>".$nome_giocatore;
@@ -497,7 +497,8 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
      foreach ($id_giocatori as $index => $id) {
       $stato = $stati[$index];
       $minuto = $minuti[$index];
-      $q = "INSERT INTO PARTECIPAZIONE (id_giocatore, id_partita, stato_giocatore, minuto) VALUES ($1, $2, $3, $4);";
+      $q = "INSERT INTO PARTECIPAZIONE (id_giocatore, id_partita, stato_giocatore, minuto) 
+      VALUES ($1, $2, $3, $4);";
       $qr = pg_query_params($db, $q, array($id, $id_partita, $stato, $minuto));
 
       if (!$qr) {
