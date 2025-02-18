@@ -26,14 +26,15 @@ if (!isset($_SESSION['username'])) {
 $arbitro = $_SESSION['username'];
 
 $sql = "SELECT 
-            PARTITA.nome_squadra1 AS \"SQUADRA1\",
-            PARTITA.nome_squadra2 AS \"SQUADRA2\"
-        FROM REFERTO
-        JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
-        WHERE REFERTO.id_arbitro = $1
-        AND REFERTO.stato_partita IS NULL; ";
+    PARTITA.nome_squadra1 AS \"SQUADRA1\",
+    PARTITA.nome_squadra2 AS \"SQUADRA2\"
+FROM REFERTO
+JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
+WHERE REFERTO.id_arbitro = $1
+AND (REFERTO.stato_partita IS NULL OR REFERTO.stato_partita = ''); ";
 
 $ret = pg_query_params($db, $sql, array($arbitro));
+//echo "ID ARBITRO: $arbitro";
 
 if (!$ret) {
     echo "ERRORE QUERY: " . pg_last_error($db);
@@ -49,11 +50,11 @@ if (!$ret) {
         $squadra2 = $row['SQUADRA2'];
     }
 
-/*
+    /*
+echo "SQUADRE: ";
     echo "$squadra1";
     echo "<br> $squadra2";
-*/
-
+*/ 
 //SQUADRA 1:
 
 $sql = "SELECT 
@@ -93,7 +94,7 @@ while ($row = pg_fetch_assoc($ret)) {
 
 
 
-//echo " Giocatori squadra 1: $giocatore1, $giocatore2, $giocatore3, $giocatore4, $giocatore5, $giocatore6 ";
+//echo " Giocatori squadra 1: $giocatore11, $giocatore12, $giocatore13, $giocatore14, $giocatore15, $giocatore16 ";
 
 //SQUADRA 2
 $sql2 = "SELECT 
@@ -131,7 +132,9 @@ while ($row2 = pg_fetch_assoc($ret2)) {
     $i++;
 }
 
-//uso le variabili session per passare queste info a refert.php
+//echo "$giocatore21, $giocatore22, $giocatore23, $giocatore24, $giocatore25, $giocatore26";
+
+//uso le variabili session per passare queste info a refert.php, refertTables.php
 $_SESSION['giocatore11'] = $giocatore11;
 $_SESSION['giocatore12'] = $giocatore12;
 $_SESSION['giocatore13'] = $giocatore13;
@@ -140,13 +143,18 @@ $_SESSION['giocatore15'] = $giocatore15;
 $_SESSION['giocatore16'] = $giocatore16;
 
 $_SESSION['giocatore21'] = $giocatore21;
-$_SESSION['giocatore12'] = $giocatore22;
+$_SESSION['giocatore22'] = $giocatore22;
 $_SESSION['giocatore23'] = $giocatore23;
 $_SESSION['giocatore24'] = $giocatore24;
 $_SESSION['giocatore25'] = $giocatore25;
 $_SESSION['giocatore26'] = $giocatore26;
 
 $_SESSION['id_arbitro'] = $arbitro;
+
+$_SESSION['squadra1'] = $squadra1;
+$_SESSION['squadra2'] = $squadra2;
+
+
 
 
 

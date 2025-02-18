@@ -369,11 +369,10 @@ if($err){
 
 
    //prelevo l'id_partita tra le partite che si devono refertare:
-   $q = "SELECT PARTITA.id_partita
-            FROM PARTITA
-            JOIN REFERTO ON PARTITA.id_partita = REFERTO.id_partita
-         WHERE REFERTO.id_arbitro = $1;
-        ";       
+   $q = "SELECT id_partita
+         FROM REFERTO
+         WHERE id_arbitro = $1
+         AND (stato_partita IS NULL OR stato_partita = ''); ";
 
    $qr = pg_query_params($db, $q, array($id_arbitro));
 
@@ -383,9 +382,12 @@ if($err){
    }
 
    $id_partita = pg_fetch_result($qr, 0, 'id_partita');
+   
 
    if(!$id_partita) {
       echo "<h1> Non ci sono partite da refertare </h1>";
+   } else {
+      echo "<h1> ID PARTITA $id_partita </h1>";
    }
 /*
 print_r($team1);
@@ -451,7 +453,8 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
    //TEAM1:
    //prelevo id_giocatore dato il suo nome
    $id_giocatori = []; //array che conterrà gli id trovati
-   //print_r($team);
+   echo "teammmmmm";
+   print_r($team);
   // echo "<br>Giocatori: ";
    foreach($team as $nome_giocatore){
 
@@ -462,6 +465,7 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
             WHERE nome_giocatore = $1;
             "; 
 
+//echo "<br>NOME GIOCATOREEE $nome_giocatore";
 
    $qr = pg_query_params($db, $q, array($nome_giocatore));
 
@@ -471,6 +475,7 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
    }
 
    $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore'); //riga 491
+   echo "<br>NOME GIOCATOREEE $nome_giocatore   ID $id_giocatore";
    
    if(!$id_giocatore) {
       echo "<h1> Non è stato trovato l'id del giocatore </h1>".$nome_giocatore;

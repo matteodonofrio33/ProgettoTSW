@@ -10,13 +10,39 @@
     <form id="formTeam1" method="post" action="../pages/refert.php" >
 
 <?php
+session_start();
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+$giocatore11 = isset($_SESSION['giocatore11']) ? $_SESSION['giocatore11'] : '';
+$giocatore12 = isset($_SESSION['giocatore12']) ? $_SESSION['giocatore12'] : '';
+$giocatore13 = isset($_SESSION['giocatore13']) ? $_SESSION['giocatore13'] : '';
+$giocatore14 = isset($_SESSION['giocatore14']) ? $_SESSION['giocatore14'] : '';
+$giocatore15 = isset($_SESSION['giocatore15']) ? $_SESSION['giocatore15'] : '';
+$giocatore16 = isset($_SESSION['giocatore16']) ? $_SESSION['giocatore16'] : '';
 
-    require('../pages/players.php');
+
+$giocatore21 = isset($_SESSION['giocatore21']) ? $_SESSION['giocatore21'] : '';
+$giocatore22 = isset($_SESSION['giocatore22']) ? $_SESSION['giocatore22'] : '';
+$giocatore23 = isset($_SESSION['giocatore23']) ? $_SESSION['giocatore23'] : '';
+$giocatore24 = isset($_SESSION['giocatore24']) ? $_SESSION['giocatore24'] : '';
+$giocatore25 = isset($_SESSION['giocatore25']) ? $_SESSION['giocatore25'] : '';
+$giocatore26 = isset($_SESSION['giocatore26']) ? $_SESSION['giocatore26'] : '';
+
+$squadra1 = isset($_SESSION['squadra1']) ? $_SESSION['squadra1'] : '';
+$squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
+
+
+
+/*
+echo " Giocatori squadra 1: $giocatore11, $giocatore12, $giocatore13, $giocatore14, $giocatore15, $giocatore16 ";
+echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore24, $giocatore25, $giocatore26";
+*/
+
+
+   // require('../pages/players.php');
     
     //echo "$giocatore1";
     echo "<div class='tables'>";
@@ -134,13 +160,13 @@ error_reporting(E_ALL);
 
 
     ?>
-    <input type="submit" name="send" value="Invia" />
+   <div id= "bottone"> <input type="submit" name="send" value="Invia" /> </div>
     </form>
 
     <div id="results">
     <h2>
         <span id="team1Name"><?php echo "$squadra1"; ?></span> 
-        <span id="score0">0</span> - 
+        <span id="score0">0</span> 
         <span id="score1">0</span> 
         <span id="team2Name"><?php echo "$squadra2"; ?></span>
     </h2>
@@ -150,7 +176,7 @@ error_reporting(E_ALL);
     </h2>
 
 
-    <div id= "bottone"> <input type="submit" name="send" value="Invia" /> </div>
+   
 
 </div>
 
