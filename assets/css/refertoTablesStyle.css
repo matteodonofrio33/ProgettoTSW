@@ -64,9 +64,11 @@ tr:hover {
 
 
 #results {
-    position: absolute;
-    top: 370px; /* Regola la distanza dall'alto */
-    right: 190px; /* Sposta il contenitore a destra */
+    width: 200px;
+    position:absolute;
+    top: 300px; /* Regola la distanza dall'alto */
+    right: 10px; /* Sposta il contenitore a destra */
+    left:1000px;
     font-size: 24px; /* Ingrandisce il testo */
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.1); /* Sfondo leggero */
@@ -123,8 +125,28 @@ tr:hover {
     color: white;
     font-size: 16px;
     cursor: pointer;
+
 }
 
 #bottone input[type="submit"]:hover {
     background-color: #e67e22; /* Colore al passaggio del mouse */
+}
+
+#bottone, #numFalli {
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+#formTeam1 {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#numFalli {
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
 }
