@@ -462,8 +462,7 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
 
       $q = "SELECT id_giocatore
             FROM GIOCATORE
-            WHERE nome_giocatore = $1;
-            "; 
+            WHERE nome_giocatore = $1;"; 
 
 //echo "<br>NOME GIOCATOREEE $nome_giocatore";
 
