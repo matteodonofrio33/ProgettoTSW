@@ -18,6 +18,14 @@ ini_set('display_errors', 1);
 
   <?php include '../includes/header.php'; ?>
 
+  <?php if(isset($_SESSION['username'])) { ?>
+      <script src="../assets/js/homepageJS.js"></script>
+      <h1 id="title1">Benvenuto <?php echo htmlspecialchars($_SESSION['username']); ?>, pronto per arbitrare?</h1>
+      <?php 
+        } else { ?>
+          <h1 id="title2">Benvenuto!</h1>
+  <?php } ?>
+
   <?php 
   if(isset($_SESSION['username'])) { ?>
      <?php echo htmlspecialchars($_SESSION['username']); ?>
@@ -124,9 +132,6 @@ ini_set('display_errors', 1);
 
     <?php include '../includes/footer.html'; ?>
 
-    <?php if(isset($_SESSION['username'])) { ?>
-        <script src="../assets/js/homepageJS.js"></script>
-    <?php } ?>
 
 </body>
 </html>
