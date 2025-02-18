@@ -461,8 +461,10 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
    //TEAM1:
    //prelevo id_giocatore dato il suo nome
    $id_giocatori = []; //array che conterrà gli id trovati
+   /*
    echo "teammmmmm";
    print_r($team);
+   */
   // echo "<br>Giocatori: ";
    foreach($team as $nome_giocatore){
 
@@ -503,6 +505,8 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
       if (!$qr) {
          echo "ERRORE QUERY: " . pg_last_error($db);
          return false;
+      } else {
+         header("Location: ./homepage.php");
       }
    }
 
