@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/css/refertoTablesStyle.css">
-    <title>refertoTables</title>
+    <title>Document</title>
+    <link rel="icon" href="../assets/immagini/fischietto.ico" type="image/x-icon">
+
 </head>
 <body>
 
