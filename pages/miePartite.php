@@ -1,7 +1,6 @@
 <?php
-    require('../backend/conn.php');
-    
-
+    session_start();
+    require('../backend/conn.php')
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +24,8 @@
     </form>
 
     <?php
-
+    $arbitro = $_SESSION['username'];
+    //echo "<h3>$arbitro</h3>";
     if (isset($_POST['idRef']) && !empty($_POST['idRef'])) {  
         $id_referto = $_POST['idRef'];
 
@@ -46,13 +46,13 @@
                 JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
                 JOIN PARTECIPAZIONE ON PARTITA.id_partita = PARTECIPAZIONE.id_partita
                 JOIN GIOCATORE ON PARTECIPAZIONE.id_giocatore = GIOCATORE.id_giocatore
-                WHERE REFERTO.id_referto = $1";
+                WHERE REFERTO.id_referto = $1 AND REFERTO.id_arbitro = $arbitro";
 
         $ret = pg_query_params($db, $sql, array($id_referto));
 
         if (!$ret) {
-            $message = "Password errata";
-			header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
+            $message = "Non ci sono partite con l'id referto inserito";
+			header("Location: ../backend/error.php?message=".$message."&redirect=../pages/miePartite.php");
             echo "Errore query: " . pg_last_error($db);
         } elseif (pg_num_rows($ret) > 0) {
             $first_row = pg_fetch_assoc($ret);
