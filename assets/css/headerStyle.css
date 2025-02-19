@@ -64,16 +64,23 @@ header {
     text-shadow: 0 0 5px #6cade2;
 }
 
-span {
+#log {
     display: block;
-    margin-left: -36px;
+    flex-direction: row;
+    justify-content: center;
+    width: 100px;
+    margin-left: -45px;
     margin-top: -10px;
 } 
 
-#logout {
+#login {
+    margin-left: 10px;
+}
+
+/*#logout {
     margin-left: -10px;
     margin-top: -10px;
-}
+}*/
 
 
 #access {

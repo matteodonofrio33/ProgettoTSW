@@ -21,7 +21,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <ul id="list">
                 <li id="access"> <a href="#"> <img src="../assets/immagini/user.png" alt="userImg"> </a>
                    <!-- <span> <a href="../pages/login.html"> Login </a> </span> -->
-                   <span>
+                   <span id="log">
                         <?php 
                         if (isset($_SESSION['username'])) { 
                             echo '<a id="logout" href="../backend/logout.php">Logout</a>';
