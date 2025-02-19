@@ -36,13 +36,9 @@
 </div>
 
 
-<script type="text/javascript">
 
-	
-
-
-</script>
 
 
 </body>
+<?php include('../includes/footer.html'); ?>
 </html>

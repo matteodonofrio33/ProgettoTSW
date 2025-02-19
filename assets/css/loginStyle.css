@@ -8,6 +8,11 @@ body {
     align-items: center;
     margin: 0;
     color: #fff;
+    
+}
+h2 {
+    margin-top: 70%;
+    
 }
 
 .title-container {
@@ -16,7 +21,10 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin: 20px;
+    
 }
+
+
 
 
 .loginArea {

@@ -11,6 +11,10 @@ body {
     color: #fff;
 }
 
+.contents {
+    padding-top: 30%;
+}
+
 .titleContainer {
     text-align: center;
     margin-top: 100px;

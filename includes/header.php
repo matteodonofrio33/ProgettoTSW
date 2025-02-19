@@ -26,7 +26,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         if (isset($_SESSION['username'])) { 
                             echo '<a id="logout" href="../backend/logout.php">Logout</a>';
                         } else { 
-                            echo '<a id="login" href="../pages/login.html">Login</a>';
+                            echo '<a id="login" href="../pages/login.php">Login</a>';
                         } 
                         ?>
                     </span>
@@ -36,9 +36,9 @@ if (session_status() == PHP_SESSION_NONE) {
                     <li> <a href="../pages/miePartite.php">Le mie partite</a></li>
                     <li> <a href="../pages/prossimaPartita.php">Prossima partita</a></li>
                 <?php } else { ?>
-                    <li> <a href="../pages/login.html">Crea referto</a></li>
-                    <li> <a href="../pages/login.html">Le mie partite</a></li>
-                    <li> <a href="../pages/login.html">Prossima partita</a></li>
+                    <li> <a href="../pages/login.php">Crea referto</a></li>
+                    <li> <a href="../pages/login.php">Le mie partite</a></li>
+                    <li> <a href="../pages/login.php">Prossima partita</a></li>
                 <?php } ?>
             </ul>
         </nav>
