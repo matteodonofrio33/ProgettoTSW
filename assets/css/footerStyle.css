@@ -6,7 +6,9 @@ html, body {
 }
 
 footer {
-    bottom: 0;
+    margin-top: 20%;
+    
+    margin-bottom: 0;
     left: 0;
     width: 100%;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
