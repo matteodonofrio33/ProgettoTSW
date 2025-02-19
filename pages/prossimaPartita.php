@@ -1,16 +1,9 @@
-
 <?php
 session_start();
-
-include('../includes/header.php');
-
 require('../backend/conn.php'); // Connessione al database
 if (!isset($_SESSION['username'])) {
-    $message = "Errore: utente non autenticato";
-	header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
     die("Errore: utente non autenticato.");
 }
-
 $arbitro = $_SESSION['username'];
 $sql = "SELECT 
             REFERTO.id_referto AS \"ID REFERTO\",
@@ -26,10 +19,8 @@ $sql = "SELECT
 
 $ret = pg_query_params($db, $sql, array($arbitro));
 if (!$ret) {
-    $message = "Errore: utente non autenticato";
-	header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
-    exit();
-   
+    echo "ERRORE QUERY: " . pg_last_error($db);
+    return false;
 }
 // Inizializza una variabile per salvare il nome dello stadio
 $stadio = null;
@@ -47,79 +38,8 @@ $ret = pg_query_params($db, $sql, array($arbitro));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../assets/css/prossimaPartitaStyle.css">
     <title>Prossima partita</title>
-    <link rel="icon" href="../assets/immagini/fischietto.ico" type="image/x-icon">
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1e1e2f;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            margin-top: 20px;
-            font-size: 28px;
-            color: #f1c40f;
-        }
-        #tableContainer{
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        table {
-            width: 80%;
-            max-width: 1000px;
-            border-collapse: collapse;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            /*overflow: hidden;*/
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-        }
-        th, td {
-            padding: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: left;
-        }
-        th {
-            background-color: rgba(241, 196, 15, 0.8);
-            color: black;
-            font-weight: bold;
-        }
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        td {
-            font-size: 16px;
-        }
-        .noPart {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #e74c3c;
-        }
-
-        #meteoStadio, #distanceStadium, #payment{
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
-        }
-
-        #info_match {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin: 20px ;
-            width: 100%;
-        }
-
-
-
-    </style>
 </head>
 <body>
     <h1>La tua prossima partita sarà:</h1>
@@ -154,7 +74,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
         <div id="meteoStadio"></div>
         <img src="../assets/immagini/posizione.png" alt="Meteo Stadio" style="display:none" id="img2">
         <div><p id="distanceStadium"></p></div>
-        <img src="../assets/immagini/compenso.png" alt="Meteo Stadio" style="display:none" id="img2">
+        <img src="../assets/immagini/compenso.png" alt="Meteo Stadio" style="display:none" id="img3">
         <div><p id="payment"></p></div>
     </div>
 
@@ -194,7 +114,8 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     else {
         console.log("Stadio non riconosciuto:", stadio);
     }
-   
+    //console.log("Prossima partita in:", stadio); //debug
+    //console.log("Coordinate stadio:", latStadio, longStadio);
 
     document.addEventListener("DOMContentLoaded", function () {
         // meteo
@@ -204,10 +125,10 @@ $ret = pg_query_params($db, $sql, array($arbitro));
             img3=document.getElementById("img3");
             div=document.getElementById("info_match");
 
-            div.style.display="block";
-            img1.style.display="block";
-            img2.style.display="block";
-            img3.style.display="block";
+            div.style.display="flex";
+            img1.style.display="flex";
+            img2.style.display="flex";
+            img3.style.display="flex";
             
             var xhttp = new XMLHttpRequest();
             var apiKey = "09515bcce37bc93c4496846db36038b7";
