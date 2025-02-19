@@ -1,16 +1,22 @@
-header {
-    margin-top: 0;
-    
-    background-color: #000;
-}
-
 body {
-   
+    width: 100%;
+    
+    overflow-x: hidden;
     position: relative;
     min-height: 100vh;
     font-family: 'Poppins', Arial, sans-serif;
     color: #e0e1dd;
+    margin: 0;
+    padding: 0;
+  
 }
+
+header {
+    margin-top: 0;
+    background-color: #000;
+}
+
+
 
 #list {
     position: relative;
