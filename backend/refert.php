@@ -211,15 +211,6 @@ else {
    
 $minuti1 = array($minuto11, $minuto12, $minuto13, $minuto14, $minuto15, $minuto16);
 
-
-
-/*
-   echo "$statoGiocatore11, $statoGiocatore12, $statoGiocatore13, $statoGiocatore14, $statoGiocatore15, $statoGiocatore16 ";
-   echo "$minuto11, $minuto12, $minuto13, $minuto14, $minuto15, $minuto16 ";
-
-*/
-
-
 //prendo gli stati giocatore:
 if(isset($_POST['statoGiocatore21'])) {
    $statoGiocatore21 = $_POST['statoGiocatore21'];
@@ -390,22 +381,13 @@ if($err){
    } else {
       echo "<h1> ID PARTITA $id_partita </h1>";
    }
-/*
-print_r($team1);
-print_r($team2);
-*/
+
    inserisciPartecipazione($db, $id_partita, $team1, $stati1, $minuti1);
    inserisciPartecipazione($db, $id_partita, $team2, $stati2, $minuti2);
 
    //popolo la tabella REFERTO
 
    $esito = $m0."-".$m1;
-
-   /*
-   $q = "INSERT INTO REFERTO(stato_partita, numero_falli, id_partita, id_arbitro)
-         VALUES($1, $2, $3, $4)
-        ";      
-        */
         
     $q ="UPDATE REFERTO
          SET stato_partita = $1, numero_falli = $2, id_arbitro = $3
@@ -441,11 +423,7 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
    //TEAM1:
    //prelevo id_giocatore dato il suo nome
    $id_giocatori = []; //array che conterrà gli id trovati
-   /*
-   echo "teammmmmm";
-   print_r($team);
-   */
-  // echo "<br>Giocatori: ";
+
    foreach($team as $nome_giocatore){
 
      // echo "<br> $nome_giocatore";
@@ -453,8 +431,6 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
       $q = "SELECT id_giocatore
             FROM GIOCATORE
             WHERE nome_giocatore = $1;"; 
-
-//echo "<br>NOME GIOCATOREEE $nome_giocatore";
 
    $qr = pg_query_params($db, $q, array($nome_giocatore));
 
@@ -466,11 +442,9 @@ function inserisciPartecipazione($db, $id_partita, $team, $stati, $minuti) {
       //return false;
    }
 
-   $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore'); //riga 491
-   //echo "<br>NOME GIOCATOREEE $nome_giocatore   ID $id_giocatore";
+   $id_giocatore = pg_fetch_result($qr, 0, 'id_giocatore');
    
    if(!$id_giocatore) {
-     // echo "<h1> Non è stato trovato l'id del giocatore </h1>".$nome_giocatore;
       $message = "Oops si è verificato un errore";
       header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
       exit();
@@ -548,7 +522,6 @@ function isValidateMin($str) {//prende la stringa di minuti
    }
 
    if($notNum || $notInterval){
-      //echo"<h1> Si è verificato un errore. </h1>" ;
       return false;  //ritorna false se non è un numero o non è nell'intervallo
    } 
 

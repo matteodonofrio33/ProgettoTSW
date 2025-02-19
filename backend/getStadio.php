@@ -1,8 +1,8 @@
 <?php
-session_start();
+/*session_start();
 session_set_cookie_params(0);
 
-require('../backend/conn.php'); // Connessione al database
+require('../backend/conn.php');
 
 if (!$db) {
     $message = "Ooops si è verificato un problema";
@@ -50,5 +50,5 @@ if ($num_rows === false) {
     $message = "Ooops si è verificato un problema";
     header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
     die("Errore con pg_num_rows: " . pg_last_error($db));
-}
+}*/
 ?>

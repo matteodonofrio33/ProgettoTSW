@@ -101,9 +101,7 @@ function exist($valore, $campo){
 	
 	
 	$sql = "SELECT $campo FROM arbitro WHERE $campo=$1";
-	//$prep = pg_prepare($db, "sqlQuery", $sql);
 	$ret = pg_query_params($db, $sql, array($valore));
-	// $ret sarà uguale a false in caso di fallimento nell'esecuzione del prepared statement
 
 	if(!$ret) {
 		$message = "Oops si è verificato un errore";
@@ -125,7 +123,6 @@ function exist($valore, $campo){
 
 function insert_utente($username, $email, $name, $surname, $password, $error){
 	require "../backend/conn.php"; //connessione
-	//echo "sto inserendo $username e $password";
 	$hash = password_hash($password, PASSWORD_DEFAULT);
     
 	

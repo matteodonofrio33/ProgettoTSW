@@ -51,7 +51,6 @@ ini_set('display_errors', 1);
 
     <?php 
     } else { ?>
-    <!-- <h1>Benvenuto!</h1> -->
 
     <div class="videoAuto">
     <video autoplay loop muted width="800">
@@ -61,10 +60,6 @@ ini_set('display_errors', 1);
     </div>
 
     <div id="mainContent"> 
-      <!-- <p>
-        Questa è la homepage pubblica. Accedi per scoprire contenuti riservati e personalizzati.
-      </p> -->
-    
 
       <p>
         Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,

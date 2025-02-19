@@ -1,8 +1,7 @@
 <?php
-// Controllo se la sessione non è stata avviata
-if (session_status() == PHP_SESSION_NONE) {
+//controllo se la sessione non è stata avviata
+if (session_status()==PHP_SESSION_NONE) {
     session_start();
-    //session_set_cookie_params(0);
 }
 ?>
 
@@ -20,7 +19,6 @@ if (session_status() == PHP_SESSION_NONE) {
         <nav class="menu">
             <ul id="list">
                 <li id="access"> <a href="#"> <img src="../assets/immagini/user.png" alt="userImg"> </a>
-                   <!-- <span> <a href="../pages/login.html"> Login </a> </span> -->
                    <span id="log">
                         <?php 
                         if (isset($_SESSION['username'])) { 
@@ -43,17 +41,6 @@ if (session_status() == PHP_SESSION_NONE) {
             </ul>
         </nav>
     </header>
-
-    <?php
-        /*if(isset($_SESSION['username'])) { ?>
-            <h1 id="title1">Benvenuto <?php echo htmlspecialchars($_SESSION['username']); ?>, pronto per arbitrare?</h1>
-    <?php 
-    } else { ?>
-        <h1 id="title2">Benvenuto!</h1>
-    <?php } */?>
-    
-
-
 
     <script type="text/javascript"> 
 

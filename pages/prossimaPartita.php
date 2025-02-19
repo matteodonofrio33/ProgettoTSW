@@ -84,7 +84,6 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     var latStadio=0;
     var longStadio=0;
     var pay=0;
-    //document.addEventListener("DOMContentLoaded",function() {
     var stadio="<?php echo $stadio; ?>"; //recupera il nome dello stadio
     var citta="";
     var abilita="false";
@@ -186,9 +185,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
                 //alert("Latitudine ottenuta: " + lat); //debug
                 //alert("Longitudine ottenuta: " + long); //debug
 
-                //calcola la distanza solo dopo aver ottenuto la posizione
                 let distance=calculateDistance(latStadio, longStadio, lat, long);
-                //alert("Distanza dallo stadio: " + distance.toFixed(2) + " km"); //debug
                 document.getElementById("distanceStadium").innerHTML = `<strong>Distanza:</strong> ${distance.toFixed(2)} km`;
 
                 calculatePay(distance);
@@ -213,10 +210,6 @@ $ret = pg_query_params($db, $sql, array($arbitro));
 
     if(abilita==="true")
         myPos(); 
-
-    //distance=calculateDistance(latStadio, longStadio, lat, long);
-    //alert(distance); //prova stampa distanza
-
 
     </script>
 </body>
