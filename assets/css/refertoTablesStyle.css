@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     background-color: #1e1e2f;
@@ -6,12 +7,35 @@ body {
     margin: 0;
     padding: 0;
 }
-
-.tables{
-    position: absolute;
-    top: 80px;
-    left: 100px;
+.table1{
+    
+    height: 700px;
+   
 }
+#tables {
+    top: 200px;
+    left: 100px;
+    margin-top: 40px; 
+    margin-bottom: 40px; 
+    margin-left: 5%;
+    width: 100%;
+    display: block;
+    text-align: center;
+    
+    height: 700px;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
 
 table {
     width: 150%;
@@ -31,7 +55,6 @@ th {
     background-color: rgba(241, 196, 15, 0.8);
     color: black;
     font-weight: bold;
-    
 }
 
 td {
@@ -66,23 +89,24 @@ tr:hover {
 #results {
     width: 200px;
     position:absolute;
-    top: 300px; /* Regola la distanza dall'alto */
-    right: 10px; /* Sposta il contenitore a destra */
+    margin-left: 10%;
+    top: 300px; 
+    right: 10px; 
     left:1000px;
-    font-size: 24px; /* Ingrandisce il testo */
+    font-size: 24px; 
     font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.1); /* Sfondo leggero */
+    background-color: rgba(255, 255, 255, 0.1); 
     padding: 15px 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-    display: inline-block; /* Impedisce l'allargamento dell'elemento */
+    display: inline-block; 
 }
 
 #results h2 {
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 10px; /* Distanza tra elementi */
+    gap: 10px; 
 }
 
 
@@ -93,18 +117,18 @@ tr:hover {
 #score0, #score1 {
     font-size: 26px;
     font-weight: bold;
-    color: yellow; /* Risalta il punteggio */
+    color: yellow; 
 }
 
 #ammoniti, #espulsioni {
     font-size: 20px;
     font-weight: bold;
-    margin-right: 20px; /* Distanza tra ammoniti e espulsioni */
+    margin-right: 20px; 
 }
 
 .num_espulsi {
     font-size: 20px;
-    color: #c0392b; /* Colore rosso per espulsioni */
+    color: #c0392b; 
 }
 
 .num_ammoniti{
@@ -113,13 +137,13 @@ tr:hover {
 }
 
 #results h2 {
-    margin-bottom: 10px; /* Spazio extra sotto l'intestazione */
+    margin-bottom: 10px; 
 }
 
 
 #bottone input[type="submit"] {
     padding: 10px 20px;
-    background-color: #f39c12; /* Colore di sfondo del bottone */
+    background-color: #f39c12; 
     border: none;
     border-radius: 5px;
     color: white;
@@ -129,7 +153,7 @@ tr:hover {
 }
 
 #bottone input[type="submit"]:hover {
-    background-color: #e67e22; /* Colore al passaggio del mouse */
+    background-color: #e67e22; 
 }
 
 #bottone, #numFalli {

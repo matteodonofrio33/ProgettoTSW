@@ -8,10 +8,13 @@
 <body>
 
 
-<div class="tables"> 
+
 
 <?php
 //session_start();
+
+
+
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -21,6 +24,8 @@ require('../backend/conn.php');
 
 
 if (!isset($_SESSION['username'])) {
+    $message = "Utente non autenticato";
+		header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
     die("Errore: utente non autenticato.");
 }
 
@@ -38,8 +43,11 @@ $ret = pg_query_params($db, $sql, array($arbitro));
 //echo "ID ARBITRO: $arbitro";
 
 if (!$ret) {
-    echo "ERRORE QUERY: " . pg_last_error($db);
-    return false;
+   // echo "ERRORE QUERY: " . pg_last_error($db);
+    $message = "Oops si è verificato un errore";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+    exit();
+   // return false;
 }
 
 
@@ -67,8 +75,11 @@ $sql = "SELECT
 $ret = pg_query_params($db, $sql, array($squadra1));
 
 if (!$ret) {
-    echo "ERRORE QUERY: " . pg_last_error($db);
-    return false;
+    //echo "ERRORE QUERY: " . pg_last_error($db);
+    //return false;
+    $message = "Oops si è verificato un errore";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+    exit();
 }
 
 $giocatore11 = $giocatore12 = $giocatore13 = $giocatore14 = $giocatore15 = $giocatore16 = null;
@@ -107,8 +118,11 @@ $sql2 = "SELECT
 $ret2 = pg_query_params($db, $sql2, array($squadra2));
 
 if (!$ret2) {
-    echo "ERRORE QUERY: " . pg_last_error($db);
-    return false;
+    //echo "ERRORE QUERY: " . pg_last_error($db);
+    //return false;
+    $message = "Oops si è verificato un errore";
+    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+    exit();
 }
 
 
@@ -164,4 +178,6 @@ $_SESSION['squadra2'] = $squadra2;
 ?>
     
 </body>
+
+
 </html>

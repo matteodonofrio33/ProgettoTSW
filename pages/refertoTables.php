@@ -4,40 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/css/refertoTablesStyle.css">
-    <title>Document</title>
+    <title>refertoTables</title>
 </head>
 <body>
+
+  
+
 
     <?php include '../includes/header.php'; ?>
 
     <form id="formTeam1" method="post" action="../backend/refert.php" >
 
+
 <?php
 //session_start();
 require('../backend/players.php');
 
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-/*
-$giocatore11 = isset($_SESSION['giocatore11']) ? $_SESSION['giocatore11'] : '';
-$giocatore12 = isset($_SESSION['giocatore12']) ? $_SESSION['giocatore12'] : '';
-$giocatore13 = isset($_SESSION['giocatore13']) ? $_SESSION['giocatore13'] : '';
-$giocatore14 = isset($_SESSION['giocatore14']) ? $_SESSION['giocatore14'] : '';
-$giocatore15 = isset($_SESSION['giocatore15']) ? $_SESSION['giocatore15'] : '';
-$giocatore16 = isset($_SESSION['giocatore16']) ? $_SESSION['giocatore16'] : '';
 
 
-$giocatore21 = isset($_SESSION['giocatore21']) ? $_SESSION['giocatore21'] : '';
-$giocatore22 = isset($_SESSION['giocatore22']) ? $_SESSION['giocatore22'] : '';
-$giocatore23 = isset($_SESSION['giocatore23']) ? $_SESSION['giocatore23'] : '';
-$giocatore24 = isset($_SESSION['giocatore24']) ? $_SESSION['giocatore24'] : '';
-$giocatore25 = isset($_SESSION['giocatore25']) ? $_SESSION['giocatore25'] : '';
-$giocatore26 = isset($_SESSION['giocatore26']) ? $_SESSION['giocatore26'] : '';
+
+
+   
 
 $squadra1 = isset($_SESSION['squadra1']) ? $_SESSION['squadra1'] : '';
 $squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
-*/
+
 
 
 /*
@@ -49,9 +44,10 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
    // require('../backend/players.php');
     
     //echo "$giocatore1";
-    echo "<div class='tables'>";
+
+    
     echo " 
-    <div class='table1'>
+    <div id='tables'>
         <table id='tableTeam1'>
 
         <tr>
@@ -98,12 +94,12 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
 
 
         </table>
-    </div>
+    
     ";
 
     //tabella squadra 2 DA MODIFICARE**********
     echo " 
-    <div class='table1'>
+    
         <table id='tableTeam2'>
 
         <tr>
@@ -151,10 +147,13 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
 
 
     </table>
+    </div>
 
     <input type = 'hidden' name = 'm0' id='m0' value='0' />
     <input type = 'hidden' name = 'm1' id='m1' value='0' />
-
+    
+    
+    
     ";
     
     ?>
@@ -202,9 +201,9 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
         let arrayElements = str.split(", ");
 
         arrayElements.forEach(element => {
-            if(element != "marcatore" && element != "ammonito" && element != "espulso" && element != "assente"){
+            if(element != "marcatore" && element != "ammonito" && element != "espulso" && element != "assente"  && element != "presente"){
                 
-                alert("Assicurati di inserire le stringhe corrette nel campo stato giocatore");
+                alert("Assicurati di insericlearre le stringhe corrette nel campo stato giocatore");
                 
             } else if(element.includes("marcatore")){
                 goals++;
@@ -220,6 +219,10 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
 
             if(element.includes("espulso")){
                 rossi++;
+                stato.readOnly = true;
+            } 
+            if(element.includes("assente") || element.includes("presente")){
+                
                 stato.readOnly = true;
             } 
 
@@ -256,13 +259,7 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
 
         
         
-/*
 
-    console.log("marcatore0: " + marcatore0);
-    console.log("marcatore: " + marcatore1);
-    console.log("ammonito: " + ammonito);
-    console.log("espulso: " + espulso); 
-         */
         
     }
 
@@ -299,5 +296,8 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
     
 
 </body>
-<?php include '../includes/footer.html'; ?>
+
+    <?php include('../includes/footer.html'); ?>
+
+
 </html>

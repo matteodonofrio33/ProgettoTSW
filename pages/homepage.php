@@ -28,23 +28,11 @@ ini_set('display_errors', 1);
 
   <?php 
   if(isset($_SESSION['username'])) { ?>
-    <!-- Contenuti per utente autenticato
-    <h1>Benvenuto, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+     <?php echo htmlspecialchars($_SESSION['username']); ?>
    
    
-    <a href="../backend/logout.php">Logout</a>
-    <p>Sei autenticato con successo. Ora puoi accedere ai contenuti riservati.</p> -->
-
-    <!--
-    <div id="mainContent"> 
-      <p>
-        Essere <b>arbitro</b> è molto più che un semplice ruolo, è una passione. L'arbitro è il custode del fair play,
-        colui che in campo mantiene il rispetto delle regole e la correttezza tra le due squadre. Essere arbitro significa concentrazione,
-        sudore, tanti sacrifici e saper prendere decisioni difficili assumendosi la responsabilità delle proprie scelte. Essere arbitro significa
-        rendere unico ogni momento di gioco assicurando alle squadre coinvolte e al pubblico un'esperienza di gioco leale e corretta.
-      </p>
-    </div> 
-    -->
+   
+  
     
     <?php  
      require ('../backend/conn.php');
@@ -135,8 +123,7 @@ ini_set('display_errors', 1);
           cliccando su questo <a href="./request.html">link</a> utile ad inoltrare la tua richiesta per diventare uno di noi!
         </p>
       </div>
-      <!-- <p>
-        <a href="./login.html">Esegui il login</a> -->
+     
       </p>
     </div>
 
