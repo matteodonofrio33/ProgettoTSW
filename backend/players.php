@@ -25,7 +25,7 @@ require('../backend/conn.php');
 
 if (!isset($_SESSION['username'])) {
     $message = "Utente non autenticato";
-		header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
+		header("Location: ./error.php?message=".$message."&redirect=../../ProgettoTSW/pages/login.html");
     die("Errore: utente non autenticato.");
 }
 
@@ -45,7 +45,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
 if (!$ret) {
    // echo "ERRORE QUERY: " . pg_last_error($db);
     $message = "Oops si è verificato un errore";
-    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+    header("Location: ./error.php?message=".$message."&redirect=../../ProgettoTSW/pages/homepage.php");
     exit();
    // return false;
 }
@@ -57,6 +57,12 @@ if (!$ret) {
     while($row = pg_fetch_assoc($ret)){
         $squadra1 = $row['SQUADRA1'];
         $squadra2 = $row['SQUADRA2'];
+    }
+
+    if($squadra1 === "" || $squadra2 === ""){
+        $message = "Sembra che non ci siano partite da refertare";
+        header("Location: ../backend/error.php?message=".$message."&redirect=../../ProgettoTSW/pages/homepage.php");
+        exit();
     }
 
     /*
@@ -78,7 +84,7 @@ if (!$ret) {
     //echo "ERRORE QUERY: " . pg_last_error($db);
     //return false;
     $message = "Oops si è verificato un errore";
-    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+    header("Location: ./error.php?message=".$message."&redirect=../../ProgettoTSW/pages/homepage.php");
     exit();
 }
 
@@ -121,7 +127,7 @@ if (!$ret2) {
     //echo "ERRORE QUERY: " . pg_last_error($db);
     //return false;
     $message = "Oops si è verificato un errore";
-    header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+    header("Location: ./error.php?message=".$message."&redirect=../../ProgettoTSW/pages/homepage.php");
     exit();
 }
 
