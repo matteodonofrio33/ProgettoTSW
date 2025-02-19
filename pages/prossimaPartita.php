@@ -42,6 +42,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     <title>Prossima partita</title>
 </head>
 <body>
+<?php include '../includes/header.php'; ?>
     <h1>La tua prossima partita sarà:</h1>
     <div id="tableContainer">
         <?php
