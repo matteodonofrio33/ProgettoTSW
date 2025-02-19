@@ -1,13 +1,9 @@
 
 <?php
 session_start();
-<<<<<<< HEAD
 
 include('../includes/header.php');
 
-=======
-session_set_cookie_params(0);
->>>>>>> origin/Matteo3
 require('../backend/conn.php'); // Connessione al database
 if (!isset($_SESSION['username'])) {
     die("Errore: utente non autenticato.");
@@ -47,6 +43,8 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prossima partita</title>
+    <link rel="icon" href="../assets/immagini/fischietto.ico" type="image/x-icon">
+
     <style>
         body {
             font-family: Arial, sans-serif;

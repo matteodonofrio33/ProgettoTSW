@@ -12,6 +12,8 @@ ini_set('display_errors', 1);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homepage</title>
+
+  <link rel="icon" href="../assets/immagini/homepage.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="../assets/css/homepageStyle.css">
 </head>
 <body> 

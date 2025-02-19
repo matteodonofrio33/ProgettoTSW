@@ -1,6 +1,7 @@
 <html lang="it">
 <head>
 	<title>Registrazione</title>
+	<link rel="icon" href="../assets/immagini/fischietto.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="../assets/css/registrationStyle.css">
     <script src="../assets/js/checkDataRegistration.js"></script>
 	
