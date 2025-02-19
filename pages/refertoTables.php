@@ -10,13 +10,11 @@
 </head>
 <body>
 
-  
-
-
     <?php include '../includes/header.php'; ?>
 
-    <form id="formTeam1" method="post" action="../backend/refert.php" >
+<div class="all" >
 
+    <form id="formTeam1" method="post" action="../backend/refert.php" >
 
 <?php
 //session_start();
@@ -49,6 +47,7 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
 
     
     echo " 
+    
     <div id='tables'>
         <table id='tableTeam1'>
 
@@ -162,19 +161,30 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
     </form>
 
     <div id="results">
-    <h2>
-        <span id="team1Name"><?php echo "$squadra1"; ?></span> 
+        
+    <div class="res12"> 
+    <div class="res1" >
+        <span id="team1Name"> <h2><?php echo "$squadra1"; ?>   </h2></span> 
         <span id="score0">0</span> 
+    </div>
+
+    <div class="res2" >
+    <span id="team2Name"> <h2><?php echo "$squadra2"; ?> </h2></span>
         <span id="score1">0</span> 
-        <span id="team2Name"><?php echo "$squadra2"; ?></span>
-    </h2>
-    <h2>
-        <span class="num_ammoniti">Ammoniti <span id="ammoniti"> 0</span></span>
-        <span class="num_espulsi">Espulsi <span id="espulsioni">0</span></span>
-    </h2>
+       
+    </div>
+    </div>
 
 
-   <!-- Aggiungi il contenitore qui sotto -->
+    <div class="count"> 
+        <span class="num_ammoniti"> <h3> Ammoniti </h3><span id="ammoniti"> 0</span> </span>
+
+        <span class="num_espulsi"> <h3>Espulsi </h3><span id="espulsioni">0</span></span>
+    </div>
+
+
+
+   
 <div id="formControls">
     <label for='numFalli'> 
         Numero falli
@@ -187,7 +197,7 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
 </div>
 
 </div>
-
+</div>
 
 
 <script type="text/javascript">

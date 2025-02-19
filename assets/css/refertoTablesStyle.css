@@ -7,33 +7,27 @@ body {
     margin: 0;
     padding: 0;
 }
+/*
 .table1{
     
     height: 700px;
    
 }
+*/
+
 #tables {
-    top: 200px;
-    left: 100px;
+    
     margin-top: 40px; 
     margin-bottom: 40px; 
-    margin-left: 5%;
     width: 100%;
-    display: block;
+    display: flex;
     text-align: center;
+    flex-direction: column;
+    gap: 10px;
     
     height: 700px;
     
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -85,21 +79,39 @@ tr:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.res12{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.res1, .res2 {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 
 #results {
-    width: 235px;
-    position:absolute;
-    margin-left: 10%;
-    top: 300px; 
-    right: 10px; 
-    left:1000px;
+    width: 300px;
+    display: block;
+    margin-right: 10%;
+   
     font-size: 24px; 
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.1); 
     padding: 15px 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-    display: inline-block; 
+}
+
+.all {
+    
+    width: 100%;
+    display: flex;
+    margin-left: 30px;
+    justify-content: space-between;  
+    padding: 20px; 
 }
 
 #results h2 {
@@ -112,6 +124,11 @@ tr:hover {
 
 #team1Name, #team2Name {
     font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
 }
 
 #score0, #score1 {
@@ -140,8 +157,15 @@ tr:hover {
     margin-bottom: 10px; 
 }
 
+.count {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 
 #bottone input[type="submit"] {
+    margin-top: 15%;
     padding: 10px 20px;
     background-color: #f39c12; 
     border: none;
@@ -170,9 +194,12 @@ tr:hover {
 }
 
 #numFalli {
-    margin-top: 10px;
+    margin-top: 50px;
     display: inline-block;
     text-align: center;
+    width: 150px;
 }
+
+
 
 
