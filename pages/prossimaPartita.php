@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../backend/conn.php'); // Connessione al database
+require('../backend/conn.php'); 
 if (!isset($_SESSION['username'])) {
     die("Errore: utente non autenticato.");
 }
@@ -22,14 +22,14 @@ if (!$ret) {
     echo "ERRORE QUERY: " . pg_last_error($db);
     return false;
 }
-// Inizializza una variabile per salvare il nome dello stadio
+
 $stadio = null;
-// Se ci sono partite, prendi il nome dello stadio della prima
+
 if (pg_num_rows($ret) > 0) {
     $row = pg_fetch_assoc($ret);
     $stadio = htmlspecialchars($row["STADIO"] ?? '', ENT_QUOTES, 'UTF-8');
 }
-// Riavvia la query per ottenere tutte le partite (la prima riga è già stata estratta)
+
 $ret = pg_query_params($db, $sql, array($arbitro));
 ?>
 
@@ -39,6 +39,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/css/prossimaPartitaStyle.css">
+    <link rel="icon" href="../assets/immagini/fischietto.ico" type="image/x-icon">
     <title>Prossima partita</title>
 </head>
 <body>
