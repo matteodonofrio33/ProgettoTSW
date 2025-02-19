@@ -28,10 +28,7 @@ ini_set('display_errors', 1);
 
   <?php 
   if(isset($_SESSION['username'])) { ?>
-     <?php echo htmlspecialchars($_SESSION['username']); ?>
-   
-   
-   
+      
   
     
     <?php  
@@ -130,8 +127,9 @@ ini_set('display_errors', 1);
     <?php } ?>
     
 
-    <?php include '../includes/footer.html'; ?>
+    
 
 
 </body>
+<?php include '../includes/footer.html'; ?>
 </html>

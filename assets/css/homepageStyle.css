@@ -1,6 +1,5 @@
 body {
     background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('../immagini/pallone.jpg');
-    
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -8,7 +7,11 @@ body {
     color: #e0e1dd;
     margin: 0;
     padding: 0;
+    
+    overflow-x: auto;
 }
+
+
 
 /* Layout principale */
 #mainContent {
