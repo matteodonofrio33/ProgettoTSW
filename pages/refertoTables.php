@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/css/refertoTablesStyle.css">
-    <title>Document</title>
+    <title>refertoTables</title>
     <link rel="icon" href="../assets/immagini/fischietto.ico" type="image/x-icon">
 
 </head>
+
 <body>
 
     <?php include '../includes/header.php'; ?>
 
-<div class="all" >
-
-    <form id="formTeam1" method="post" action="../backend/refert.php" >
-
-<?php
-require('../backend/players.php');
 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+    <form id="formTeam1" method="post" action="../backend/refert.php">
+        <div class="all">
+            <?php
+            require('../backend/players.php');
+
+
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
 
 
 
 
-   
 
-$squadra1 = isset($_SESSION['squadra1']) ? $_SESSION['squadra1'] : '';
-$squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
 
-    
-    echo " 
+            $squadra1 = isset($_SESSION['squadra1']) ? $_SESSION['squadra1'] : '';
+            $squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
+
+
+            echo " 
     
     <div id='tables'>
         <table id='tableTeam1'>
@@ -85,8 +87,8 @@ $squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
     
     ";
 
-    //tabella squadra 2
-    echo " 
+            //tabella squadra 2
+            echo " 
     
         <table id='tableTeam2'>
 
@@ -143,158 +145,167 @@ $squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
     
     
     ";
-    
-    ?>
+
+            ?>
+
+            <div id="results">
+
+                <div class="res12">
+                    <div class="res1">
+                        <span id="team1Name">
+                            <h2><?php echo "$squadra1"; ?> </h2>
+                        </span>
+                        <span id="score0">0</span>
+                    </div>
+
+                    <div class="res2">
+                        <span id="team2Name">
+                            <h2><?php echo "$squadra2"; ?> </h2>
+                        </span>
+                        <span id="score1">0</span>
+
+                    </div>
+                </div>
+
+
+                <div class="count">
+                    <span class="num_ammoniti">
+                        <h3> Ammoniti </h3><span id="ammoniti"> 0</span>
+                    </span>
+
+                    <span class="num_espulsi">
+                        <h3>Espulsi </h3><span id="espulsioni">0</span>
+                    </span>
+                </div>
+
+
+                <div id="formControls">
+                    <label for='numFalli'>
+                        Numero falli
+                        <input id='numFalli' type='number' min='0' step='1' name='numFalli' value='0' required />
+                    </label>
+
+                    <div id="bottone">
+                        <input type="submit" name="send" value="Invia" />
+                    </div>
+                </div>
+
+            </div>
     </form>
 
-    <div id="results">
-        
-    <div class="res12"> 
-    <div class="res1" >
-        <span id="team1Name"> <h2><?php echo "$squadra1"; ?>   </h2></span> 
-        <span id="score0">0</span> 
-    </div>
-
-    <div class="res2" >
-    <span id="team2Name"> <h2><?php echo "$squadra2"; ?> </h2></span>
-        <span id="score1">0</span> 
-       
-    </div>
     </div>
 
 
-    <div class="count"> 
-        <span class="num_ammoniti"> <h3> Ammoniti </h3><span id="ammoniti"> 0</span> </span>
+    <script type="text/javascript">
+        var marcatore0 = 0, marcatore1 = 0, ammonito = 0, espulso = 0;
+        var goals = 0, gialli = 0, rossi = 0;
 
-        <span class="num_espulsi"> <h3>Espulsi </h3><span id="espulsioni">0</span></span>
-    </div>
+        function calcolaStatistiche1(stato, boolean) { //boolean se 0 riguarda squadra1 altrimenti squadra2
 
-
-<div id="formControls">
-    <label for='numFalli'> 
-        Numero falli
-        <input id='numFalli' type='number' min='0' step='1' name='numFalli' value='0' required/>
-    </label>
-
-    <div id="bottone"> 
-        <input type="submit" name="send" value="Invia" /> 
-    </div>
-</div>
-
-</div>
-</div>
+            str = stato.value.toLowerCase();
+            goals = 0, gialli = 0, rossi = 0;
 
 
-<script type="text/javascript">
-    var marcatore0 = 0, marcatore1 = 0, ammonito = 0, espulso = 0;
-    var goals = 0, gialli = 0, rossi = 0;
+            let arrayElements = str.split(", ");
 
-    function calcolaStatistiche1(stato, boolean){ //boolean se 0 riguarda squadra1 altrimenti squadra2
-        
-        str = stato.value.toLowerCase();
-        goals = 0, gialli = 0, rossi = 0;
+            arrayElements.forEach(element => {
+                if (element != "marcatore" && element != "ammonito" && element != "espulso" && element != "assente" && element != "presente") {
 
-        
-        let arrayElements = str.split(", ");
+                    alert("Assicurati di inserire le stringhe corrette nel campo stato giocatore");
 
-        arrayElements.forEach(element => {
-            if(element != "marcatore" && element != "ammonito" && element != "espulso" && element != "assente"  && element != "presente"){
-                
-                alert("Assicurati di inserire le stringhe corrette nel campo stato giocatore");
-                
-            } else if(element.includes("marcatore")){
-                goals++;
-                stato.readOnly = true;
-                
-            } 
+                } else if (element.includes("marcatore")) {
+                    goals++;
+                    stato.readOnly = true;
 
-            if(element.includes("ammonito")){
-                gialli++;
-                stato.readOnly = true;
-              
-            } 
+                }
 
-            if(element.includes("espulso")){
-                rossi++;
-                stato.readOnly = true;
-            } 
-            if(element.includes("assente") || element.includes("presente")){
-                
-                stato.readOnly = true;
-            } 
+                if (element.includes("ammonito")) {
+                    gialli++;
+                    stato.readOnly = true;
 
-           
-                
-        });
+                }
 
-        if(!boolean){
-            marcatore0  =  marcatore0 + goals;
-            let score = document.getElementById("score0");
-            score.innerText = marcatore0;
+                if (element.includes("espulso")) {
+                    rossi++;
+                    stato.readOnly = true;
+                }
+                if (element.includes("assente") || element.includes("presente")) {
 
-            //aggiornamento del campo nascosto marcatore0 per poter passare il risultato al php
-            document.getElementById("m0").value = marcatore0;
-            
-
-            
-        } else {
-            marcatore1  =  marcatore1 + goals;
-            let score = document.getElementById("score1");
-            score.innerText = marcatore1;
-
-            //aggiornamento del campo nascosto marcatore1 per poter passare il risultato al php
-            document.getElementById("m1").value = marcatore1;
-        }
-        
-        ammonito    = ammonito + gialli;
-        let giallo = document.getElementById("ammoniti");
-        giallo.innerText=ammonito
-
-        espulso     = espulso + rossi;
-        let rosso = document.getElementById("espulsioni");
-        rosso.innerText=espulso;
-
-        
-        
-
-        
-    }
+                    stato.readOnly = true;
+                }
 
 
-    function bloccaMinuto(stato){
-        str = stato.value;
-        minutes = str.split(", ");
 
-        notNum = false; 
-        notInterval = false;
+            });
 
-        minutes.forEach(min => {
-            if(isNaN(min)){
-                notNum = true;
-            }else if(min < 1 || min > 90){
-                notInterval = true;
+            if (!boolean) {
+                marcatore0 = marcatore0 + goals;
+                let score = document.getElementById("score0");
+                score.innerText = marcatore0;
+
+                //aggiornamento del campo nascosto marcatore0 per poter passare il risultato al php
+                document.getElementById("m0").value = marcatore0;
+
+
+
+            } else {
+                marcatore1 = marcatore1 + goals;
+                let score = document.getElementById("score1");
+                score.innerText = marcatore1;
+
+                //aggiornamento del campo nascosto marcatore1 per poter passare il risultato al php
+                document.getElementById("m1").value = marcatore1;
             }
 
-        });
+            ammonito = ammonito + gialli;
+            let giallo = document.getElementById("ammoniti");
+            giallo.innerText = ammonito
 
-        if(notNum){
-            alert("Minuto può contenere solo numeri separati da virgola e spazio");
-        } else if(notInterval){
-            alert("Minuto dev'essere compreso tra 1 e 90");
-        } else {
-            stato.readOnly = true;
+            espulso = espulso + rossi;
+            let rosso = document.getElementById("espulsioni");
+            rosso.innerText = espulso;
+
+
+
+
+
         }
-    }
 
 
-    
-</script>
+        function bloccaMinuto(stato) {
+            str = stato.value;
+            minutes = str.split(", ");
 
-    
+            notNum = false;
+            notInterval = false;
+
+            minutes.forEach(min => {
+                if (isNaN(min)) {
+                    notNum = true;
+                } else if (min < 1 || min > 90) {
+                    notInterval = true;
+                }
+
+            });
+
+            if (notNum) {
+                alert("Minuto può contenere solo numeri separati da virgola e spazio");
+            } else if (notInterval) {
+                alert("Minuto dev'essere compreso tra 1 e 90");
+            } else {
+                stato.readOnly = true;
+            }
+        }
+
+
+
+    </script>
+
+
 
 </body>
 
-    <?php include('../includes/footer.html'); ?>
+<?php include('../includes/footer.html'); ?>
 
 
 </html>

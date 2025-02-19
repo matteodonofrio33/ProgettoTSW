@@ -27,6 +27,9 @@
     $arbitro = $_SESSION['username'];
     //echo "<h3>$arbitro</h3>";
     if (isset($_POST['idRef']) && !empty($_POST['idRef'])) {  
+
+
+        
         $id_referto = $_POST['idRef'];
 
         $sql = "SELECT 
@@ -46,9 +49,9 @@
                 JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
                 JOIN PARTECIPAZIONE ON PARTITA.id_partita = PARTECIPAZIONE.id_partita
                 JOIN GIOCATORE ON PARTECIPAZIONE.id_giocatore = GIOCATORE.id_giocatore
-                WHERE REFERTO.id_referto = $1 AND REFERTO.id_arbitro = $arbitro";
+                WHERE REFERTO.id_referto = $1 AND REFERTO.id_arbitro = $2";
 
-        $ret = pg_query_params($db, $sql, array($id_referto));
+        $ret = pg_query_params($db, $sql, array($id_referto, $arbitro));
 
         if (!$ret) {
             $message = "Non ci sono partite con l'id referto inserito";

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="icon" href="../immagini/fischietto.ico" type="image/x-icon">
 
 </head>
+
 <body>
 
     <?php
@@ -41,7 +43,7 @@
 
     if (!$ret) {
         $message = "Ooops si è verificato un problema";
-        header("Location: ./error.php?message=".$message."&redirect=../pages/homepage.php");
+        header("Location: ./error.php?message=" . $message . "&redirect=../pages/homepage.php");
         echo "Errore query: " . pg_last_error($db);
     } else {
         if (pg_num_rows($ret) > 0) {
@@ -90,12 +92,12 @@
             }
 
             //squadra1
-            if(pg_num_rows($ret)>0) {
+            if (pg_num_rows($ret) > 0) {
                 echo "<table id='table1' style='border-collapse: collapse';
                 <tr>";
 
-                $fields=pg_num_fields($ret);
-                
+                $fields = pg_num_fields($ret);
+
             }
             echo "<h3>$squadra1</h3>";
             echo "<table border='1' style='border-collapse: collapse;'>
@@ -138,4 +140,5 @@
     ?>
 
 </body>
+
 </html>
