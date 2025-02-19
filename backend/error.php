@@ -27,13 +27,11 @@ $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : '#';
 
         #errorDiv{
             
-            width: 400px;
+            width: 450px;
             display: flex;
             flex-direction: column;
             justify-content:center;
             align-items: center;
-            border: 2px solid red;
-            
         }
 
         #errorDiv img {
