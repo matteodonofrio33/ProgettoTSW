@@ -169,8 +169,8 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
         <span id="team2Name"><?php echo "$squadra2"; ?></span>
     </h2>
     <h2>
-        <span class="num_ammoniti">Ammoniti: <span id="ammoniti"> 0</span></span>
-        <span class="num_espulsi">Espulsi: <span id="espulsioni">0</span></span>
+        <span class="num_ammoniti">Ammoniti <span id="ammoniti"> 0</span></span>
+        <span class="num_espulsi">Espulsi <span id="espulsioni">0</span></span>
     </h2>
 
 
@@ -205,7 +205,7 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
         arrayElements.forEach(element => {
             if(element != "marcatore" && element != "ammonito" && element != "espulso" && element != "assente"  && element != "presente"){
                 
-                alert("Assicurati di insericlearre le stringhe corrette nel campo stato giocatore");
+                alert("Assicurati di inserire le stringhe corrette nel campo stato giocatore");
                 
             } else if(element.includes("marcatore")){
                 goals++;

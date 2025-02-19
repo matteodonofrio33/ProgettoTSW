@@ -84,7 +84,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     var longStadio=0;
     var pay=0;
     //document.addEventListener("DOMContentLoaded",function() {
-    var stadio="<?php echo $stadio; ?>"; // Recupera il nome dello stadio
+    var stadio="<?php echo $stadio; ?>"; //recupera il nome dello stadio
     var citta="";
     var abilita="false";
 
