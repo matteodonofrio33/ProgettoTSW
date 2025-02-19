@@ -17,7 +17,6 @@
     <form id="formTeam1" method="post" action="../backend/refert.php" >
 
 <?php
-//session_start();
 require('../backend/players.php');
 
 
@@ -32,18 +31,6 @@ error_reporting(E_ALL);
 
 $squadra1 = isset($_SESSION['squadra1']) ? $_SESSION['squadra1'] : '';
 $squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
-
-
-
-/*
-echo " Giocatori squadra 1: $giocatore11, $giocatore12, $giocatore13, $giocatore14, $giocatore15, $giocatore16 ";
-echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore24, $giocatore25, $giocatore26";
-*/
-
-
-   // require('../backend/players.php');
-    
-    //echo "$giocatore1";
 
     
     echo " 
@@ -98,7 +85,7 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
     
     ";
 
-    //tabella squadra 2 DA MODIFICARE**********
+    //tabella squadra 2
     echo " 
     
         <table id='tableTeam2'>
@@ -183,8 +170,6 @@ echo " Giocatori squadra 2: $giocatore21, $giocatore22, $giocatore23, $giocatore
     </div>
 
 
-
-   
 <div id="formControls">
     <label for='numFalli'> 
         Numero falli

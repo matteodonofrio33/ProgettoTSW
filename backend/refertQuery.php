@@ -23,7 +23,7 @@
             font-size: 18px;
             text-align: left;
             border-radius: 8px;
-            overflow: hidden; /* Mantiene il border-radius */
+            overflow: hidden;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
         }
 
@@ -40,7 +40,7 @@
 <body>
 <div id="tableContainer">
     <?php
-    require('../backend/conn.php'); // Connessione al database
+    require('../backend/conn.php');
 
     if (!isset($_SESSION['username'])) {
         die("Errore: utente non autenticato.");
@@ -59,7 +59,7 @@
             FROM REFERTO
             JOIN PARTITA ON REFERTO.id_partita = PARTITA.id_partita
             WHERE REFERTO.id_arbitro = $1
-            AND (REFERTO.stato_partita IS NOT NULL AND REFERTO.stato_partita <> '');"; // Filtra le partite senza esito
+            AND (REFERTO.stato_partita IS NOT NULL AND REFERTO.stato_partita <> '');"; //filtra le partite senza esito
 
     $ret = pg_query_params($db, $sql, array($arbitro));
 

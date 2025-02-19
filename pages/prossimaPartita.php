@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('../backend/conn.php'); // Connessione al database
+require('../backend/conn.php'); 
 if (!isset($_SESSION['username'])) {
     die("Errore: utente non autenticato.");
 }
@@ -22,14 +22,14 @@ if (!$ret) {
     echo "ERRORE QUERY: " . pg_last_error($db);
     return false;
 }
-// Inizializza una variabile per salvare il nome dello stadio
+
 $stadio = null;
-// Se ci sono partite, prendi il nome dello stadio della prima
+
 if (pg_num_rows($ret) > 0) {
     $row = pg_fetch_assoc($ret);
     $stadio = htmlspecialchars($row["STADIO"] ?? '', ENT_QUOTES, 'UTF-8');
 }
-// Riavvia la query per ottenere tutte le partite (la prima riga è già stata estratta)
+
 $ret = pg_query_params($db, $sql, array($arbitro));
 ?>
 
@@ -39,6 +39,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/css/prossimaPartitaStyle.css">
+    <link rel="icon" href="../assets/immagini/fischietto.ico" type="image/x-icon">
     <title>Prossima partita</title>
 </head>
 <body>
@@ -83,7 +84,6 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     var latStadio=0;
     var longStadio=0;
     var pay=0;
-    //document.addEventListener("DOMContentLoaded",function() {
     var stadio="<?php echo $stadio; ?>"; //recupera il nome dello stadio
     var citta="";
     var abilita="false";
@@ -185,9 +185,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
                 //alert("Latitudine ottenuta: " + lat); //debug
                 //alert("Longitudine ottenuta: " + long); //debug
 
-                //calcola la distanza solo dopo aver ottenuto la posizione
                 let distance=calculateDistance(latStadio, longStadio, lat, long);
-                //alert("Distanza dallo stadio: " + distance.toFixed(2) + " km"); //debug
                 document.getElementById("distanceStadium").innerHTML = `<strong>Distanza:</strong> ${distance.toFixed(2)} km`;
 
                 calculatePay(distance);
@@ -212,10 +210,6 @@ $ret = pg_query_params($db, $sql, array($arbitro));
 
     if(abilita==="true")
         myPos(); 
-
-    //distance=calculateDistance(latStadio, longStadio, lat, long);
-    //alert(distance); //prova stampa distanza
-
 
     </script>
 </body>

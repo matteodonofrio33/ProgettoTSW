@@ -10,7 +10,7 @@
 <body>
 
     <?php
-    require('../backend/conn.php'); // Connessione al database
+    require('../backend/conn.php');
 
     if (!isset($_POST['idRef'])) {
         die("Errore: ID referto non ricevuto.");
@@ -45,11 +45,11 @@
         echo "Errore query: " . pg_last_error($db);
     } else {
         if (pg_num_rows($ret) > 0) {
-            $first_row = pg_fetch_assoc($ret); // Prendo la prima riga per i dati della partita
+            $first_row = pg_fetch_assoc($ret); //prendo la prima riga per i dati della partita
             $squadra1 = $first_row['SQUADRA1'];
             $squadra2 = $first_row['SQUADRA2'];
 
-            // **Tabella con informazioni della partita**
+            //tabella con le informazioni della partita
             echo "<h2>Dettagli Partita</h2>";
             echo "<table border='1' style='border-collapse: collapse;'>
                     <tr>
