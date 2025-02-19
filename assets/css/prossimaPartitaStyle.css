@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e2f;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    margin-top: 20px;
+    font-size: 28px;
+    color: #f1c40f;
+}
+#tableContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+table {
+    width: 80%;
+    max-width: 1000px;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
+}
+th {
+    background-color: rgba(241, 196, 15, 0.8);
+    color: black;
+    font-weight: bold;
+}
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+td {
+    font-size: 16px;
+}
+.noPart {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #e74c3c;
+}
+
+#meteoStadio, #distanceStadium, #payment{
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
+    width: 200px;
+}
+
+#info_match {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+    width: 100%;
+}
+
+#info_match div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+    text-align: center;
+    width: 200px;
+}
+
+#info_match img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
