@@ -1,4 +1,3 @@
-/* Imposta lo sfondo della pagina con un gradiente */
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #4caf50, #2e8b57);
@@ -12,14 +11,12 @@ body {
     text-align: center;
 }
 
-/* Stile per il titolo */
 h1 {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-/* Stile per il paragrafo */
 p {
     font-size: 20px;
     opacity: 0.9;
