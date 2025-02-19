@@ -12,7 +12,7 @@ body {
 table {
     width: 80%;
     max-width: 1000px;
-    border-collapse: collapse; /* Mantiene i bordi ben uniti */
+    border-collapse: collapse; /*unisce i bordi*/
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
     margin: 20px auto;
@@ -29,14 +29,6 @@ th {
     color: black;
     font-weight: bold;
 }
-
-/* 
-table tr:first-child th:first-child,
-table tr:first-child th:last-child,
-table tr:last-child td:first-child,
-table tr:last-child td:last-child {
-    border-radius: 0;
-} */
 
 tr:hover {
     background-color: rgba(255, 255, 255, 0.2);
