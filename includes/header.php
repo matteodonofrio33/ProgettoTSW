@@ -30,6 +30,7 @@ if (session_status()==PHP_SESSION_NONE) {
                     </span>
                 </li>
                 <?php if(isset($_SESSION['username'])) { ?>
+                    <li> <a href="../pages/homepage.php">Homepage</a></li>
                     <li> <a href="../pages/refertoTables.php">Crea referto</a></li>
                     <li> <a href="../pages/miePartite.php">Le mie partite</a></li>
                     <li> <a href="../pages/prossimaPartita.php">Prossima partita</a></li>
