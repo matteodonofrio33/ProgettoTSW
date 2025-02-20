@@ -12,7 +12,7 @@ body {
     overflow-x: auto;
 }
 
-#mainContent, #mainCont {
+#mainContent {
     
     display: flex;
     flex-direction: column;
