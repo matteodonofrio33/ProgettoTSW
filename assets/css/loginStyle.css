@@ -4,10 +4,11 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 0;
     color: #fff;
+    overflow-x: hidden;
     
 }
 h2 {

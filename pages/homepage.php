@@ -34,7 +34,7 @@ ini_set('display_errors', 1);
   if(isset($_SESSION['username'])) { ?>
       
   
-      <div id="mainContent"> 
+      <div id="mainCont"> 
     <?php  
      require ('../backend/conn.php');
      include('../backend/refertQuery.php');  
