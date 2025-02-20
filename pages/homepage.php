@@ -34,7 +34,7 @@ ini_set('display_errors', 1);
   if(isset($_SESSION['username'])) { ?>
       
   
-    
+      <div id="mainContent"> 
     <?php  
      require ('../backend/conn.php');
      include('../backend/refertQuery.php');  
@@ -50,7 +50,7 @@ ini_set('display_errors', 1);
       Il tuo browser non supporta il tag video.
     </video>
     </div>
-
+  </div> 
     <?php 
     } else { ?>
 
