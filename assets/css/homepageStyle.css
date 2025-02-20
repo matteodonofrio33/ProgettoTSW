@@ -11,13 +11,8 @@ body {
     width: 100%;
     overflow-x: auto;
 }
-#mainCont{
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-#mainContent {
+
+#mainContent, #mainCont {
     
     display: flex;
     flex-direction: column;
