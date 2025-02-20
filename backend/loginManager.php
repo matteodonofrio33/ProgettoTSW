@@ -52,7 +52,7 @@
 			
 			if(!$hash){		
 					$message = "L'utente ".$username." non esiste";
-					header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
+					header("Location: ./error.php?message=".$message."&redirect=../pages/login.php");
 					exit(); //in modo tale da esser sicuri di non eseguire altro codice
 			}
 			else{
@@ -66,14 +66,14 @@
 				}				
 				else{
 					$message = "Password errata";
-					header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
+					header("Location: ./error.php?message=".$message."&redirect=../pages/login.php");
 					exit();
 				}
 			}
 		}
 		else{
 			$message = "Username o password non inseriti";
-					header("Location: ./error.php?message=".$message."&redirect=../pages/login.html");
+					header("Location: ./error.php?message=".$message."&redirect=../pages/login.php");
 					exit();
 		}
 
