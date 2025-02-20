@@ -1,10 +1,12 @@
 <?php
+session_start();
+session_set_cookie_params(0);
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-    session_set_cookie_params(0);
-    session_start();
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="it">

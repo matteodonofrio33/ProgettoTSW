@@ -1,3 +1,4 @@
+<?php 	session_start(); ?>
 <html>
 <head>
 	<title>Gestione Login</title>
@@ -58,7 +59,7 @@
 				
 
 				if(password_verify($password, $hash)){
-					session_start();
+				//	session_start();
 					$_SESSION['username'] = $username;
 					header("Location: ../pages/homepage.php");
 					exit(); 

@@ -1,5 +1,7 @@
 
-<!-- PAGINA CHE PRENDE I DATI PASSATI DALLA FORM IN refertoTables.php -->
+<?php session_start();
+session_set_cookie_params(0);
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -11,11 +13,11 @@
     
 
 <?php
-session_start();
+//session_start();
 
 include('../includes/header.php');
 
-session_set_cookie_params(0);
+//session_set_cookie_params(0);
 
 
 ini_set('display_errors', 1);

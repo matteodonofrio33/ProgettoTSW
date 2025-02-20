@@ -48,23 +48,27 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     <div id="tableContainer">
         <?php
         if (pg_num_rows($ret) > 0) {
-            echo "<table>
-                    <tr>
-                        <th>ID REFERTO</th>
-                        <th>STADIO</th>
-                        <th>SQUADRA1</th>
-                        <th>SQUADRA2</th>
-                        <th>N GIORNATA</th>
-                        <th>DATA</th>
-                    </tr>";
-            while ($row = pg_fetch_assoc($ret)) {
-                echo "<tr>";
-                foreach ($row as $value) {
-                    echo "<td>" . htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8') . "</td>";
-                }
-                echo "</tr>";
-            }
-            echo "</table>";
+              //creo una riga
+              echo "<table><tr>";
+     
+              //nella prima riga stampo i nomi dei campi
+              $fields = pg_num_fields($ret);
+              for($i = 0; $i < $fields; $i++){
+                  echo "<th>".pg_field_name($ret, $i)."</th>";
+  
+              }
+              echo "</tr>";
+  
+              //stampa dei valori dei campi
+              while($row = pg_fetch_assoc($ret)){
+                  echo "<tr>";
+                  foreach($row as $value) {
+                      echo "<td>" .htmlspecialchars($value)."</td>";
+                  }
+                  echo "</tr>";
+              }
+              echo"</table>";
+            
         } else {
             echo "<p class='noPart'>Non hai partite da arbitrare.</p>";
         }
