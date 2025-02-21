@@ -36,35 +36,38 @@
 
 					<p>
 						<label for="name">Nome
-							<input id="name" type="text" name="name" required value="<?php echo $name ?>" />
+							<input id="name" type="text" name="name" required value="<?php echo $name ?>" 
+							placeholder="Mario"/>
 						</label>
 
 					</p>
 
 					<p>
 						<label for="surname">Cognome
-							<input id="surname" type="text" name="surname" required value="<?php echo $surname ?>" />
+							<input id="surname" type="text" name="surname" required value="<?php echo $surname ?>" 
+							placeholder="Rossi"/>
 						</label>
 					</p>
 
 					<p>
 						<label for="taxIdCode">Codice fiscale
 							<input id="taxIdCode" type="text" name="taxIdCode" required value="<?php echo $taxIdCode ?>"
-								placeholder="composto da 16 caratteri" />
+								placeholder="RSSMRA80A01H501Z" />
 						</label>
 					</p>
 
 					<p>
 						<label for="email">Email
 							<input id="email" type="email" name="email" required value="<?php echo $email ?>"
-								placeholder="example@gmail.com" />
+								placeholder="mr@gmail.com" />
 						</label>
 					</p>
 
 
 					<p>
 						<label for="username">Username
-							<input id="username" type="text" name="username" required value="<?php echo $username ?>" />
+							<input id="username" type="text" name="username" required value="<?php echo $username ?>" 
+							placeholder="mrss03"/>
 						</label>
 					</p>
 					<p>
