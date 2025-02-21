@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -132,7 +132,7 @@
             
 
 
-			//CONTROLLO SE L'UTENTE GIA' ESISTE
+			//Controllo se l'utente esiste
 			if(exist($username, "username")){
 				$error = true;
                 echo "<script type='text/javascript'> alert('Username $username già esistente'); </script>";	

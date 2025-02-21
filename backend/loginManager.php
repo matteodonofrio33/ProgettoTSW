@@ -87,8 +87,8 @@
 function get_pwd($username, $db){
 		require 'conn.php';
 		$sql = "SELECT password FROM arbitro WHERE username=$1;";
-		$prep = pg_prepare($db, "sqlPassword", $sql); #preparando la query così si evita sql injection
-		$ret = pg_execute($db, "sqlPassword", array($username)); #esecuzione della query pianificata
+		$prep = pg_prepare($db, "sqlPassword", $sql); 
+		$ret = pg_execute($db, "sqlPassword", array($username)); 
 		
 		if(!$ret) {
 			echo "ERRORE QUERY: " . pg_last_error($db);
@@ -99,7 +99,7 @@ function get_pwd($username, $db){
 			if ($row = pg_fetch_assoc($ret)){
 				
 				$password = $row['password'];
-				return $password; //questa è la password con hash
+				return $password; //password con hash
 			}
 			else{
 				

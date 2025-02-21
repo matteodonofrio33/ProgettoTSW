@@ -25,7 +25,7 @@
 
     <?php
     $arbitro = $_SESSION['username'];
-    //echo "<h3>$arbitro</h3>";
+    
     if (isset($_POST['idRef']) && !empty($_POST['idRef'])) {  
 
 

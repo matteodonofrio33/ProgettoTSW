@@ -15,7 +15,7 @@ $pass = 'tw2024';
 $connection_string = "host=$host port=$port dbname=$database user=$user password=$pass";
 
 
-//CONNESSIONE AL DB
+//connessione al database
 $db = pg_connect($connection_string) or die('Impossibile connetersi al database: ' . pg_last_error());
 
 

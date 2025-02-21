@@ -27,7 +27,7 @@ header {
     padding: 20px;
     width: 100%;
     overflow: hidden;
-    /*background: rgba(0, 0, 0, 0.8);*/
+    
     background-color: black;
     opacity: 0.5;
     color: black;
@@ -102,7 +102,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*margin: 60px auto;*/
+    
     margin-top: 100px;
     text-transform: uppercase;
     font-weight: bold;

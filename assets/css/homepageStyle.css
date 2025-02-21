@@ -1,19 +1,18 @@
 
 body {
     background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('../immagini/pallone.jpg');
-    background-size: cover;
-    background-position: center;
+    background-size: cover; 
+    background-position: center; 
     background-attachment: fixed;
     font-family: 'Poppins', Arial, sans-serif;
     color: #e0e1dd;
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: auto;
+    overflow-x: auto; 
 }
 
 #mainContent {
-    
     display: flex;
     flex-direction: column;
     align-items: center; 

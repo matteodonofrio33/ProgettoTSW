@@ -119,8 +119,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
     else {
         console.log("Stadio non riconosciuto:", stadio);
     }
-    //console.log("Prossima partita in:", stadio); //debug
-    //console.log("Coordinate stadio:", latStadio, longStadio);
+   
 
     document.addEventListener("DOMContentLoaded", function () {
         // meteo
@@ -186,8 +185,7 @@ $ret = pg_query_params($db, $sql, array($arbitro));
                 let lat=position.coords.latitude;
                 let long=position.coords.longitude;
 
-                //alert("Latitudine ottenuta: " + lat); //debug
-                //alert("Longitudine ottenuta: " + long); //debug
+               
 
                 let distance=calculateDistance(latStadio, longStadio, lat, long);
                 document.getElementById("distanceStadium").innerHTML = `<strong>Distanza:</strong> ${distance.toFixed(2)} km`;

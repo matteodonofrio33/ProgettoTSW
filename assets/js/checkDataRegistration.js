@@ -6,11 +6,11 @@
 
         if(!isRightLength(name, 2, 30))
             return false;
-            //alert("Nome può avere minimo 2 e massimo 30 caratteri");          
+           
             specialName = "|!£$%&/()=?^+*§°#ç@.:-_,;<>\"{}[]~`\\";
         if(checkSpecial(name, specialName))
             return false;
-           //alert("Nome non puo' contenere caratteri speciali");
+           
         
            return true;
     }
@@ -20,12 +20,12 @@
 
         if(!isRightLength(surname, 2, 30))
             return false;
-           // alert("Cognome può avere minimo 2 e massimo 30 caratteri");  
+           
         
 		   specialSurname = "|!£$%&/()=?^+*§°#ç@.:-_,;<>\"{}[]~`\\";
         if(checkSpecial(surname, specialSurname))
             return false;
-            //alert("Cognome non puo' contenere caratteri speciali");
+            
 
             return true;
     }
@@ -39,14 +39,14 @@
         let name = document.getElementById("name").value.toLowerCase();
 		let surname = document.getElementById("surname").value.toLowerCase();
         let username = document.getElementById("username").value.toLowerCase();
-        //document.write("Il nome inserito è " + name.value);
+        
         if(username.includes(name) || username.includes(surname))
             return false;
-           // alert("Lo username non puo' contenere il nome");
+           
 
         if(!isRightLength(username, 2, 15))
             return false;
-            //alert("Lo username deve avere un minimo di 2 ed un massimo di 15 caratteri");
+          
         return true;
     }
 
@@ -58,13 +58,13 @@
 
         if(taxId.length != len)
             return false;
-           //alert("Codice fiscale deve avere una lunghezza di 16 caratteri");
+          
     
 		specialTaxId = "|!£$%&/()=?'^+*§°#ç@.:-_,;<>\"{}[]~`\\";
         if(checkSpecial(taxId, specialTaxId))
             return false;
            
-           // alert("Il codice fiscale non deve avere caratteri speciali.");
+          
 
             return true;
     }
@@ -88,7 +88,7 @@
         
         if(!isRightLength(pass1, 2, 15))
             return false;
-          //  alert("La password deve avere un minimo di 2 ed un massimo di 15 caratteri");
+          
 
           return true;
         
@@ -103,7 +103,7 @@
 
         if(!(pass1 === pass2))
             return false;
-          //  alert("Le password non corrispondono");
+          
         return true;
     }
 
@@ -115,7 +115,7 @@
 
     function validateAll() {
         let error = false;
-        let message = "";
+        
 
         if(!validateName()){
 			error = true;
@@ -172,9 +172,6 @@
     //controlla se sono presenti caratteri speciali
     function checkSpecial(str, special){
         
-        
-
-        let flag = false;
 
         for(let i = 0; i < str.length; i++) {
             if(special.includes(str[i]))

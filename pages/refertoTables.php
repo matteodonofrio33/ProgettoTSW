@@ -27,7 +27,7 @@
             error_reporting(E_ALL);
 
 
-
+//tabella squadra1
             echo " 
     
     <div id='tables'>
@@ -80,7 +80,7 @@
     
     ";
 
-            //tabella squadra 2
+            //tabella squadra2
             echo " 
     
         <table id='tableTeam2'>
