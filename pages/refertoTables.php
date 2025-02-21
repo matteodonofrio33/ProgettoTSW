@@ -28,13 +28,6 @@
 
 
 
-
-
-
-            $squadra1 = isset($_SESSION['squadra1']) ? $_SESSION['squadra1'] : '';
-            $squadra2 = isset($_SESSION['squadra2']) ? $_SESSION['squadra2'] : '';
-
-
             echo " 
     
     <div id='tables'>

@@ -133,7 +133,7 @@ AND (REFERTO.stato_partita IS NULL OR REFERTO.stato_partita = ''); ";
         $i++;
     }
 
-    //uso le variabili session per passare queste info a refert.php, refertTables.php
+    //uso le variabili session per passare queste info a refert.php
     $_SESSION['giocatore11'] = $giocatore11;
     $_SESSION['giocatore12'] = $giocatore12;
     $_SESSION['giocatore13'] = $giocatore13;

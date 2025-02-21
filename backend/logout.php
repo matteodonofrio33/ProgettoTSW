@@ -6,17 +6,19 @@
 </head>
 <body>
 <?php
-	//session_start();
-	session_set_cookie_params(0);
+	session_start();
 	
-	$sname = session_name();
-	$uname = $_SESSION["username"];
+	
+	
+	
 
-	session_unset();
-	session_destroy();
+	$_SESSION = session_unset();
+	
 
-	if (isset($_COOKIE[$sname])) {
-		setcookie($sname,'', time()-3600,'/');
+	if (session_id() != "" || isset($_COOKIE[$sname])) {
+		$sname = session_name();
+		setcookie($sname,'', time()-2592000,'/');
+		session_destroy();
 	}
 
 	header("Location: ../pages/homepage.php");
