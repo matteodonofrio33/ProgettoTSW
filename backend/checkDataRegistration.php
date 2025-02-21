@@ -144,7 +144,9 @@
                 
 				//ORA posso inserire il nuovo utente nel db
 				if(insert_utente($username, $email, $name, $surname, $password, $error)){
-                     header("Location: ../pages/login.html");
+                    echo "<script type='text/javascript'> alert('$username registrato con successo '); </script>";
+                   
+                   
 				}
 				else{
 					echo "<h1> Errore durante la registrazione. Riprova</h1>";

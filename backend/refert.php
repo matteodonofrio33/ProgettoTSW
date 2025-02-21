@@ -330,10 +330,7 @@ else
 
 
    $minuti2 = array($minuto21, $minuto22, $minuto23, $minuto24, $minuto25, $minuto26);
-/*
-   echo "$statoGiocatore21, $statoGiocatore22, $statoGiocatore23, $statoGiocatore24, $statoGiocatore25, $statoGiocatore26 ";
-   echo "$minuto21, $minuto22, $minuto23, $minuto24, $minuto25, $minuto26 ";
-*/
+
 
 $m0 = isset($_POST['m0']) ? (int) $_POST['m0'] : 0;
 $m1 = isset($_POST['m1']) ? (int) $_POST['m1'] : 0;

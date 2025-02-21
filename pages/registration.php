@@ -106,7 +106,7 @@ function exist($valore, $campo){
 
 	if(!$ret) {
 		$message = "Oops si è verificato un errore";
-		header("Location: ./error.php?message=".$message."&redirect=./homepage.php");
+		header("Location: ./error.php?message=".$message."&redirect=./pages/homepage.php");
 		exit();
 		
 	}
