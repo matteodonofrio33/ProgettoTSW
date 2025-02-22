@@ -2,8 +2,12 @@
 <html lang="it">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Sito pensato per gli arbitri e per la crezione di referti."> 
+  <meta name="keywords" content="arbitro, referto, partita, goals, ammonito, espulso, fallo.">
+  
     <link rel="stylesheet" type="text/css" href="../assets/css/refertoTablesStyle.css">
     <title>refertoTables</title>
     <link rel="icon" href="../assets/immagini/fischietto.ico" type="image/x-icon">

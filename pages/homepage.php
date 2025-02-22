@@ -14,6 +14,10 @@ ini_set('display_errors', 1);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Sito pensato per gli arbitri e per la crezione di referti."> 
+  <meta name="keywords" content="arbitro, referto, partita, goals, ammonito, espulso, fallo.">
+  
   <title>Homepage</title>
 
   <link rel="icon" href="../assets/immagini/homepage.ico" type="image/x-icon">
